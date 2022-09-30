@@ -1,0 +1,14 @@
+/************************************************************
+***************CSS DE LA NAVBAR VERSION MOBILE  *************
+*************************************************************/
+
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.navbar a {
+    font-family: "";
+}
