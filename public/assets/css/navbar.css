@@ -2,13 +2,57 @@
 ***************CSS DE LA NAVBAR VERSION MOBILE  *************
 *************************************************************/
 
-
-.navbar {
+nav {
+    width: 100%;
+    height: 10%;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5);
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px black solid;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 0px;
 }
 
-.navbar a {
-    font-family: "";
+
+/* Button du Menu burger */
+
+.btnMenu {
+    width: 10%;
+    border: none;
+    background: none;
+}
+
+.btnMenu>img {
+    width: 100%;
+}
+
+
+/* Div de l'animation du gif Shiba */
+
+nav>div {
+    width: 70%;
+    display: flex;
+    flex-direction: row-reverse;
+} 
+
+nav>div>img {
+    width: 28%;
+    position: absolute;
+    bottom: 0;
+    right: -20px;
+    animation: 10s linear 0s infinite running slidein;
+}
+
+
+/* Ancre vers la page de l'utilisateur */
+
+nav>a {
+    width: 10%;
+}
+
+nav>a>img {
+    width: 100%;
 }

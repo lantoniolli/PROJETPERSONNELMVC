@@ -1,36 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-.container {
-    display: flex;
-    width: 90vw;
-    height: 90vh;
-    justify-content: center;
-    position: fixed;
+@font-face {
+    font-family: 'Trajan';
+    src: url(/public/assets/fonts/Trajan/Trajan\ Pro.ttf);
+}
+@font-face {
+    font-family: 'Games of Thrones';
+    src: url(/public/assets/fonts/GameOfThrones/Game\ of\ Thrones.ttf);
 }
 
-.container_left {
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(/public/assets/img/mobileheader.jpg);
+    background-size: contain;
+}
+
+.container_form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    /* justify-content: center; */
-    background-color: #20203C;
-    width: 50%;
-    border-radius: 10px;
+    background-color: rgba(34, 34, 34, 0.904);
+    height: 90%;
+    width: 90%;
 }
 
-.container_right {
-    background-color: #1A1A2F;
-    width: 50%;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
-.title {
-    font-family: 'Poppins';
+.title_form {
+    font-family: 'Game of Thrones';
     color: #f3f3f3;
-    font-weight: 600;
+    font-weight: 400;
     font-size:30px;
     width: 100%;
     justify-content: center;
@@ -39,7 +45,7 @@
 }
 
 .subtitle {
-    margin-top: 5%;
+    /* margin-top: 5%; */
     color: #777777;
     font-weight: 700;
     text-align: center;
@@ -54,43 +60,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
     }
 
-input[type="text"] {
-    width: 80%;
+input {
+    width: 90%;
     height: 30px;
     margin-bottom: 5%;
-    border-radius: 5px;
-    background-color: #242443;
+    background-color: #434347;
     border: none;
-    font-family: 'Poppins';
     color: grey;
 }
 
-
-.btnRegister {
+label {
+    /* width: 100%; */
+    color: #f3f3f3;
+    font-family: 'Trajan';
+    text-align: center;
+    margin-bottom: 2%;
+}
+input {
     width: 80%;
-    height: 4%;
-    border-radius: 5px;
-    background-color: #6541F5;
+}
+.btnRegister {
+    width: 100%;
+    height: 35px;
+    margin-top: 2%;
+    background-color: #333;
     border: none;
     color: #f3f3f3;
+    text-align: center;
+    font-family: 'Trajan';
+    font-size: 25px;
 }
 
-.checkbox {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-    font-size: 15px;
-    color: #dedede;
-}
-
-.rememberMe{
-    width: 50%;
-}
-
-.forgetPassword {
-    width: 50%;
-    text-align: end;
-}

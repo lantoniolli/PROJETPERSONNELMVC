@@ -46,5 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 include(__DIR__.'/../views/templates/header.php');
-include(__DIR__.'/../views/forms/register.php');
+include(__DIR__.'/../views/templates/navbar.php');
+include(__DIR__.'/../views/user/register.php');
 include(__DIR__.'/../views/templates/footer.php');
