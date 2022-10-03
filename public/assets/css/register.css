@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.container {
+    display: flex;
+    width: 90vw;
+    height: 90vh;
+    justify-content: center;
+    position: fixed;
+}
+
+.container_left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* justify-content: center; */
+    background-color: #20203C;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.container_right {
+    background-color: #1A1A2F;
+    width: 50%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.title {
+    font-family: 'Poppins';
+    color: #f3f3f3;
+    font-weight: 600;
+    font-size:30px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.subtitle {
+    margin-top: 5%;
+    color: #777777;
+    font-weight: 700;
+    text-align: center;
+}
+
+::placeholder {
+    padding: 30px ;
+    font-style: italic;
+}
+
+.input_form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    }
+
+input[type="text"] {
+    width: 80%;
+    height: 30px;
+    margin-bottom: 5%;
+    border-radius: 5px;
+    background-color: #242443;
+    border: none;
+    font-family: 'Poppins';
+    color: grey;
+}
+
+
+.btnRegister {
+    width: 80%;
+    height: 4%;
+    border-radius: 5px;
+    background-color: #6541F5;
+    border: none;
+    color: #f3f3f3;
+}
+
+.checkbox {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    font-size: 15px;
+    color: #dedede;
+}
+
+.rememberMe{
+    width: 50%;
+}
+
+.forgetPassword {
+    width: 50%;
+    text-align: end;
+}
