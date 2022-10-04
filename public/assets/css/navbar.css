@@ -29,7 +29,7 @@ body {
 
 /* navbar regular css start */
 .navbar-area {
-  background: rgba(0, 0, 0, 0.6);
+  background: #232323;
   border-bottom: 1px solid #000;
 }
 .site-navbar {
@@ -64,7 +64,7 @@ a.site-logo {
 
 /* nav-toggler css start */
 .nav-toggler {
-  border: 3px solid #fff;
+  border: 0px solid #fff;
   padding: 5px;
   background-color: transparent;
   cursor: pointer;
@@ -76,7 +76,7 @@ a.site-logo {
 .nav-toggler span:after {
   width: 28px;
   height: 3px;
-  background-color: #fff;
+  background-color: #969090;
   display: block;
   transition: 0.3s;
 }
@@ -139,7 +139,7 @@ a.site-logo {
     flex-direction: column;
     align-items: center;
     border-top: 1px solid #444;
-    background-color: #161515;
+    background-color: #232323;
     max-height: 0;
     overflow: hidden;
     transition: 0.3s;

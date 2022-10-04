@@ -9,7 +9,12 @@
                 <!-- site menu/nav -->
                 <ul>
                     <li><a href="#">Accueil</a></li>
-                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Actualité</a></li>
+                    <li><a href="#">La Saga</a></li>
+                    <li><a href="#">La Série</a></li>
+                    <li><a href="#">Les Jeux</a></li>
+                    <li><a href="#">Espace Membre</a></li>
+                    <li><a href="#">Administration</a></li>
                     <li><a href="#">Contact</a></li>
                     
                 </ul>

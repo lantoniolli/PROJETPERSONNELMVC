@@ -1,4 +1,4 @@
-<title>Formulaire d'inscription.</title>
+<title>FWL | Inscription</title>
 </head>
 
 <body>
@@ -11,12 +11,12 @@
                 <!-- INPUT DU NOM -->
                 <label for="lastname">Pseudo *</label>
                 <input value="<?= $lastname ?? '' ?>" name="lastname" id="lastname" pattern="<?= REGEX_FOR_PSEUDO ?>" type="text" placeholder="Votre nom ici" required>
-                <p class="input-error-text" id="lastnameTextError"><?= $errorName ?? '' ?></p>
+                <p class="error_form" id="lastnameTextError"><?= $errorName ?? '' ?></p>
 
                 <!-- INPUT ADRESSE EMAIL -->
                 <label for="email">Email *</label>
                 <input value="<?= $email ?? '' ?>" placeholder="xxx@exemple.fr" name="email" type="email" id="email" required>
-                <p class="input-error-text" id="emailTextError"><?= $errorEmail ?? '' ?></p>
+                <p class="error_form" id="emailTextError"><?= $errorEmail ?? '' ?></p>
 
                 <!-- INPUT PASSWORD -->
                 <label for="password">Mot de passe<p><?php echo $errorPassword ?? '' ?></p></label>
