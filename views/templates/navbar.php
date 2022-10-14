@@ -1,7 +1,7 @@
 <header class="header-area">
     <!-- site-navbar start -->
     <div class="navbar-area">
-        <div class="container">
+        <div class="container_navbar">
             <nav class="site-navbar">
                 <!-- site logo -->
                 <a href="#home" class="site-logo"><img src="/public/assets/img/icone.png" height="30px"></a>

@@ -27,8 +27,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgba(34, 34, 34, 0.904);
-    height: 90%;
+    height: 85vh;
     width: 100%;
 }
 

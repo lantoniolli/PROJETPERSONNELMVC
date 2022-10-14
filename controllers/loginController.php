@@ -3,7 +3,7 @@
 require_once(__DIR__.'/../config/config.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
+    $lastname = trim((string) filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
     // Valider
     if (empty($lastname)){
         $error = 'Ce champ est obligatoire';
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
 
     // TRAITEMENT DE L'EMAIL
-    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+    $email = trim((string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     //validation
     if (empty($email)) {
         $errorEmail = 'Veuillez renseigner une adresse mail';
