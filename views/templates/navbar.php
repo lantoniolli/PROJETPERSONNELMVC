@@ -5,7 +5,7 @@
             <nav class="site-navbar">
                 <!-- site logo -->
                 <a href="#home" class="site-logo"><img src="/public/assets/img/icone.png" height="30px"></a>
-
+                
                 <!-- site menu/nav -->
                 <ul>
                     <li><a href="#">Accueil</a></li>
@@ -18,7 +18,7 @@
                     <li><a href="#">Contact</a></li>
                     
                 </ul>
-
+                <a href="#home" class="site-logo"><img src="/public/assets/img/whiteicon.png" height="30px"></a>
                 <!-- nav-toggler for mobile version only -->
                 <button class="nav-toggler">
                     <span></span>
@@ -26,4 +26,7 @@
             </nav>
         </div>
     </div><!-- navbar-area end -->
+
+    <div id="header_white" class="p-5 text-center bg-image" style="background-image: url('/public/assets/img/desktopwhite.jpg');">
+    </div>
 </header>

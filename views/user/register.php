@@ -1,7 +1,4 @@
-<title>FWL | Inscription</title>
-</head>
 
-<body>
     <!-- Emplacement de la navbar. -->
 
     <div class="container_form">
