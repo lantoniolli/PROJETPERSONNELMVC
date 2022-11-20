@@ -66,7 +66,7 @@ a.site-logo {
 /* navbar regular css end */
 
 /* nav-toggler css start */
-.nav-toggler {
+/* .nav-toggler {
   border: 0px solid #fff;
   padding: 5px;
   background-color: transparent;
@@ -99,7 +99,7 @@ a.site-logo {
 }
 .nav-toggler.toggler-open span:after {
   transform: translateY(-3px) rotate(-45deg);
-}
+} */
 /* nav-toggler css start */
 
 /* intro-area css start */

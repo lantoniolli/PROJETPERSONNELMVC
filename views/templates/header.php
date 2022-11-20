@@ -11,5 +11,3 @@
     <link rel="stylesheet" href="/public/assets/css/footer.css">
     <title>//</title>
 </head>
-<body>
-    <main>

@@ -2,7 +2,7 @@
     --header-height: 3rem ;
 
     /* Colors */
-    --hue-color:110 ;
+    --hue-color:550 ;
 
     /* others colors */
     --first-color: hsl(var(--hue-color), 69%, 61%) ;
@@ -13,12 +13,13 @@
     --text-color: hsl(var(--hue-color), 8%, 45%) ;
     --text-color-light: hsl(var(--hue-color), 8%, 65%) ;
     --input-color: hsl(var(--hue-color), 70%, 90%);
-    --body-color: hsl(var(--hue-color), 60%, 99%);
+    --body-color: #f8f2f2;
     --container-color: #fff;
 
      /* font and typography */
     --body-font: 'Trajan';
     --body-font-alt:'Minion';
+    /* --subtitle-font:; */
 
      /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
     --big-font-size: 2rem ;
@@ -64,7 +65,7 @@
 body {
     height: 100vh;
     width: 100vw;
-    background-color: white;
+    background-color: var(--body-color);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -147,7 +148,10 @@ a {
 
 
 
-
+.separator {
+    margin: 2rem 0;
+    border-bottom: 1px solid #000;
+}
 
 
 
@@ -262,4 +266,72 @@ a {
 } */
 
 /*  PAGE ACTUALITE */
+
+.news__title{
+    font-size: var(--h1-font-size);
+    font-weight: var(--font-semi-bold);
+}
+
+.masthead {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 35rem;
+    padding: 15rem 0;
+    background: url("/public/assets/img/fondmobile.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+  }
+  .masthead h1, .masthead .h1 {
+    font-family:var(--body-font);
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+    letter-spacing: 0.8rem;
+    background: linear-gradient(rgba(141, 56, 56, 0.9), rgba(255, 255, 255, 0));
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+            background-clip: text;
+  }
+  .masthead h2, .masthead .h2 {
+    max-width: 20rem;
+    font-size: 1rem;
+}
+
+.title__position{
+    position: absolute;
+    bottom:15%
+}
+
+  @media (min-width: 768px) {
+    .masthead{
+        background:url(/public/assets/img/fond.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+    }
+
+
+    .masthead h1, .masthead .h1 {
+      font-size: 4rem;
+      line-height: 4rem;
+    }
+  }
+  @media (min-width: 992px) {
+    .masthead {
+      height: 100vh;
+      padding: 0;
+    }
+    .masthead h1, .masthead .h1 {
+      font-size: 6.5rem;
+      line-height: 6.5rem;
+      letter-spacing: 0.8rem;
+    }
+    .masthead h2, .masthead .h2 {
+      max-width: 30rem;
+      font-size: 1.25rem;
+    }
+  }
 
