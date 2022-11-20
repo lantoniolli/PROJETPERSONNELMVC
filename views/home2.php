@@ -1,68 +1,50 @@
-
-
-<body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
-                <div class="d-flex justify-content-center">
-                    <div class="text-center">
-                        <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-                        <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-                        <a class="btn btn-primary" href="#about">Get Started</a>
+<!-- page test affichage détail convention -->
+<section>
+    <div class="page-content p-5" id="content">
+        <h2 class="display-3 news__title mt-5 text-center">Titre de la convention</h2>
+        <!-- ici un sous-titre -->
+        <div class="separator"></div>
+        <div class="containe d-flex flex-column mt-5">
+            <div class="row gx-4 justify-content-center align-items-center">
+                <div class="col-md-5 text-center">
+                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded">
+                        <img src="https://sm.ign.com/ign_fr/photo/default/fr8cyajxmaicw6e-1651761676639_qxdz.jpg" style="height:350px" class="img-fluid shadow-lg">
                     </div>
                 </div>
-            </div>
-        </header>
-
-
-
-
-
-
-
-
-
-<div class="page-content p-5" id="content">
-    <h2 class="display-3 news__title">Actualités</h2>
-    <div class="separator"></div>
-    <div class="container d-flex flex-column">
-        <div class="row gx-5">
-            <div class="col-md-6 mb-4">
-                <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                    <img src="https://www.melty.fr/wp-content/uploads/meltyfr/2021/09/media-2307.jpg" class="img-fluid" />
-                    <a href="#!">
-                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                    </a>
+                <div class="col-md-5"><span>Prix, adresse, date</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus ipsum laudantium aliquid praesentium sit, odio fuga dolorum eum expedita odit quas culpa optio saepe, accusamus incidunt aspernatur officiis dolore ullam. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repudiandae reprehenderit repellat veniam, quod, dolorem ipsum odit labore architecto omnis eaque, ratione placeat pariatur quo maiores. A tenetur dolorem et eum!</p>
+                    <button type="button" class="btn btn-primary">S'inscrire à cette convention</button>
                 </div>
-            </div>
 
-            <div class="col-md-6 mb-4">
-                <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
-                <h4><strong>Facilis consequatur eligendi</strong></h4>
-                <p class="text-muted">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-                    eligendi quisquam doloremque vero ex debitis veritatis placeat unde animi laborum
-                    sapiente illo possimus, commodi dignissimos obcaecati illum maiores corporis.
-                </p>
-                <button type="button" class="btn btn-primary">Read more</button>
+
+
             </div>
         </div>
+
+
+<div class="separator"></div>
+
+
+<!-- avis -->
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-6">
+            <div class="d-flex flex-column comment-section">
+                <div class="bg-white shadow-lg p-2">
+                    <div class="d-flex flex-row user-info"><img class="rounded-circle" src="/public/assets/img/iconscomment.jpg" width="50">
+                        <div class="d-flex flex-column justify-content-start ms-3"><span class="d-block font-weight-bold name">Laura</span><span class="date text-black-50">18 Janvier 2020 à 18h02</span></div>
+                    </div>
+                    <div class="mt-2">
+                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="bg-light p-2">
+                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>
+                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 text-center"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7427.965628030158!2d2.3789134091277773!3d48.83565878425012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6721743fa0af9%3A0x989bfc2771543869!2sAccor%20Arena!5e0!3m2!1sfr!2sfr!4v1668965205731!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
 </div>
+</div></section>

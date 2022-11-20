@@ -1,31 +1,34 @@
-
-    <!-- Emplacement de la navbar. -->
-
-    <div class="container_form">
-        <h1 class="title_form">Inscription</h1>
-        <form action="" novalidate method="POST" class="registerForm">
-            <div class="input_form">
-                <!-- INPUT DU NOM -->
-                <label for="lastname">Pseudo *</label>
-                <input value="<?= $lastname ?? '' ?>" name="lastname" id="lastname" pattern="<?= REGEX_FOR_PSEUDO ?>" type="text" placeholder="Votre nom ici" required>
-                <p class="error_form" id="lastnameTextError"><?= $errorName ?? '' ?></p>
-
+<div>
+    <div class="page-content p-5" id="content">
+        <div class="contact-form-wrapper d-flex justify-content-center">
+            <form action="#" novalidate method="POST" class="contact-form">
+                <h5 class="title mb-5">S'inscrire</h5>
+                <!-- INPUT PSEUDO -->
+                <div>
+                    <label for="pseudo">Pseudo</label>
+                    <input value="<?= $pseudo ?? '' ?>" placeholder="xxx@exemple.fr" name="pseudo" type="text" pattern="<?= REGEX_FOR_PSEUDO ?>" id="email" class="form-control mb-3 rounded-0 form-input shadow-none" required>
+                </div>
                 <!-- INPUT ADRESSE EMAIL -->
-                <label for="email">Email *</label>
-                <input value="<?= $email ?? '' ?>" placeholder="xxx@exemple.fr" name="email" type="email" id="email" required>
-                <p class="error_form" id="emailTextError"><?= $errorEmail ?? '' ?></p>
-
+                <div>
+                    <label for="email">Adresse Mail</label>
+                    <input value="<?= $email ?? '' ?>" placeholder="xxx@exemple.fr" name="email" type="email" id="email" class="form-control mb-3 rounded-0 form-input shadow-none" required>
+                </div>
                 <!-- INPUT PASSWORD -->
-                <label for="password">Mot de passe<p><?php echo $errorPassword ?? '' ?></p></label>
-                <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" required>
-
-                <!-- INPUT CONFIRM PASSWORD -->
-                <label for="confirmPassword">Confirmer le mot de passe
-                    <p><?php echo $errorConfirmPassword ?? '' ?></p>
-                </label>
-                <input type="password" name="confirmPassword" id="confirmPassword" placeholder="********" pattern="<?= REGEX_FOR_PASSWORD ?>" required>
-                <!-- SUBMIT BUTTON -->
-                <button type="submit" class="btnRegister">S'inscrire</button>
-            </div>
-        </form>
+                <div>
+                    <label for="email">Mot de Passe</label>
+                    <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control mb-3 rounded-0 form-input shadow-none" required>
+                    <p class="error_form" id="emailTextError"><?= $errorPassword ?? '' ?></p>
+                </div>
+                <div>
+                    <label for="email">Confirmation du Mot de Passe</label>
+                    <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control mb-3 rounded-0 form-input shadow-none" required>
+                    <p class="error_form" id="emailTextError"><?= $errorPassword ?? '' ?></p>
+                    <p class="forgot_password text-center"><a href="#">Mot de passe oublié ?</a></p>
+                </div>
+                <div class="submit-button-wrapper">
+                    <input type="submit" value="S'inscrire">
+                </div>
+            </form>
+        </div>
     </div>
+</div>

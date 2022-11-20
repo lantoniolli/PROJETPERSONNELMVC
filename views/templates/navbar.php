@@ -1,51 +1,28 @@
-<!-- <header class="header-area">
 
-    <div class="navbar-area">
-        <div class="container_navbar">
-            <nav class="site-navbar">
-               
-                <a href="#home" class="site-logo"><img src="/public/assets/img/icone.png" height="30px"></a>
-                
-               
-                <ul>
-                    <li><a href="#">Accueil</a></li>
-                    <li><a href="#">Actualité</a></li>
-                    <li><a href="#">La Saga</a></li>
-                    <li><a href="#">La Série</a></li>
-                    <li><a href="#">Les Jeux</a></li>
-                    <li><a href="#">Espace Membre</a></li>
-                    <li><a href="#">Administration</a></li>
-                    <li><a href="#">Contact</a></li>
-                    
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top background__nav" id="mainNav">
+        <div class="container px-4 px-lg-5">
+            <a class="navbar-brand" href="/controllers/homeController.php">Fire Will Reign</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto nav__links">
+                    <li class="nav-item"><a class="nav-link" href="/controllers/registerController.php">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/loginController.php">Connexion</a></li>
+                    <li class="nav-item dropdown nav__title">
+                        <a class="nav-link dropdown-toggle nav__title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Navigation
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Accueil</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                <a href="#home" class="site-logo"><img src="/public/assets/img/whiteicon.png" height="30px"></a>
-                
-                <button class="nav-toggler">
-                    <span></span>
-                </button>
-            </nav>
-        </div>
-    </div><
-
-    <div id="header_white" class="p-5 text-center bg-image" style="background-image: url('/public/assets/img/desktopwhite.jpg');">
-    </div>
-</header> -->
-
-<!-- Navigation-->
-<body id="page-top">
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Fire Will Reign</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
-                    </ul>
-                </div>
             </div>
-        </nav>
+        </div>
+    </nav>
