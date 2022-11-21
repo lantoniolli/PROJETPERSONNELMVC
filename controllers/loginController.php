@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__.'/../config/config.php');
+require_once(__DIR__.'/../helpers/sessionflash.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     // TRAITEMENT DE L'EMAIL

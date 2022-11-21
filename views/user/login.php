@@ -1,3 +1,7 @@
+    <?php
+    if (SessionFlash::exist()){ ?>
+        <?= SessionFlash::get('Success'); ?>
+    <?php } ?>
     <div>
     <div class="page-content p-5" id="content">
     <div class="contact-form-wrapper d-flex justify-content-center">

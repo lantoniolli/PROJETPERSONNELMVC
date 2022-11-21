@@ -78,10 +78,11 @@ class User {
             $this->_id_house = $id_house;
         }
 
+// Fonction permettant d'ajouter un utilisateur à la base de donnée.
     public function add()
     {
         $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`) VALUES (:pseudo, :usermail, :userpassword)';
-        
+            
         $sth = Database::getInstance()->prepare($adduser);
 
         $sth->bindValue(':pseudo', $this->getpseudo(), PDO::PARAM_STR);
@@ -90,5 +91,19 @@ class User {
 
         return $sth->execute();
     }
-
+// Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
+public static function exist(string $usermail): bool
+    {
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("SELECT *FROM `users` WHERE `user_mail`= :mail;");
+        $stmt->bindValue(':mail', $usermail);
+        $success = $stmt->execute();
+        if ($success) {
+            if (empty($stmt->fetch())) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+    }
 }
