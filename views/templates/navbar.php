@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top background__nav" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light background__nav" id="mainNav">
         <div class="container px-4 px-lg-5">
             <a class="navbar-brand" href="/controllers/homeController.php">Fire Will Reign</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,3 +26,4 @@
             </div>
         </div>
     </nav>
+<main>

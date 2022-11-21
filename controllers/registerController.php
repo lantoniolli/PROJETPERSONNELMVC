@@ -1,16 +1,17 @@
 <?php
 
-require_once(__DIR__.'/../config/config.php');
+require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../models/User.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $lastname = trim(filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_SPECIAL_CHARS));
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
     // Valider
-    if (empty($lastname)){
-        $error = 'Ce champ est obligatoire';
+    if (empty($pseudo)) {
+        $errorPseudo = 'Ce champ est obligatoire';
     } else {
-        $isOk = filter_var($lastname, FILTER_VALIDATE_REGEXP, array("options" =>array("regexp"=> '/'.REGEX_NO_NUMBER.'/')));
-        if ($isOk == false){
-            $error = 'La donnée n\'est pas conforme';
+        $isOk = filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+        if ($isOk == false) {
+            $errorPseudo = 'La donnée n\'est pas conforme';
         }
     }
 
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     //validation
     if (empty($email)) {
-        $errorEmail = 'Veuillez renseigner une adresse mail';
+        $errorEmail = 'Ce champ est obligatoire.';
     } else {
         $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$isOk) {
@@ -43,9 +44,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             }
         }
     }
+
+    if (empty($error)) {
+        try {
+            $user = new User();
+            $user->setPseudo($pseudo);
+            $user->setUserMail($email);
+            $user->setUserPassword($passwordh);
+
+            $isUserAdded = $user->add();
+        } catch (PDOException $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+    }
 }
 
-include(__DIR__.'/../views/templates/header.php');
-include(__DIR__.'/../views/templates/navbar.php');
-include(__DIR__.'/../views/user/register.php');
-include(__DIR__.'/../views/templates/footer.php');
+
+include(__DIR__ . '/../views/templates/header.php');
+include(__DIR__ . '/../views/templates/navbar.php');
+include(__DIR__ . '/../views/user/register.php');
+include(__DIR__ . '/../views/templates/footer.php');
