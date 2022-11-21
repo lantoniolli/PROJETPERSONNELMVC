@@ -1,143 +1,139 @@
 @font-face {
-    font-family: "Trajan";
-    src: url(/public/assets/fonts/Trajan/Trajan\ Pro.ttf);
+  font-family: "Trajan";
+  src: url(/public/assets/fonts/Trajan/Trajan\ Pro.ttf);
 }
 @font-face {
-    font-family: "Games of Thrones";
-    src: url(/public/assets/fonts/GameOfThrones/Game\ of\ Thrones.ttf);
+  font-family: "Games of Thrones";
+  src: url(/public/assets/fonts/GameOfThrones/Game\ of\ Thrones.ttf);
 }
 
 @font-face {
-    font-family: "Minion";
-    src: url(/public/assets/fonts/Minion/Minion\ Pro\ Regular.ttf);
+  font-family: "Minion";
+  src: url(/public/assets/fonts/Minion/Minion\ Pro\ Regular.ttf);
 }
 @import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-input:focus, textarea:focus, select:focus{
-    outline: none!important;}
-
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+}
 
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
+body {
+  width: 100vw;
+  height: 100vh;
 }
-.page-content{
-    background-color: #f8f2f2;
-}
-
-html{
-    scroll-behavior: smooth;
+.page-content {
+  background-color: #f8f2f2;
 }
 
+html {
+  scroll-behavior: smooth;
+}
 
 ul {
-    list-style: none ;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: #8f031d;
+  text-decoration: none;
+  color: #8f031d;
 }
 
-
-.section{
-    padding: 2rem 0 4rem;
+.section {
+  padding: 2rem 0 4rem;
 }
-.section__title{
-    font-size: var(--h1-font-size);
+.section__title {
+  font-size: var(--h1-font-size);
 }
-.section__subtitle{
-    display: block;
-    font-size: var(--small-font-size);
-    font-family: var(--body-font-alt);
-    margin-bottom: var(--mb-3);
-
+.section__subtitle {
+  display: block;
+  font-size: var(--small-font-size);
+  font-family: var(--body-font-alt);
+  margin-bottom: var(--mb-3);
 }
 .section__title,
-.section__subtitle{
-    text-align: center;
+.section__subtitle {
+  text-align: center;
 }
 
-.nav__links{
-    font-size: 16px;
-    font-weight: var(--font-semi-bold);
+.nav__links {
+  font-size: 16px;
+  font-weight: var(--font-semi-bold);
 }
-.nav__title{
-    color:#8f031d;
-    font-weight: var(--font-semi-bold);
-}
-
-.footer__color{
-    background-color: #8f031d;
+.nav__title {
+  color: #8f031d;
+  font-weight: var(--font-semi-bold);
 }
 
+.footer__color {
+  background-color: #8f031d;
+}
 
 .separator {
-    margin: 2rem 0;
-    border-bottom: 2px solid #8f031d;
+  margin: 2rem 0;
+  border-bottom: 2px solid #8f031d;
 }
-
 
 /* .contact-form-wrapper {
     padding: 2px;
 } */
 
 .contact-form {
-    /* padding: 30px 40px; */
-    background-color: #f8f2f2;
-    /* max-width: 400px; */
-    
+  /* padding: 30px 40px; */
+  background-color: #f8f2f2;
+  /* max-width: 400px; */
 }
 
 .contact-form textarea {
-    resize: none;
-    outline: none;
+  resize: none;
+  outline: none;
 }
 
 .form-control:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .contact-form .form-input,
 .form-text-area {
-    height: 50px;
-    padding-left: 16px;
-    background: transparent;
-    border: 0;
-    border-bottom: 2px solid #8f031d;
+  height: 50px;
+  padding-left: 16px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #8f031d;
 }
 
 .contact-form .form-text-area {
-    background-color: #f0f4f5;
-    height: auto;
-    padding-left: 16px;
-    background: transparent;
-    border: 0;
-    border-bottom: 2px solid #8f031d;
+  background-color: #f0f4f5;
+  height: auto;
+  padding-left: 16px;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #8f031d;
 }
 
 .contact-form .form-control::placeholder {
-    font-family: "Jost", sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    font-size: 0.625rem;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-size: 0.625rem;
 }
 
 .contact-form .form-control:-ms-input-placeholder {
-    color: #aeb4b9;
-    font-weight: 500;
+  color: #aeb4b9;
+  font-weight: 500;
 }
 
 .contact-form .form-control::-ms-input-placeholder {
-    color: #aeb4b9;
-    font-weight: 500;
+  color: #aeb4b9;
+  font-weight: 500;
 }
 
 /* .contact-form .form-control:focus {
@@ -146,38 +142,38 @@ a {
 } */
 
 .contact-form .title {
-    text-align: center;
-    font-size: 24px;
-    font-family: "Trajan";
-    font-weight: 800;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Trajan";
+  font-weight: 800;
 }
 
 .contact-form .description {
-    font-family: "Jost", sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    text-transform: uppercase;
-    font-size: 0.625rem;
-    color: #252525;
-    text-align: center;
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-size: 0.625rem;
+  color: #252525;
+  text-align: center;
 }
 
 .contact-form .submit-button-wrapper {
-    text-align: center;
+  text-align: center;
 }
 
 .contact-form .submit-button-wrapper input {
-    border: none;
-    background-color: #1E1D25;
-    color: #fefefe;
-    text-transform: uppercase;
-    padding: 10px 60px;
-    font-weight: 500;
-    font-family: "Trajan";
+  border: none;
+  background-color: #1e1d25;
+  color: #fefefe;
+  text-transform: uppercase;
+  padding: 10px 60px;
+  font-weight: 500;
+  font-family: "Trajan";
 }
 
 .contact-form .submit-button-wrapper input:hover {
-    background-color: #252525;
+  background-color: #252525;
 }
 
 /* @media screen and (min-width: 1000px){
@@ -189,97 +185,101 @@ a {
     }
 } */
 
-label{
-    font-family: 'Minion';
+label {
+  font-family: "Minion";
 }
 
-.error_form{
-    color:#8f031d;
-    font-size: 14px;
-    text-align: center;
-    font-style: italic;
-    font-weight: bold;
-    font-family: 'Minion';
+.error_form {
+  color: #8f031d;
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  font-family: "Minion";
 }
 
-.forgot_password{
-    font-family: 'Minion';
+.forgot_password {
+  font-family: "Minion";
 }
 
 /*  PAGE ACTUALITE */
 
-.news__title{
-    font-size: var(--h1-font-size);
-    font-weight: var(--font-semi-bold);
+.news__title {
+  font-size: var(--h1-font-size);
+  font-weight: var(--font-semi-bold);
 }
 
 .masthead {
-    position: relative;
-    width: 100%;
-    height: auto;
-    min-height: 35rem;
-    padding: 15rem 0;
-    background: url("/public/assets/img/fondmobile.png");
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: url("/public/assets/img/fondmobile.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+.masthead h1,
+.masthead .h1 {
+  font-family: var(--body-font);
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.8rem;
+  background: linear-gradient(rgba(141, 56, 56, 0.9), rgba(255, 255, 255, 0));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.masthead h2,
+.masthead .h2 {
+  max-width: 20rem;
+  font-size: 1rem;
+}
+
+.title__position {
+  position: absolute;
+  bottom: 15%;
+}
+
+@media (min-width: 768px) {
+  .masthead {
+    background: url(/public/assets/img/fond.png);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
   }
-  .masthead h1, .masthead .h1 {
-    font-family:var(--body-font);
-    font-size: 2.5rem;
-    line-height: 2.5rem;
+
+  .masthead h1,
+  .masthead .h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+    padding: 0;
+  }
+  .masthead h1,
+  .masthead .h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
     letter-spacing: 0.8rem;
-    background: linear-gradient(rgba(141, 56, 56, 0.9), rgba(255, 255, 255, 0));
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-            background-clip: text;
   }
-  .masthead h2, .masthead .h2 {
-    max-width: 20rem;
-    font-size: 1rem;
+  .masthead h2,
+  .masthead .h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
 }
 
-.title__position{
-    position: absolute;
-    bottom:15%
+.block__test {
+  height: 200px;
 }
 
-@media (min-width: 768px) {
-    .masthead{
-        background:url(/public/assets/img/fond.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        background-size: cover;
-    }
-
-
-    .masthead h1, .masthead .h1 {
-      font-size: 4rem;
-      line-height: 4rem;
-    }
-  }
-  @media (min-width: 992px) {
-    .masthead {
-      height: 100vh;
-      padding: 0;
-    }
-    .masthead h1, .masthead .h1 {
-      font-size: 6.5rem;
-      line-height: 6.5rem;
-      letter-spacing: 0.8rem;
-    }
-    .masthead h2, .masthead .h2 {
-      max-width: 30rem;
-      font-size: 1.25rem;
-    }
-  }
-
-.block__test{
-    height: 200px;
-} 
-
-.home__test{
-    background-color: red;
+.home__test {
+  background-color: red;
 }

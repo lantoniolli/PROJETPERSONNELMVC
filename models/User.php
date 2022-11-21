@@ -92,11 +92,26 @@ class User {
         return $sth->execute();
     }
 // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
-public static function exist(string $usermail): bool
+public static function exist_Email(string $usermail): bool
     {
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT *FROM `users` WHERE `user_mail`= :mail;");
         $stmt->bindValue(':mail', $usermail);
+        $success = $stmt->execute();
+        if ($success) {
+            if (empty($stmt->fetch())) {
+                return false;
+            } else {
+                return true;
+            }
+        };
+    }
+// Fonction permettant de vérifier que le pseudo est déjà existant dans la base de donnée.
+public static function exist_Pseudo(string $pseudo): bool
+    {
+        $pdo = Database::getInstance();
+        $stmt = $pdo->prepare("SELECT *FROM `users` WHERE `user_name`= :pseudo;");
+        $stmt->bindValue(':pseudo', $pseudo);
         $success = $stmt->execute();
         if ($success) {
             if (empty($stmt->fetch())) {

@@ -8,7 +8,7 @@
     <div class="page-content p-5" id="content">
         <div class="contact-form-wrapper d-flex justify-content-center">
             <form action="#" method="POST" class="contact-form">
-                <h5 class="title mb-5">S'inscrire</h5>
+                <h5 class="title mb-5">Formulaire d'inscription</h5>
                 <!-- INPUT PSEUDO -->
                 <div>
                     <label for="pseudo">Pseudo</label>

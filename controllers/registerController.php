@@ -7,19 +7,23 @@ require_once(__DIR__ . '/../helpers/sessionflash.php');
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
-        // Valider
-        if (empty($pseudo)) {
-            $errors['Pseudo'] = 'Ce champ est obligatoire';
+        if (User::exist_Pseudo($pseudo)) {
+            $errors['Pseudo'] = 'Ce pseudo est déjà utilisé.';
         } else {
-            $isOk = filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            if ($isOk == false) {
-                $errors['Pseudo'] = 'La donnée n\'est pas conforme';
+            // Valider
+            if (empty($pseudo)) {
+                $errors['Pseudo'] = 'Ce champ est obligatoire';
+            } else {
+                $isOk = filter_var($pseudo, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+                if ($isOk == false) {
+                    $errors['Pseudo'] = 'La donnée n\'est pas conforme';
+                }
             }
         }
 
         // TRAITEMENT DE L'EMAIL
         $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
-        if (User::exist($email) == true) {
+        if (User::exist_Email($email) == true) {
             $errors['Email'] = 'Cette adresse mail est déjà utilisée';
         } else {
 
