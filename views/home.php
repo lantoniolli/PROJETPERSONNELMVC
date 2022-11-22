@@ -1,6 +1,5 @@
-
     <header class="masthead">
-    <div class="container px-4 px-lg-5 mt-5 d-flex h-100 align-items-end justify-content-center ">
+    <div class="container px-4 px-lg-5 d-flex h-100 align-items-end justify-content-center ">
         <div class="d-flex justify-content-center title__position">
             <div class="text-center">
                 <h1 class="mx-auto my-0 text-uppercase mb-5">Fire Will Reign</h1>

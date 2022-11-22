@@ -1,6 +1,8 @@
 <?php
+session_start();
 
 require_once(__DIR__.'/../config/config.php');
+require_once(__DIR__.'/../models/User.php');
 require_once(__DIR__.'/../helpers/sessionflash.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -8,20 +10,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = trim((string) filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
     //validation
     if (empty($email)) {
-        $errorEmail = 'Ce champ est obligatoire.';
+        $errors['Email'] = 'Ce champ est obligatoire.';
     } else {
         $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
         if (!$isOk) {
-            $errorEmail = 'Adresse mail invalide';
+            $errors['Email'] = 'Adresse mail invalide';
         }
     }
 
     // TRAITEMENT PASSWORD
     $password = filter_input(INPUT_POST, 'password');
-    $confirmPassword = filter_input(INPUT_POST, 'confirmPassword');
-    if (empty($password)) {
-        $errorPassword = 'Ce champ est obligatoire.';
+    $user = User::getByEmail($email);
+    //$password_hash = $user->getPassword();
+    $password_hash = $user->user_password;
+    $result = password_verify($password, $password_hash);
+    if(!$result){
+        $errors['password'] = 'Les informations des connexion ne sont pas bonnes !';
     }
+    if(empty($errors)){
+        //$user->setPassword(null);
+        $user->password = null;
+        $_SESSION['user'] = $user;
+        header('Location: /controllers/homeController.php');
+        exit;
+    }
+
+
 }
 
 include(__DIR__.'/../views/templates/header.php');

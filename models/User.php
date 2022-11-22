@@ -5,7 +5,7 @@ class User {
     private int $_id;
     private string $_pseudo;
     private string $_usermail;
-    private string $_userpassword;
+    private ?string $_userpassword;
     private datetime $_created_at;
     private datetime $_validated_at;
     private int $_useravatar;
@@ -120,5 +120,20 @@ public static function exist_Pseudo(string $pseudo): bool
                 return true;
             }
         };
+    }
+
+    public static function getByEmail(string $email):object|bool
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users` WHERE `user_mail`= :email;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':email',$email);
+        if($sth->execute()){
+            $result = $sth->fetch();
+            if($result){
+                return $result;
+            }
+        }
+        return false;
     }
 }

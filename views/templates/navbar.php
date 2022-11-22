@@ -7,8 +7,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto nav__links">
-                    <li class="nav-item"><a class="nav-link" href="/controllers/registerController.php">Inscription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/loginController.php">Connexion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/registerCtrl.php">Inscription</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/controllers/loginCtrl.php">Connexion</a></li>
                     <li class="nav-item dropdown nav__title">
                         <a class="nav-link dropdown-toggle nav__title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Navigation
@@ -19,7 +19,21 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <?php 
+                if(!isset($_SESSION['user'])){
+                ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/signUpCtrl.php">Inscription</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a>
+                    </li>
+                <?php } else {?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/signOutCtrl.php">Déconnexion</a>
+                    </li>
+                <?php }?>
                         </ul>
                     </li>
                 </ul>
