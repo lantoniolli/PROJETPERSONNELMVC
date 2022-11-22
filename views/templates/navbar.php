@@ -20,7 +20,7 @@
                                         <hr class="dropdown-divider">
                                     
                             </li>
-                            <li><a class="dropdown-item text-danger href="#">Panneau Admin</a></li><?php } ?>
+                            <li><a href="/controllers/dashboard/dash-homeCtrl.php" class="dropdown-item text-danger">Panneau Admin</a></li><?php } ?>
                         </ul>
                     </li>
                 <?php 

@@ -136,4 +136,30 @@ public static function exist_Pseudo(string $pseudo): bool
         }
         return false;
     }
+// Fonction permettant de récupérer tous les utilisateurs de la base de donnée.
+    public static function getAll(): array
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users`';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        return $sth->fetchAll();
+    }
+
+// Fonction permettant de récupérer un seul utilisateur
+    public static function getOne(int $id): object|bool
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users` WHERE `id_users`= :id;';
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id);
+        if ($sth->execute()) {
+            $result = $sth->fetch();
+            if ($result) {
+                return $result;
+            }
+        }
+        return false;
+    }
+
 }
