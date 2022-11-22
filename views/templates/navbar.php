@@ -7,19 +7,23 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto nav__links">
-                    <li class="nav-item"><a class="nav-link" href="/controllers/registerCtrl.php">Inscription</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/controllers/loginCtrl.php">Connexion</a></li>
-                    <li class="nav-item dropdown nav__title">
+                <li class="nav-item dropdown nav__title">
                         <a class="nav-link dropdown-toggle nav__title" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Navigation
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Accueil</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
                             <?php 
+                                if(isset($_SESSION['user'])){
+                                    ?><li>
+                                        <hr class="dropdown-divider">
+                                    
+                            </li>
+                            <li><a class="dropdown-item text-danger href="#">Panneau Admin</a></li><?php } ?>
+                        </ul>
+                    </li>
+                <?php 
                 if(!isset($_SESSION['user'])){
                 ?>
                     <li class="nav-item">
@@ -27,15 +31,16 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/signInCtrl.php">Connexion</a>
+                        <a class="nav-link" href="/controllers/loginCtrl.php">Connexion</a>
                     </li>
                 <?php } else {?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/signOutCtrl.php">Déconnexion</a>
+                        <a class="nav-link" href="/controllers/profileController.php">Mon Profil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a>
                     </li>
                 <?php }?>
-                        </ul>
-                    </li>
                 </ul>
             </div>
         </div>

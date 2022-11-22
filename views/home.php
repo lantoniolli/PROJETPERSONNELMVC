@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-center title__position">
             <div class="text-center">
                 <h1 class="mx-auto my-0 text-uppercase mb-5">Fire Will Reign</h1>
-                <a class="btn mb-2 col-sm-4" href="#about">Trouvez votre prochaine convention</a>
+                <a class="btn mb-2 col-sm-4 header__subtitle" href="#about">Trouvez votre prochaine convention</a>
             </div>
         </div>
     </div>
