@@ -50,9 +50,17 @@ body {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;}
 
-.title__hospital{
+.title__dashboard{
   color: var(--first-color);
   font-family: 'Bebas Neue', cursive;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.title__label{
+  color: var(--first-color);
+  font-family: 'Bebas Neue', cursive;
+  font-size: 24px;
   text-transform: uppercase;
   font-weight: 200;
 }
@@ -179,5 +187,3 @@ label{
   }
 }
 
-
-  

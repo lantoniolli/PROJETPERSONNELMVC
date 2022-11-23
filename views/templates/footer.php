@@ -3,7 +3,7 @@
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2020 Copyright:
-    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    <a class="text-dark" href="https://mdbootstrap.com/">Laura Antoniolli Corporation</a>
   </div>
   <!-- Copyright -->
 </footer>

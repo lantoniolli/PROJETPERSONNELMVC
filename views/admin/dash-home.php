@@ -10,7 +10,7 @@
             <div class="container d-flex flex-column">
                 <div class="row d-flex justify-content-around">
                     <div class="col-lg-5 text-white block__test rounded shadow-lg">
-                        <a href="/controllers/add-patientCtrl.php"><i class="uil uil-user icons__home"></i></a>
+                        <a href="/controllers/dashboard/user-listCtrl.php"><i class="uil uil-user icons__home"></i></a>
                         <div class="nav-item">Utilisateurs</div>
                     </div>
                     <div class="col-lg-5 block__test rounded shadow-lg">

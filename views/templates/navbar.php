@@ -13,7 +13,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Accueil</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="/controllers/testController.php">PAGE TEST</a></li>
                             <?php 
                                 if(isset($_SESSION['user'])){
                                     ?><li>

@@ -17,57 +17,19 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-md-5 mb-4">
                     <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                        <img src="https://www.melty.fr/wp-content/uploads/meltyfr/2021/09/media-2307.jpg" class="img-fluid" />
+                        <img src="https://cdn-europe1.lanmedia.fr/var/europe1/storage/images/europe1/guide-shopping/house-of-the-dragon-comment-regarder-le-nouvel-episode-de-la-serie-du-moment-4141283/59231858-1-fre-FR/House-of-the-Dragon-comment-regarder-le-nouvel-episode-de-la-serie-du-moment.jpg" class="img-fluid" />
                         <a href="#">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>
                     </div>
                 </div>
                 <div class="col-md-5 mb-4">
-                    <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">News of the day</span>
-                    <h4><strong>Facilis consequatur eligendi</strong></h4>
-                    <p class="text-muted">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis consequatur
-                        eligendi quisquam doloremque vero ex debitis veritatis placeat.
+                    <span class="badge px-2 py-1 mb-3 hot__button">🔥Convention</span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
+                    <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
+                    <p class="news__text">
+                        <?= $lastNews->news_content ?>
                     </p>
-                    <button type="button" class="btn btn-primary">Read more</button>
-                </div>
-            </div>
-        </div>
-        <div class="container d-flex flex-column mt-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-md-4 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
+                    <a href="#"<button type="button" class="btn btn__color">Lire l'article</button></a>
                 </div>
             </div>
         </div>

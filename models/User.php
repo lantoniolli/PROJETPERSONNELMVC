@@ -137,13 +137,31 @@ public static function exist_Pseudo(string $pseudo): bool
         return false;
     }
 // Fonction permettant de récupérer tous les utilisateurs de la base de donnée.
-    public static function getAll(): array
+    public static function getAll($limit, $offset, $search = ''): array
     {
-        $pdo = Database::getInstance();
-        $sql = 'SELECT * FROM `users`';
-        $sth = $pdo->prepare($sql);
-        $sth->execute();
-        return $sth->fetchAll();
+        if (empty($search)) {
+            $sql = 'SELECT * FROM `users` LIMIT :limit OFFSET :offset;';
+            $sth = Database::getInstance()->prepare($sql);
+            $sth->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $sth->bindValue(':offset', $offset, PDO::PARAM_INT);
+            $sth->execute();
+            // On récupère les valeurs dans un tableau associatif.
+            $users = $sth->fetchAll(PDO::FETCH_OBJ);
+            return $users;
+        } else {
+            $sql = 'SELECT * FROM `users` 
+            WHERE `user_name` LIKE :search 
+            OR `user_mail` LIKE :search 
+            OR `created_at` = :search
+            OR `user_roles` = :search';
+            $sth = Database::getInstance()->prepare($sql);
+            $sth->bindValue(':search', '%'.$search.'%');
+            if ($sth->execute()) {
+                $users = $sth->fetchAll(PDO::FETCH_OBJ);
+                return $users;
+
+            }    
+        }
     }
 
 // Fonction permettant de récupérer un seul utilisateur
@@ -161,5 +179,13 @@ public static function exist_Pseudo(string $pseudo): bool
         }
         return false;
     }
+// Méthode pour calculer le nombre totale d'utilisateurs.
+public static function count(){
+    $sql = 'SELECT COUNT(`id_users`) AS `nbUsers` FROM `users`;';
+    $sth = Database::getInstance()->prepare($sql);
+    $sth->execute();
+    $count = $sth->fetch();
+    return $count->nbUsers;
+}
 
 }

@@ -21,9 +21,9 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-light bg-dark">
-                    <i class="uil uil-clock button__icon"></i>
-                    Activité
+                <a href="/controllers/dashboard/dash-add-newsCtrl.php" class="nav-link text-light bg-dark">
+                    <i class="uil uil-edit-alt button__icon"></i>
+                    Rédiger un Article
                 </a>
             </li>
         </ul>

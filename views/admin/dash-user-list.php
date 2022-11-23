@@ -1,7 +1,7 @@
 <div class="page-content p-5" id="content">
     <!-- Toggle button -->
     <button id="sidebarCollapse" type="button" class="btn bg-dark rounded-pill shadow-sm px-2 mb-4"><i class="uil uil-maximize-left button__icon"></i></button>
-    <h2 class="display-4 title__hospital">Listing Utilisateurs</h2>
+    <h2 class="display-4 title__dashboard">Listing Utilisateurs</h2>
     <div class="separator"></div>
     <table class="table table-dark table-striped mt-3">
         <div class="container text-white d-flex justify-content-center">
@@ -16,10 +16,10 @@
         </div>
         <thead>
             <tr>
-                <th class="text-center title__hospital" scope="col">Nom</th>
-                <th class="text-center title__hospital" scope="col">Mail</th>
-                <th class="text-center title__hospital" scope="col">Date de création</th>
-                <th class="text-center title__hospital" scope="col">Profil</th>
+                <th class="text-center title__dashboard" scope="col">Nom</th>
+                <th class="text-center title__dashboard" scope="col">Mail</th>
+                <th class="text-center title__dashboard" scope="col">Date de création</th>
+                <th class="text-center title__dashboard" scope="col">Profil</th>
             </tr>
         </thead>
         <tbody>
@@ -39,26 +39,4 @@
             ?>
         </tbody>
     </table>
-    <div class="container text-white d-flex justify-content-center">
-        <div class="col-4">
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <span class="page-link">Précédent</span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <span class="page-link">
-                            2
-                            <span class="sr-only">(current)</span>
-                        </span>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Suivant</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 </div>
