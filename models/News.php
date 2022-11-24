@@ -72,18 +72,19 @@ class News{
 //Récupérer la news la dernière news publiée
     public static function getLastNews(): object {
         $sth = Database::getInstance();
-        $query = $sth->query('SELECT * FROM `news` ORDER BY `news_posted_at` DESC LIMIT 1');
+        $query = $sth->query('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users` ORDER BY `news_posted_at` DESC LIMIT 1');
         $news = $query->fetch();
         return $news;
     }
-//Ajout news
-    public function insert(): void {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('INSERT INTO `news` (`title`, `content`, `news_img`) VALUES (:title, :content, :news_img)');
-        $query->execute([
-            'title' => $this->getTitle(),
-            'content' => $this->getContent(),
-            'news_img' => $this->getNews_img(),
-        ]);
+//Ajout un article
+    public function add()  {
+        $sql = 'INSERT INTO `news` (`news_title`, `news_content`, `news_author`) VALUES (:title, :content, :author_id)';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':title', $this->getTitle());
+        $sth->bindValue(':content', $this->getContent());
+        $sth->bindValue(':author_id', $this->getAuthor_id());
+        if ($sth->execute()) {
+            return ($sth->rowCount() >= 1) ? true : false;
+        }
     }
 }

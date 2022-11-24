@@ -1,6 +1,6 @@
  <!-- Vertical navbar -->
  <div class="vertical-nav bg-dark" id="sidebar">
-        <div class="py-4 px-3 mb-4 bg-dark">
+        <div class="py-4 px-3 mb-0 bg-dark">
             <div class="media d-flex align-items-center">
                 <img loading="lazy" src="/public/assets/img/iconscomment.jpg" alt="..." width="80" height="80"
                     class="mr-3 rounded-circle shadow-sm">
@@ -11,24 +11,32 @@
             </div>
         </div>
 
-        <p class="nav-title text-uppercase px-3 pb-4 mb-0">Dashboard</p>
-
-        <ul class="nav-title nav flex-column bg-dark mb-0">
+        <ul class="nav-title nav flex-column bg-dark mb-0">   
             <li class="nav-item">
                 <a href="/controllers/dashboard/dash-homeCtrl.php" class="nav-link text-white bg-dark">
                     <i class="uil uil-estate button__icon"></i>
                     Accueil
                 </a>
             </li>
+        </ul>
+        <p class="nav-title text-uppercase px-3 mb-0">Dashboard</p>
+
+        <ul class="nav-title nav flex-column bg-dark mb-0">
             <li class="nav-item">
                 <a href="/controllers/dashboard/dash-add-newsCtrl.php" class="nav-link text-light bg-dark">
                     <i class="uil uil-edit-alt button__icon"></i>
                     Rédiger un Article
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/controllers/dashboard/dash-homeCtrl.php" class="nav-link text-white bg-dark">
+                    <i class="uil uil-book-open button__icon"></i>
+                    Tous les articles
+                </a>
+            </li>
         </ul>
 
-        <p class="nav-title text-uppercase px-3 pb-4 mb-0 mt-4">Utilisateurs</p>
+        <p class="nav-title text-uppercase px-3 mb-0 mt-1">Utilisateurs</p>
 
         <ul class="nav flex-column bg-white mb-0">
             <li class="nav-item">
@@ -45,7 +53,7 @@
             </li>
         </ul>
 
-        <p class="nav-title text-gray text-uppercase px-3 small py-4 mb-0">Commentaires</p>
+        <p class="nav-title text-gray text-uppercase px-3 small mb-1">Commentaires</p>
 
         <ul class="nav flex-column mb-0">
             <li class="nav-item">

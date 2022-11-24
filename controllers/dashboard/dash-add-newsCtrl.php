@@ -1,9 +1,18 @@
 <?php
 //-------------------------------- APPEL DES PAGES NÉCESSAIRES ----------------------------------------//
 require_once(__DIR__ . '/../../config/config.php');
-require_once(__DIR__ . '/../../models/User.php');
+require_once(__DIR__ . '/../../models/News.php');
 require_once(__DIR__ . '/./sidebar-Ctrl.php');
 
+//--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
+if(!isset($_SESSION['user'])){
+    header('Location: /controllers/homeController.php');
+    exit;
+}
+if(isset($_SESSION['user'])){
+    $user = $_SESSION['user'];
+    $id = $user->id_users;
+}
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -11,7 +20,7 @@ try {
 
         //nettoyage des données
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
-        //validation des données title
+        // validation des données title
         if (empty($title)) {
             $errors['title'] = 'Le titre est obligatoire';
         }
@@ -21,40 +30,51 @@ try {
             $errors['content'] = 'Le contenu est obligatoire';
         }
         //validation des données news_img
-        if (empty($news_img)) {
-            $errors['news_img'] = 'L\'image est obligatoire';
-        }
+        // if (empty($news_img)) {
+        //     $errors['news_img'] = 'L\'image est obligatoire';
+        // }
 
         //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
 
-        //nettoyage des images
-        $news_img = (filter_input(INPUT_POST, 'news_img', FILTER_SANITIZE_NUMBER_INT));
         //validation des données news_img
-        if (empty($news_img)) {
-            $errors['news_img'] = 'L\'image est obligatoire';
-        }
-        //si pas d'erreurs
-        if (empty($errors)) {
-            $dbh = Database::getInstance();
-            //création d'un nouvel objet
-            $news = new News();
-            //hydratation de l'objet
-            $news->setTitle($title);
-            $news->setContent($content);
-            $news->setNews_img($news_img);
-            //insertion en base de données
-            $isAddednews = $news->insert();
+        // if (empty($_FILES["news_img"]["name"])) {
+        //     $errors['news_img'] = 'L\'image est obligatoire';
+        // }
+        // $fileType = strtolower(pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION));
+        // if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
+        //     $errors['news_img'] = 'Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.';
+        // }
+        // $fileSize = $_FILES["news_img"]["size"];
+        // if($fileSize > 5000000) {
+        //     $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
+        // }
+        // if (empty($errors)) {
+        //     $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
+        //     $pdo = Database::getInstance();
+        //     // $lastInsertId = $pdo->lastInsertId();
+        //     $lastInsertId = 4;
+        //     $target_file = $lastInsertId.'.'.pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
+        //     $target_path = $target_dir . $target_file;
 
-            $lastInsertId = $dbh->lastInsertId('id_news');
-            if(!empty ($lastInsertId)){
-                $news->setId($lastInsertId);
-                $news_img = $_FILES['$lastInsertId'][$news_img];
-            }
-            //Destination du fichier
-            $folder = '/public/assets/img';
+            // if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
+            //     echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
+            // } else {
+            //     $errors['news_img'] = 'Erreur lors de l\'upload de l\'image';
+            // }
             
+            //si pas d'erreurs
+            if (empty($errors)) {
+                $news = new News();
+                $news->setTitle($title);
+                $news->setContent($content);
+                $news->setAuthor_id($id);
+                $news->add();
+                header('Location: /controllers/dashboard/dash-homeCtrl.php');
+                exit;
+            }
         }
-    }
+
+    
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }

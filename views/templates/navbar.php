@@ -27,7 +27,7 @@
                 if(!isset($_SESSION['user'])){
                 ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/signUpCtrl.php">Inscription</a>
+                        <a class="nav-link" href="/controllers/registerCtrl.php">Inscription</a>
                     </li>
 
                     <li class="nav-item">

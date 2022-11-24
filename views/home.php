@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="col-md-5 mb-4">
-                    <span class="badge px-2 py-1 mb-3 hot__button">🔥Convention</span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
+                    <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
                     <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
                     <p class="news__text">
                         <?= $lastNews->news_content ?>

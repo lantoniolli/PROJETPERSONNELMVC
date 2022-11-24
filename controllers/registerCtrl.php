@@ -68,7 +68,7 @@ try {
             // On redirige l'utilisateur vers la page de connexion via une session flash si tout c'est bien passé.
             if ($isUserAdded) {
                 SessionFlash::set('Success', 'Votre compte a bien été créé, vous pouvez vous connecter.');
-                header('Location: /controllers/loginController.php');
+                header('Location: /controllers/loginCtrl.php');
                 exit();
             } else {
                 SessionFlash::set('Error', 'Une erreur est survenue, veuillez réessayer.');
