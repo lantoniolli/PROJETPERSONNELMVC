@@ -253,6 +253,31 @@ label {
   font-weight: 600;
 }
 
+/* Profile */
+
+.bg__card__profile{
+  background-color: #570615;
+}
+
+.label__profile{
+  color:#000;
+  font-family: "Minion";
+  font-weight: bold;
+}
+
+.username__profile{
+  font-family: 'Trajan';
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.test__container{
+  height: 90vh;
+}
+
+.test2__container{
+  height: 100%;
+}
 
 .masthead {
   position: relative;
