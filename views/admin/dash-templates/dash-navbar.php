@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/dashboard/dash-homeCtrl.php" class="nav-link text-white bg-dark">
+                <a href="/controllers/dashboard/dash-all-newsCtrl.php" class="nav-link text-white bg-dark">
                     <i class="uil uil-book-open button__icon"></i>
                     Tous les articles
                 </a>

@@ -5,11 +5,11 @@ require_once(__DIR__ . '/../../models/News.php');
 require_once(__DIR__ . '/./sidebar-Ctrl.php');
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
-if(!isset($_SESSION['user'])){
+if (!isset($_SESSION['user'])) {
     header('Location: /controllers/homeController.php');
     exit;
 }
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id = $user->id_users;
 }
@@ -29,52 +29,41 @@ try {
         if (empty($content)) {
             $errors['content'] = 'Le contenu est obligatoire';
         }
-        //validation des données news_img
-        // if (empty($news_img)) {
-        //     $errors['news_img'] = 'L\'image est obligatoire';
-        // }
-
         //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
 
-        //validation des données news_img
-        // if (empty($_FILES["news_img"]["name"])) {
-        //     $errors['news_img'] = 'L\'image est obligatoire';
-        // }
-        // $fileType = strtolower(pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION));
-        // if($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif" ) {
-        //     $errors['news_img'] = 'Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.';
-        // }
-        // $fileSize = $_FILES["news_img"]["size"];
-        // if($fileSize > 5000000) {
-        //     $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
-        // }
-        // if (empty($errors)) {
-        //     $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
-        //     $pdo = Database::getInstance();
-        //     // $lastInsertId = $pdo->lastInsertId();
-        //     $lastInsertId = 4;
-        //     $target_file = $lastInsertId.'.'.pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
-        //     $target_path = $target_dir . $target_file;
+        // validation des données news_img
+        if (empty($_FILES["news_img"]["name"])) {
+            $errors['news_img'] = 'L\'image est obligatoire';
+        }
+        $fileType = strtolower(pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION));
+        if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif") {
+            $errors['news_img'] = 'Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.';
+        }
+        $fileSize = $_FILES["news_img"]["size"];
+        if ($fileSize > 5000000) {
+            $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
+        }
+        if (empty($errors)) {
 
-            // if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
-            //     echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
-            // } else {
-            //     $errors['news_img'] = 'Erreur lors de l\'upload de l\'image';
-            // }
-            
-            //si pas d'erreurs
-            if (empty($errors)) {
-                $news = new News();
-                $news->setTitle($title);
-                $news->setContent($content);
-                $news->setAuthor_id($id);
-                $news->add();
-                header('Location: /controllers/dashboard/dash-homeCtrl.php');
-                exit;
+            $news = new News();
+            $news->setTitle($title);
+            $news->setContent($content);
+            $news->setAuthor_id($id);
+            $isNewsAdded = $news->add();
+
+            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
+            $pdo = Database::getInstance();
+            $lastInsertId = $pdo->lastInsertId();
+            $target_file = $lastInsertId . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
+            $target_path = $target_dir . $target_file;
+
+            if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
+                echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
+            } else {
+                $errors['news_img'] = 'Erreur lors de l\'upload de l\'image';
             }
         }
-
-    
+    }
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }

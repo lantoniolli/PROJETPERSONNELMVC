@@ -17,7 +17,7 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-md-5 mb-4">
                     <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                        <img src="https://cdn-europe1.lanmedia.fr/var/europe1/storage/images/europe1/guide-shopping/house-of-the-dragon-comment-regarder-le-nouvel-episode-de-la-serie-du-moment-4141283/59231858-1-fre-FR/House-of-the-Dragon-comment-regarder-le-nouvel-episode-de-la-serie-du-moment.jpg" class="img-fluid" />
+                        <img src="/public/uploads/<?= $lastNews->id_news ?>.jpg" class="img-fluid"/>
                         <a href="#">
                             <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                         </a>
