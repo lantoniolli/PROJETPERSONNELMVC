@@ -3,7 +3,7 @@
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/News.php');
 
-// session_start();
+session_start();
 
 try {
     // Récupérer la dernière news publiée
