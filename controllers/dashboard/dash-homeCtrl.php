@@ -2,14 +2,15 @@
 
 require_once(__DIR__ . '/../../helpers/database.php');
 require_once(__DIR__ . '/../../models/User.php');
+require_once(__DIR__ . '/./sidebar-Ctrl.php');
 
-session_start();
+// session_start();
 
-try {
-    $user = $_SESSION['user'] = User::getOne($_SESSION['user']->id_users); 
-} catch (PDOException $e) {
-    die('ERREUR :' . $e->getMessage());
-}
+// try {
+//     $user = $_SESSION['user'] = User::getOne($_SESSION['user']->id_users); 
+// } catch (PDOException $e) {
+//     die('ERREUR :' . $e->getMessage());
+// }
 
 
 include(__DIR__.'/../../views/admin/dash-templates/dash-header.php');

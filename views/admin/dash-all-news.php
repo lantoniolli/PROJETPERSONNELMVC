@@ -7,7 +7,6 @@
     if (SessionFlash::exist()) { ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
-            <button type="button" class="btn-close" dara-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     <?php } ?>
     <table class="table table-dark table-striped mt-3">
@@ -41,7 +40,7 @@
                         <!-- Bouton pour voir l'article -->
                         <a href="/controllers/profileUserController.php?id"><i class="uil uil-eye button__icon__alt"></i></a>
                         <!-- Bouton pour modifier l'article -->
-                        <a href="/controllers/deleteUserAppointmentController.php"><i class="uil uil-comment-alt-edit button__icon"></i></a>
+                        <a href="/controllers/dashboard/dash-modify-newsCtrl.php?id=<?= $news->id_news; ?>"><i class="uil uil-comment-alt-edit button__icon"></i></a>
                         <!-- Bouton pour supprimer l'article -->
                         <a href="/controllers/dashboard/dash-delete-newsCtrl.php?id=<?= $news->id_news; ?>"><i class="uil uil-trash button__icon"></i></a>
                     </td>

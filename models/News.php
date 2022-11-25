@@ -105,13 +105,12 @@ class News
 
 
     //Récupérer une news
-    public static function getNews(int $id): News
+    public static function getNews(int $id)
     {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('SELECT * FROM `news` WHERE `id` = :id');
-        $query->execute(['id' => $id]);
-        $news = $query->fetch();
-        return $news;
+        $sth = Database::getInstance()->prepare('SELECT * FROM `news` WHERE `id_news`= :id');
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+        return $sth->fetch();
     }
     //Récupérer la news la dernière news publiée
     public static function getLastNews(): object
@@ -136,7 +135,7 @@ class News
     //Supprimer un article
     public static function delete($id)
     {
-        $sql = 'DELETE FROM `news` WHERE `id` = :id';
+        $sql = 'DELETE FROM `news` WHERE `id_news` = :id';
         $sth = Database::getInstance()->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         if ($sth->execute()) {
@@ -145,6 +144,18 @@ class News
             } else {
                 return false;
             }
+        }
+    }
+    //Modifier un article
+    public function updateNews($id)
+    {
+        $sql = 'UPDATE `news` SET `news_title` = :title, `news_content` = :content WHERE `id_news` = :id';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':title', $this->getTitle());
+        $sth->bindValue(':content', $this->getContent());
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        if ($sth->execute()) {
+            return ($sth->rowCount() >= 1) ? true : false;
         }
     }
 }

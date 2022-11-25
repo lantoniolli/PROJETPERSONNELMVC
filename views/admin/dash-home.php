@@ -14,7 +14,7 @@
                         <div class="nav-item">Utilisateurs</div>
                     </div>
                     <div class="col-lg-5 block__test rounded shadow-lg">
-                        <a href="#"><i class="uil uil-list-ul icons__home"></i></a>
+                        <a href="/controllers/dashboard/dash-all-newsCtrl.php"><i class="uil uil-list-ul icons__home"></i></a>
                         <div class="nav-item">Articles</div>
                     </div>
                 </div>
