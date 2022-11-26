@@ -78,5 +78,5 @@ try {
 //-------------------------------- APPEL DES VUES ----------------------------------------//
 include(__DIR__ . '/../../views/admin/dash-templates/dash-header.php');
 include(__DIR__ . '/../../views/admin/dash-templates/dash-navbar.php');
-include(__DIR__ . '/../../views/admin/dash-write-news.php');
+include(__DIR__ . '/../../views/admin/dash-test.php');
 include(__DIR__ . '/../../views/admin/dash-templates/dash-footer.php');

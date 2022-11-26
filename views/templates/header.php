@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/public/assets/css/navbar.css">
     <link rel="stylesheet" href="/public/assets/css/home.css">
     <link rel="stylesheet" href="/public/assets/css/footer.css">
+    <!-- SCRIPTS -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/classic/ckeditor.js"></script>
     <title>//</title>
 </head>
 <body>

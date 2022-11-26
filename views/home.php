@@ -27,7 +27,7 @@
                     <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
                     <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
                     <p class="news__text">
-                        <?= $lastNews->news_content ?>
+                        <?= html_entity_decode($lastNews->news_content) ?>
                     </p>
                     <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
                 </div>

@@ -38,7 +38,7 @@
 
         <p class="nav-title text-uppercase px-3 mb-0 mt-1">Utilisateurs</p>
 
-        <ul class="nav flex-column bg-white mb-0">
+        <ul class="nav flex-column mb-0">
             <li class="nav-item">
                 <a href="/controllers/dashboard/user-listCtrl.php" class="nav-link text-light bg-dark">
                     <i class="uil uil-align-justify button__icon"></i>

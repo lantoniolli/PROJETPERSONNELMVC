@@ -45,4 +45,5 @@ class Comment {
             $comments = $query->fetchAll();
             return $comments;
         }
+
 }

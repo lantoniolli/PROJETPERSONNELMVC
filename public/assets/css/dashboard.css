@@ -169,6 +169,16 @@ label {
   color: #7579e7 !important;
 }
 
+@media screen and (max-width:100px){
+  .icons__home {
+    font-size: 30px;
+    color: var(--first-color);
+  }
+  .text__dash{
+    display: none;
+  }
+}
+
 
 @media (max-width: 768px) {
   #sidebar {
@@ -185,4 +195,6 @@ label {
     margin-left: 17rem;
     width: calc(100% - 17rem);
   }
+
+
 }

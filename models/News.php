@@ -107,7 +107,7 @@ class News
     //Récupérer une news
     public static function getNews(int $id)
     {
-        $sth = Database::getInstance()->prepare('SELECT * FROM `news` WHERE `id_news`= :id');
+        $sth = Database::getInstance()->prepare('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users` WHERE `id_news`= :id');
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         $sth->execute();
         return $sth->fetch();
