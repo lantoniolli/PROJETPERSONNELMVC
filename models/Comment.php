@@ -46,4 +46,12 @@ class Comment {
             return $comments;
         }
 
+//Récupérer le nombre de commentaires
+        public static function getNbComments(): int {
+            $sth = Database::getInstance();
+            $query = $sth->query('SELECT COUNT(*) FROM `comments`');
+            $nbComments = $query->fetch();
+            return $nbComments;
+        }
+
 }
