@@ -3,106 +3,103 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Meeting {
     private int $_id;
-    private datetime $_date;
-    private string $_description;
-    private string $_title;
-    private string $_location;
-    private string $_image;
-    private int $_nb_participants;
-    private int $_nb_comments;
-    private int $_nb_likes;
+    private datetime $_event_date;
+    private string $_event_location;
+    private string $_event_name;
+    private string $_event_description;
 
 // Getters
     public function getId(): int {
         return $this->_id;
     }
-    public function getDate(): datetime {
-        return $this->_date;
+    public function getEvent_date(): datetime {
+        return $this->_event_date;
     }
-    public function getDescription(): string {
-        return $this->_description;
+    public function getEvent_location(): string {
+        return $this->_event_location;
     }
-    public function getTitle(): string {
-        return $this->_title;
+    public function getEvent_name(): string {
+        return $this->_event_name;
     }
-    public function getLocation(): string {
-        return $this->_location;
+    public function getEvent_description(): string {
+        return $this->_event_description;
     }
-    public function getImage(): string {
-        return $this->_image;
-    }
-    public function getNb_participants(): int {
-        return $this->_nb_participants;
-    }
-    public function getNb_comments(): int {
-        return $this->_nb_comments;
-    }
-    public function getNb_likes(): int {
-        return $this->_nb_likes;
-    }
-
 // Setters
     // id
         public function setId(int $id): void {
             $this->_id = $id;
         }
-    // date
-        public function setDate(datetime $date): void {
-            $this->_date = $date;
+    // event_date
+        public function setEvent_date(datetime $event_date): void {
+            $this->_event_date = $event_date;
         }
-    // description
-        public function setDescription(string $description): void {
-            $this->_description = $description;
+    // event_location
+        public function setEvent_location(string $event_location): void {
+            $this->_event_location = $event_location;
         }
-    // title
-        public function setTitle(string $title): void {
-            $this->_title = $title;
+    // event_name
+        public function setEvent_name(string $event_name): void {
+            $this->_event_name = $event_name;
         }
-    // location
-        public function setLocation(string $location): void {
-            $this->_location = $location;
+    // event_description
+        public function setEvent_description(string $event_description): void {
+            $this->_event_description = $event_description;
         }
-    // image
-        public function setImage(string $image): void {
-            $this->_image = $image;
-        }
-    // nb_participants
-        public function setNb_participants(int $nb_participants): void {
-            $this->_nb_participants = $nb_participants;
-        }
-    // nb_comments
-        public function setNb_comments(int $nb_comments): void {
-            $this->_nb_comments = $nb_comments;
-        }
-    // nb_likes
-        public function setNb_likes(int $nb_likes): void {
-            $this->_nb_likes = $nb_likes;
-        }
-
 // Methods
-//Récupérer tous les meetings
+// Ajouter un meeting
+    public function add(): void {
+        $sth = Database::getInstance();
+        $query = $sth->prepare('INSERT INTO meeting (event_date, event_location, event_name, event_description) VALUES (:event_date, :event_location, :event_name, :event_description)');
+        $query->execute([
+            'event_date' => $this->getEvent_date(),
+            'event_location' => $this->getEvent_location(),
+            'event_name' => $this->getEvent_name(),
+            'event_description' => $this->getEvent_description()
+        ]);
+    }
+// Récupérer tous les meetings
     public static function getAllMeetings(): array {
         $sth = Database::getInstance();
-        $query = $sth->query('SELECT * FROM `meetings`');
-        $meetings = $query->fetchAll();
+        $query = $sth->prepare('SELECT * FROM meeting');
+        $query->execute();
+        $meetings = $query->fetchAll(PDO::FETCH_ASSOC);
         return $meetings;
     }
-
-//Récupérer le nombre de meetings
+// Récupérer un meeting
+    public static function getMeeting(int $id): array {
+        $sth = Database::getInstance();
+        $query = $sth->prepare('SELECT * FROM `meetings` WHERE `id` = :id');
+        $query->execute([
+            'id' => $id
+        ]);
+        $meeting = $query->fetch();
+        return $meeting;
+    }
+// Récupérer le nombre de meetings
     public static function getNbMeetings(): int {
         $sth = Database::getInstance();
         $query = $sth->query('SELECT COUNT(*) FROM `meetings`');
         $nbMeetings = $query->fetch();
         return $nbMeetings;
     }
-
-// Récupérer un meeting
-    public static function getMeeting(int $id): Meeting {
+// Modifier un meeting
+    public function update(): void {
         $sth = Database::getInstance();
-        $query = $sth->prepare('SELECT * FROM `meetings` WHERE `id` = :id');
-        $query->execute(['id' => $id]);
-        $meeting = $query->fetch();
-        return $meeting;
+        $query = $sth->prepare('UPDATE `meetings` SET `event_date` = :event_date, `event_location` = :event_location, `event_name` = :event_name, `event_description` = :event_description WHERE `id` = :id');
+        $query->execute([
+            'id' => $this->getId(),
+            'event_date' => $this->getEvent_date(),
+            'event_location' => $this->getEvent_location(),
+            'event_name' => $this->getEvent_name(),
+            'event_description' => $this->getEvent_description()
+        ]);
     }
-
+// Supprimer un meeting
+    public function delete(): void {
+        $sth = Database::getInstance();
+        $query = $sth->prepare('DELETE FROM `meetings` WHERE `id` = :id');
+        $query->execute([
+            'id' => $this->getId()
+        ]);
+    }
 }

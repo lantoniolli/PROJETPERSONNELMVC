@@ -325,6 +325,8 @@ label {
   bottom: 15%;
 }
 
+
+
 @media (min-width: 768px) {
   .masthead {
     background: url(/public/assets/img/fond.png);

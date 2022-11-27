@@ -36,6 +36,30 @@
             </li>
         </ul>
 
+        <p class="nav-title text-uppercase px-3 mb-0 mt-1">Conventions</p>
+
+        <ul class="nav flex-column mb-0">
+            <li class="nav-item">
+                <a href="/controllers/dashboard/dash-add-meetingCtrl.php" class="nav-link text-light bg-dark">
+                    <i class="uil uil-map-marker-plus button__icon"></i>
+                    Ajouter une convention
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/controllers/dashboard/user-listCtrl.php" class="nav-link text-light bg-dark">
+                    <i class="uil uil-megaphone button__icon"></i>
+                    Liste des Conventions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link text-light bg-dark">
+                    <i class="uil uil-bookmark-full button__icon"></i>
+                    Réservations
+                </a>
+            </li>
+        </ul>
+
+
         <p class="nav-title text-uppercase px-3 mb-0 mt-1">Utilisateurs</p>
 
         <ul class="nav flex-column mb-0">
