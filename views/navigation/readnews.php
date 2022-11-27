@@ -16,6 +16,6 @@
                                 <?= $news->news_title ?>
                             </strong></h4>
                         <p class="news__text">
-                        <?= $news->news_content ?>
+                        <?= html_entity_decode($news->news_content) ?>
                     </div>
     </section>

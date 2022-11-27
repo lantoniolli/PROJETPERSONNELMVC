@@ -18,4 +18,5 @@ try {
 include(__DIR__.'/../views/templates/header.php');
 include(__DIR__.'/../views/templates/navbar.php');
 include(__DIR__.'/../views/navigation/readnews.php');
+include(__DIR__.'/../views/user/comments.php');
 include(__DIR__.'/../views/templates/footer.php');

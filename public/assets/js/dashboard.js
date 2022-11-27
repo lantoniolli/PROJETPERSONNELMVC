@@ -1,5 +1,6 @@
 let preview = document.getElementById("preview_img");
 
+
 $(function () {
   $("#sidebarCollapse").on("click", function () {
     $("#sidebar, #content").toggleClass("active");
@@ -22,3 +23,10 @@ function readURL(input) {
   }
 }
 
+ClassicEditor.create(document.querySelector("#editor"))
+  .then((editor) => {
+    console.log(editor);
+  })
+  .catch((error) => {
+    console.error(error);
+  });

@@ -15,7 +15,7 @@
         <div class="separator"></div>
         <div class="container d-flex flex-column mt-5">
             <div class="row gx-5 justify-content-center">
-                <div class="col-md-5 mb-4">
+                <div class="col-md-4 mb-4">
                     <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
                         <img src="/public/uploads/<?= $lastNews->id_news ?>.jpg" class="img-fluid"/>
                         <a href="#">
@@ -23,13 +23,16 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-5 mb-4">
+                <div class="col-md-4 mb-4">
                     <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
                     <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
                     <p class="news__text">
                         <?= html_entity_decode($lastNews->news_content) ?>
                     </p>
                     <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
+                </div>
+                <div class="col-md-4 mb-4">
+                <a class="twitter-timeline" data-lang="fr" data-width="300" data-height="500" data-theme="light" href="https://twitter.com/HouseofDragon?ref_src=twsrc%5Etfw">Tweets by HouseofDragon</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
         </div>
