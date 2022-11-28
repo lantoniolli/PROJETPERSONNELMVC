@@ -19,10 +19,9 @@
                     <input class="form-control" id="formFileMd" type="file" id="file-ip-1" accept="image/jpeg" name="news_img" onchange="readURL(this)" ;>
                 </div>
 
-
                 <div class="col-12 mt-3">
                     <label for="inputContent" class="form-label title__label">Contenu</label>
-                    <textarea class="form-control" id="inputContent" rows="5" name="content"><?= $news->news_content ?></textarea>
+                    <textarea class="form-control" id="editor" name="content"><?= $news->news_content ?></textarea>
                 </div>
                 <div class="col-12 text-center mt-5">
                     <button type="submit" class="btn btn__color">Publier</button>

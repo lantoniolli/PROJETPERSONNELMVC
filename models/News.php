@@ -35,6 +35,7 @@ class News
     {
         return $this->_news_img;
     }
+
     // Setters
     // id
     public function setId(int $id): void

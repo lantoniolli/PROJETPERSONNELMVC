@@ -13,12 +13,10 @@
                     <input type="text" class="form-control" id="inputTitle" name="title" value="<?= $title ?? '' ?>">
                 </div>
 
-
                 <div class="col-md-4 text-center">
                     <label for="formFileSm" class="form-label title__label">Couverture de l'Article</label>
                     <input class="form-control" id="formFileMd" type="file" id="file-ip-1" accept="image/*" name="news_img" onchange="readURL(this)" ;>
                 </div>
-
 
                 <div class="col-8 mt-3 text-center">
                     <label for="inputContent" class="form-label title__label">Contenu</label>

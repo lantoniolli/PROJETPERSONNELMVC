@@ -25,8 +25,8 @@ try {
         if (empty($title)) {
             $errors['title'] = 'Le titre est obligatoire';
         }
-        $content = trim(filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS));
         //validation des données content
+        $content = trim(filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS));
         if (empty($content)) {
             $errors['content'] = 'Le contenu est obligatoire';
         }

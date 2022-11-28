@@ -27,12 +27,12 @@
                         <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
                         <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
                         <p class="news__text">
-                            <?= html_entity_decode($lastNews->news_content) ?>
+                            <?= html_entity_decode(substr($lastNews->news_content,0,240)) ?>
                         </p>
                         <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <a class="twitter-timeline" data-lang="fr" data-width="300" data-height="500" data-theme="light" href="https://twitter.com/GameOfThrones?ref_src=twsrc%5Etfw">Tweets by GameOfThrones</a>
+                        <a class="twitter-timeline" data-lang="fr" data-width="300" data-height="300" data-theme="light" href="https://twitter.com/GameOfThrones?ref_src=twsrc%5Etfw">Tweets by GameOfThrones</a>
                         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     </div>
                 </div>

@@ -50,22 +50,23 @@ try {
             $news->setTitle($title);
             $news->setContent($content);
             $news->setAuthor_id($id);
-            if($isNewsAdded = $news->add()){
-            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
-            $pdo = Database::getInstance();
-            $lastInsertId = $pdo->lastInsertId();
-            $target_file = $lastInsertId . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
-            $target_path = $target_dir . $target_file;
-            
-            if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
-                echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
-                SessionFlash::set('La news a bien été créée');
-                header('Location: /controllers/dashboard/dash-all-newsCtrl.php');
-                exit();}
+            if ($isNewsAdded = $news->add()) {
+                $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
+                $pdo = Database::getInstance();
+                $lastInsertId = $pdo->lastInsertId();
+                $target_file = $lastInsertId . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
+                $target_path = $target_dir . $target_file;
+
+                if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
+                    echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
+                    SessionFlash::set('La news a bien été créée');
+                    header('Location: /controllers/dashboard/dash-all-newsCtrl.php');
+                    exit();
+                }
             } else {
                 $errors['news_img'] = 'Erreur lors de l\'upload de l\'image';
                 SessionFlash::set('Erreur lors de l\'upload de l\'image');
-                header ('Location: /controllers/dashboard/dash-add-newsCtrl.php');
+                header('Location: /controllers/dashboard/dash-add-newsCtrl.php');
                 exit();
             }
         }

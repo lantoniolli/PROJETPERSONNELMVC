@@ -4,7 +4,7 @@
             <h2 class="display-3 news__title text-center">Commentaires</h2>
             <div class="card">
             <?php
-            foreach ($users as $user) {
+            foreach ($comments as $comment) {
             ?>
                 <div class="card-body">
                     <div class="d-flex flex-start align-items-center">
@@ -44,19 +44,32 @@
                         quis nostrud exercitation ullamco laboris nisi ut aliquip consequat.
                     </p>
                 </div> -->
+                <?php 
+                if(!isset($_SESSION['user'])) {
+                ?>
+
+                Vous devez être connectés pour poster un commentaire.
+                Bouton 1 Connexion Bouton 2 Inscription.
+
+                <?php
+                } else { ?>
                 <form method="POST">
                     <div class="card-footer py-3 border-0">
                         <div class="d-flex flex-start w-100">
                             <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/iconscomment.jpg" alt="avatar" width="40" height="40" />
                             <div class="form-outline w-100">
-                                <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;"></textarea>
+                                <textarea class="form-control" id="textAreaExample" rows="4" style="background: #fff;" name="content" ></textarea>
                                 <label class="form-label" for="textAreaExample">Message</label>
                             </div>
                         </div>
                         <div class="float-end mt-2 pt-1">
                             <button type="submit" class="btn btn__color mb-3">Publier</button>
                         </div>
+                    </div>
                 </form>
+                <?php
+                }
+                ?>
             </div>
         </div>
     </div>
