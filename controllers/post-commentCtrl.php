@@ -7,6 +7,8 @@ session_start();
 
 try {
     $id_news = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+    $posts = Comment::getAllComments();
+    
     if (isset($_SESSION['user'])) {
         $user = $_SESSION['user'];
         $id_user = $user->id_users;
@@ -14,10 +16,9 @@ try {
     $content = trim(filter_input(INPUT_POST, 'comments', FILTER_SANITIZE_SPECIAL_CHARS));
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-    $posts = Comment::getCommentsByNews($id_news);    
-    $comment = new Comment();
-    $comment->setComment_description($content);
-    $comment->add();
+    $comments = new Comment();
+
+    
     header('Location : /controllers/readnewsCtrl.php?id=' . $id_news);
     }
 } catch (Exception $e) {

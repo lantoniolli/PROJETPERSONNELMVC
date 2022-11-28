@@ -63,25 +63,25 @@ class Comment {
             }
 // Methods
 // Ajouter un commentaire
-        public function add(): void {
+        public function addCommentNews():bool {
+            $sql = 'INSERT INTO `comments` (`comment_description`, `Id_users`, `id_news`) VALUES (:comment_description, :id_users, :id_news)';
             $pdo = Database::getInstance();
-            $query = "INSERT INTO comments (`comment_description`, `id_meeting`, `id_users`, `id_news`) VALUES (:comment_description, :id_meeting, :id_users, :id_news)";
-            $stmt = $pdo->prepare($query);
+            $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':comment_description', $this->_comment_description, PDO::PARAM_STR);
-            $stmt->bindValue(':id_meeting', $this->_id_meeting, PDO::PARAM_INT);
             $stmt->bindValue(':id_users', $this->_id_users, PDO::PARAM_INT);
             $stmt->bindValue(':id_news', $this->_id_news, PDO::PARAM_INT);
-            $stmt->execute();
+            return $stmt->execute();
         }
+        
 
 // Afficher les commentaires d'un article
-        public static function getCommentsByNews(int $id_news): array {
+        public static function getCommentsbyNews(int $id_news): array {
             $pdo = Database::getInstance();
             $query = "SELECT * FROM comments WHERE id_news = :id_news";
             $stmt = $pdo->prepare($query);
             $stmt->bindValue(':id_news', $id_news, PDO::PARAM_INT);
             $stmt->execute();
-            $comments = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $comments = $stmt->fetchAll();
             return $comments;
         }
 
