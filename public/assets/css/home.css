@@ -335,6 +335,27 @@ label {
   font-size: 1.25rem;
 }
 
+.resize_textarea{
+  resize: none;
+}
+
+.card_size{
+  height: 200px;
+}
+
+.form_infos{
+  font-family: 'Minion';
+}
+
+.form_name{
+  color:#8f031d;
+  font-weight: bold;
+}
+
+.count_words{
+  font-family: 'Jost';
+}
+
 @media (min-width: 768px) {
   .masthead {
     background: url(/public/assets/img/fond.png);

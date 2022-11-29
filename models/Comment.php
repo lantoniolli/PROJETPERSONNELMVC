@@ -92,6 +92,17 @@ class Comment {
             $comments = $query->fetchAll();
             return $comments;
         }
+//Récupérer un commentaire par son id
+        public static function getCommentById(int $id){
+            $sth = Database::getInstance();
+            $query = "SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`id_users` = `users`.`id_users` WHERE `id_comments` = :id";
+            $stmt = $sth->prepare($query);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            $stmt->execute();
+            $comment = $stmt->fetch();
+            return $comment;
+        }
+
 // Récupérer le nombre de commentaire par utilisateur
         public static function getNbCommentsByUser(int $id): int {
             $sth = Database::getInstance();
@@ -115,6 +126,16 @@ class Comment {
             $query = "DELETE FROM `comments` WHERE `id_comments` = :id";
             $stmt = $pdo->prepare($query);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        }
+
+// Modifier un commentaire
+        public function updateComment(): bool {
+            $pdo = Database::getInstance();
+            $query = "UPDATE `comments` SET `comment_description` = :comment_description WHERE `id_comments` = :id";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':comment_description', $this->_comment_description, PDO::PARAM_STR);
+            $stmt->bindValue(':id', $this->_id, PDO::PARAM_INT);
             return $stmt->execute();
         }
 

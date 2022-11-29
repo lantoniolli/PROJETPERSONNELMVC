@@ -18,11 +18,14 @@
                             </div>
                             <div class="moderation d-flex">
                                 <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
-                                <?php if ($post->id_users == $id_user) { ?>
+                                <?php if (!isset($_SESSION['user'])) { ?>
+                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon"></i></a></div>
+                                <?php } else if ($post->id_users != $id_user) { ?>
+                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon"></i></a></div>
+                                <?php } else if ($post->id_users == $id_user) { ?>
                                     <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon"></i></a></div>
-                                <?php } else if ($post->id_users != $id_user){ ?> 
-                                <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon"></i></a></div>
-                            <?php } ?>
+
+                                <?php } ?>
                             </div>
                         </div>
 
@@ -48,9 +51,10 @@
                             <div class="d-flex flex-start w-100">
                                 <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/iconscomment.jpg" alt="avatar" width="40" height="40" />
                                 <div class="form-outline w-100">
-                                    <textarea class="form-control" id="myText" rows="4" style="background: #fff;" name="content" ></textarea>
-                                    
-                                    <label class="form-label" for="textAreaExample">nombre de caractères : <span id="wordCount">0</span> / 300</label>
+                                    <span class="form_infos">Connecté en tant que <span class="form_name"><?php echo $user->user_name; ?></span>. Ce n'est pas vous ? <a href="/controllers/logoutCtrl.php">Déconnexion</a></span>
+                                    <textarea class="form-control resize_textarea" id="myText" rows="4" style="background: #fff;" name="content"></textarea>
+
+                                    <label class="form-label count_words" for="textAreaExample">nombre de caractères : <span id="wordCount">0</span> / 300</label>
                                 </div><?= $errors['content'] ?? '' ?>
                             </div>
                             <div class="float-end mt-2 pt-1">
