@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/public/assets/css/navbar.css">
     <link rel="stylesheet" href="/public/assets/css/home.css">
     <link rel="stylesheet" href="/public/assets/css/footer.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- SCRIPTS -->
     <script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
     <title>//</title>

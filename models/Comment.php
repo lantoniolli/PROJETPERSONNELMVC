@@ -64,7 +64,7 @@ class Comment {
 // Methods
 // Ajouter un commentaire
         public function addCommentNews():bool {
-            $sql = 'INSERT INTO `comments` (`comment_description`, `Id_users`, `id_news`) VALUES (:comment_description, :id_users, :id_news)';
+            $sql = 'INSERT INTO `comments` (`comment_description`, `id_users`, `id_news`) VALUES (:comment_description, :id_users, :id_news)';
             $pdo = Database::getInstance();
             $stmt = $pdo->prepare($sql);
             $stmt->bindValue(':comment_description', $this->_comment_description, PDO::PARAM_STR);
@@ -77,7 +77,7 @@ class Comment {
 // Afficher les commentaires d'un article
         public static function getCommentsbyNews(int $id_news): array {
             $pdo = Database::getInstance();
-            $query = "SELECT * FROM comments WHERE id_news = :id_news";
+            $query = "SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`id_users` = `users`.`id_users` WHERE `id_news` = :id_news";
             $stmt = $pdo->prepare($query);
             $stmt->bindValue(':id_news', $id_news, PDO::PARAM_INT);
             $stmt->execute();
@@ -88,17 +88,9 @@ class Comment {
 //Récupérer tous les commentaires
         public static function getAllComments(): array {
             $sth = Database::getInstance();
-            $query = $sth->query('SELECT * FROM `comments`');
+            $query = $sth->query('SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`id_users` = `users`.`id_users` ORDER BY `posted_at` DESC');
             $comments = $query->fetchAll();
             return $comments;
-        }
-
-//Récupérer le nombre de commentaires
-        public static function getNbComments(): int {
-            $sth = Database::getInstance();
-            $query = $sth->query('SELECT COUNT(*) FROM `comments`');
-            $nbComments = $query->fetch();
-            return $nbComments;
         }
 // Récupérer le nombre de commentaire par utilisateur
         public static function getNbCommentsByUser(int $id): int {
@@ -117,4 +109,14 @@ class Comment {
             return $comments;
         }
 
+// Supprimer un commentaire
+        public static function deleteComment(int $id): bool {
+            $pdo = Database::getInstance();
+            $query = "DELETE FROM `comments` WHERE `id_comments` = :id";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+            return $stmt->execute();
+        }
+
     }
+

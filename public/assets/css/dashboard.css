@@ -182,7 +182,9 @@ label {
     display: none;
   }
 }
-
+.table {
+  table-layout: fixed;
+}
 
 @media (max-width: 768px) {
   #sidebar {

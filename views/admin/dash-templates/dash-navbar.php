@@ -81,7 +81,7 @@
 
         <ul class="nav flex-column mb-0">
             <li class="nav-item">
-                <a href="#" class="nav-link text-light bg-dark">
+                <a href="/controllers/dashboard/dash-all-commentsCtrl.php" class="nav-link text-light bg-dark">
                     <i class="uil uil-comment-lines button__icon"></i>
                     Liste des commentaires
                 </a>

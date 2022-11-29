@@ -11,6 +11,8 @@ try {
         $user = $_SESSION['user'];
         $id_user = $user->id_users;
     }
+    // var_dump($_SESSION['user']);
+    // die;
 
     $id_news = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 

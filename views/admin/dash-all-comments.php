@@ -1,7 +1,7 @@
 <div class="page-content p-5" id="content">
     <!-- Toggle button -->
     <button id="sidebarCollapse" type="button" class="btn bg-dark rounded-pill shadow-sm px-2 mb-4"><i class="uil uil-maximize-left button__icon"></i></button>
-    <h2 class="display-4 title__dashboard">Listing Articles</h2>
+    <h2 class="display-4 title__dashboard">Listing des Commentaires</h2>
     <div class="separator"></div>
     <?php
     if (SessionFlash::exist()) { ?>
@@ -20,29 +20,28 @@
                 </form>
             </div>
         </div>
+        <div class="container text-white d-flex justify-content-center"><?= $nbComments ?> Commentaires</div>
         <thead>
             <tr>
-                <th class="text-center title__dashboard" scope="col">Titre</th>
-                <th class="text-center title__dashboard" scope="col">Posté le</th>
+                <th class="text-center title__dashboard" scope="col">Sujet</th>
                 <th class="text-center title__dashboard" scope="col">Posté par</th>
+                <th class="text-center title__dashboard" scope="col">Posté le</th>
+                <th class="text-center title__dashboard" scope="col">Contenu</th>
                 <th class="text-center title__dashboard" scope="col">Gestion</th>
             </tr>
         </thead>
         <tbody>
             <?php
-            foreach ($allNews as $news) {
+            foreach ($allComments as $comment) {
             ?>
                 <tr>
-                    <td class="text-truncate text-center"><?= $news->news_title ?></td>
-                    <td class="text-center"><?= date("d/m/Y", strtotime($news->news_posted_at)) ?></td>
-                    <td class="text-center"><?= $news->user_name ?></td>
+                    <td class="text-center"><a href="/controllers/readnewsCtrl.php?id=<?= $comment->id_news ?>"><i class="uil uil-eye button__icon__alt"></i></a></td>
+                    <td class="text-center"><?= $comment->user_name ?></td>
+                    <td class="text-center"><?= date("d/m/Y", strtotime($comment->posted_at)) ?></td>
+                    <td class="text-truncate"><?= $comment->comment_description ?></td>
                     <td class="text-center">
-                        <!-- Bouton pour voir l'article -->
-                        <a href="/controllers/profileUserController.php?id"><i class="uil uil-eye button__icon__alt"></i></a>
-                        <!-- Bouton pour modifier l'article -->
-                        <a href="/controllers/dashboard/dash-modify-newsCtrl.php?id=<?= $news->id_news; ?>"><i class="uil uil-comment-alt-edit button__icon"></i></a>
-                        <!-- Bouton pour supprimer l'article -->
-                        <a href="/controllers/dashboard/dash-delete-newsCtrl.php?id=<?= $news->id_news; ?>"><i class="uil uil-trash button__icon"></i></a>
+                        <!-- Bouton pour supprimer le commentaire -->
+                        <a href="/controllers/dashboard/dash-delete-commentsCtrl.php?id=<?= $comment->id_comments; ?>"><i class="uil uil-trash button__icon"></i></a>
                     </td>
                 </tr>
             <?php
