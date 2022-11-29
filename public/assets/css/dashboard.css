@@ -201,6 +201,8 @@ label {
     margin-left: 17rem;
     width: calc(100% - 17rem);
   }
-
+  /* .table {
+    table-layout: fixed;
+  } */
 
 }
