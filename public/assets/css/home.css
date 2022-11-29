@@ -259,6 +259,23 @@ label {
   color: #fff;
   font-size: 14px;
 }
+
+.btn__color__alt{
+  font-family: 'Trajan';
+  font-weight: 100;
+  background-color: #3b3b3b;
+  color: #fff;
+  font-size: 14px;
+}
+
+.underline__first{
+  border-bottom: 1px solid red;
+}
+
+.bold__text{
+  font-weight: bold;
+  color: var(--first-color);
+}
 .header__subtitle{
   font-family: 'Minion';
   border: 1px solid #8f031d;

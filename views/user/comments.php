@@ -15,15 +15,16 @@
                                     <p class="text-muted small mb-0">
                                         Posté le <?= date("d/m/Y H:i", strtotime($post->posted_at)) ?></p>
                                 </div>
+                                <div><img class="rounded-circle shadow-1-strong ms-3" src="/public/assets/img/Sigils/Stark.png" alt="avatar" width="40" height="40" /></div>
                             </div>
                             <div class="moderation d-flex">
                                 <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
                                 <?php if (!isset($_SESSION['user'])) { ?>
-                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon"></i></a></div>
+                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></i></a></div>
                                 <?php } else if ($post->id_users != $id_user) { ?>
-                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon"></i></a></div>
+                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></a></div>
                                 <?php } else if ($post->id_users == $id_user) { ?>
-                                    <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon"></i></a></div>
+                                    <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon" title="Éditer" data-toggle="tooltip" data-placement="right"></i></a></div>
 
                                 <?php } ?>
                             </div>
@@ -41,8 +42,17 @@
                 if (!isset($_SESSION['user'])) {
                 ?>
 
-                    Vous devez être connectés pour poster un commentaire.
-                    Bouton 1 Connexion Bouton 2 Inscription.
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-center mb-3">Pour poster un commentaire vous devez être <span class="underline__first">inscrit</span> et <span class="bold__text">connecté</span></div>
+                            <div class="d-flex flex-start justify-content-around">
+                                <a href="/controllers/registerCtrl.php"><button type="button" class="btn btn__color btn-lg">S'inscrire</button></a>
+                                <div>
+                                <a href="/controllers/loginCtrl.php"><button type="button" class="btn btn__color__alt btn-lg">Se connecter</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <?php
                 } else { ?>

@@ -30,7 +30,7 @@
                             </div><?= $errors['content'] ?? '' ?>
                         </div>
                         <div class="float-end mt-2 pt-1">
-                            <button type="button" class="btn btn__color mb-3">Annuler</button>
+                            <button type="button" class="btn btn__color__alt mb-3">Annuler</button>
                             <button type="submit" class="btn btn__color mb-3">Enregister les modifications</button>
                         </div>
                     </div>
