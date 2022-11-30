@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="/public/assets/css/navbar.css">
     <link rel="stylesheet" href="/public/assets/css/home.css">
     <link rel="stylesheet" href="/public/assets/css/footer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- SCRIPTS -->
     <script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>

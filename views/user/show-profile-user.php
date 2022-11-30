@@ -1,3 +1,6 @@
+
+<!-- AFFICHAGE DU PROFIL SIMPLE PAR LES AUTRES UTILISATEURS -->
+
 <section class="about__section" id="about">
         <div class="page-content test__container p-2" id="content">
             <div class="container d-flex justify-content-center align-items-center mt-5 test2__container">

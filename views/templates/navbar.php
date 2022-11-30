@@ -35,7 +35,7 @@
                     </li>
                 <?php } else {?>
                     <li class="nav-item">
-                        <a class="nav-link" href="/controllers/profileController.php">Mon Profil</a>
+                        <a class="nav-link" href="/controllers/view-profile-userCtrl.php?id=<?= $id ?>">Mon Profil</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/controllers/logOutCtrl.php">Déconnexion</a>

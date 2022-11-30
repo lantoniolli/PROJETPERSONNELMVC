@@ -91,6 +91,15 @@ class User {
 
         return $sth->execute();
     }
+// Fonction permettant de supprimer un utilisateur de la base de donnée.
+    public function delete(){
+
+        $pdo = Database::getInstance();
+        $deleteUser = 'DELETE FROM users WHERE id_users = :id';
+        $sth = $pdo->prepare($deleteUser);
+        $sth->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        return $sth->execute();
+    }
 // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
 public static function exist_Email(string $usermail): bool
     {
@@ -179,7 +188,7 @@ public static function exist_Pseudo(string $pseudo): bool
         }
         return false;
     }
-// Méthode pour calculer le nombre totale d'utilisateurs.
+// Méthode pour calculer le nombre total d'utilisateurs.
 public static function count(){
     $sql = 'SELECT COUNT(`id_users`) AS `nbUsers` FROM `users`;';
     $sth = Database::getInstance()->prepare($sql);
@@ -187,6 +196,4 @@ public static function count(){
     $count = $sth->fetch();
     return $count->nbUsers;
 }
-
-
 }

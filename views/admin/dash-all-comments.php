@@ -18,7 +18,7 @@
                         <button class="btn btn__color" type="submit" id="button-addon2">Rechercher</button>
                     </div>
                 </form>
-            </div>
+            </div> creer elaborer unifier deleter examiner
         </div>
         <div class="container text-white d-flex justify-content-center"><?= $nbComments ?> Commentaires</div>
         <thead>

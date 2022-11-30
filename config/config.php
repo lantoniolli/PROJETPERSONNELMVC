@@ -1,6 +1,6 @@
 <?php
 
-define('DSN', 'mysql:host=localhost;dbname=projet_got;charset=utf8');
+define('DSN', 'mysql:host=localhost;dbname=projet_got;charset=utf8mb4');
 define('USER', 'staffgot');
 define('PWD', 'km]Nkdm]UtQ528hg');
 

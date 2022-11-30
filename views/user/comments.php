@@ -11,26 +11,25 @@
                             <div class="avatar_pseudo_user d-flex">
                                 <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/cerseiicons.jpg" alt="avatar" width="60" height="60" />
                                 <div>
-                                    <h6 class="fw-bold mb-1"><?= $post->user_name ?></h6>
-                                    <p class="text-muted small mb-0">
+                                    <h6 class="fw-bold mb-1 username__comments"><?= $post->user_name ?></h6>
+                                    <p class="text-muted small mb-0 detail__comments">
                                         Posté le <?= date("d/m/Y H:i", strtotime($post->posted_at)) ?></p>
                                 </div>
-                                <div><img class="rounded-circle shadow-1-strong ms-3" src="/public/assets/img/Sigils/Stark.png" alt="avatar" width="40" height="40" /></div>
                             </div>
                             <div class="moderation d-flex">
                                 <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
                                 <?php if (!isset($_SESSION['user'])) { ?>
                                     <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></i></a></div>
                                 <?php } else if ($post->id_users != $id_user) { ?>
-                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></a></div>
+                                    <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></i></a></div>
                                 <?php } else if ($post->id_users == $id_user) { ?>
-                                    <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon" title="Éditer" data-toggle="tooltip" data-placement="right"></i></a></div>
+                                    <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon" title="Editer" data-toggle="tooltip"></i></a></div>
 
                                 <?php } ?>
                             </div>
                         </div>
 
-                        <p class="mt-3 mb-4 pb-2">
+                        <p class="mt-3 mb-4 pb-2 content__comments">
                             <?= $post->comment_description ?>
                         </p>
                     </div>
@@ -42,13 +41,20 @@
                 if (!isset($_SESSION['user'])) {
                 ?>
 
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-center mb-3">Pour poster un commentaire vous devez être <span class="underline__first">inscrit</span> et <span class="bold__text">connecté</span></div>
-                            <div class="d-flex flex-start justify-content-around">
-                                <a href="/controllers/registerCtrl.php"><button type="button" class="btn btn__color btn-lg">S'inscrire</button></a>
-                                <div>
-                                <a href="/controllers/loginCtrl.php"><button type="button" class="btn btn__color__alt btn-lg">Se connecter</button></a>
+                    <div class="container my-5 py-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-xl-8">
+                                <h2 class="display-3 news__title text-center">Commentaires</h2>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="text-center mb-3">Pour poster un commentaire vous devez être inscrit ou connecté</div>
+                                        <div class="d-flex flex-start justify-content-around">
+                                            <button type="button" class="btn btn__color btn-lg">S'inscrire</button>
+                                            <div>
+                                                <button type="button" class="btn btn__color__alt btn-lg">Se connecter</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -64,12 +70,10 @@
                                     <span class="form_infos">Connecté en tant que <span class="form_name"><?php echo $user->user_name; ?></span>. Ce n'est pas vous ? <a href="/controllers/logoutCtrl.php">Déconnexion</a></span>
                                     <textarea class="form-control resize_textarea" id="myText" rows="4" style="background: #fff;" name="content"></textarea>
 
-                                    <label class="form-label count_words" for="textAreaExample">nombre de caractères : <span id="wordCount">0</span> / 300</label>
+                                    <label class="form-label detail__comments" for="textAreaExample">nombre de caractères : <span id="wordCount">0</span> / 300</label>
                                 </div><?= $errors['content'] ?? '' ?>
                             </div>
-                            <div class="float-end mt-2 pt-1">
-                                <button type="submit" class="btn btn__color mb-3">Publier</button>
-                            </div>
+                            <div class="text-center"><button type="submit" class="btn btn__color">Publier</button></div>
                         </div>
                     </form>
                 <?php
