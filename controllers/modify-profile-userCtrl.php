@@ -4,10 +4,12 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
 
+
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id = $user->id_users;
 }
+
 try {
     $id_user = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $user = User::getOne($id_user);
@@ -15,28 +17,119 @@ try {
     $nbComments = count($comments);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+    // TRAITEMENT PSEUDO
+        //Nettoyer
         $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-
-        $fileType = strtolower(pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION));
-        if ($fileType != "jpg" && $fileType != "png" && $fileType != "jpeg" && $fileType != "gif") {
-            $errors['news_img'] = 'Seuls les fichiers JPG, JPEG, PNG & GIF sont autorisés.';
+        if (User::exist_Pseudo($username) == true && $username != $user->user_name) {
+            $errors['Pseudo'] = 'Ce pseudo est déjà utilisé.';
+        } else {
+        // Valider
+            if (empty($username)) {
+                $errors['Pseudo'] = 'Ce champ est obligatoire';
+            } else {
+                $isOk = filter_var($username, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+                if ($isOk == false) {
+                    $errors['Pseudo'] = 'La donnée n\'est pas conforme';
+                }
+            }
         }
-        $fileSize = $_FILES["news_img"]["size"];
-        if ($fileSize > 5000000) {
-            $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
+    // TRAITEMENT DE L'EMAIL
+        $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL));
+        if (User::exist_Email($email) == true && $email != $user->user_mail) {
+            $errors['Mail'] = 'Cette adresse e-mail est déjà utilisée.';
+        } else {
+        // Valider
+            if (empty($email)) {
+                $errors['Mail'] = 'Ce champ est obligatoire';
+            } else {
+                $isOk = filter_var($email, FILTER_VALIDATE_EMAIL);
+                if (!$isOk) {
+                    $error['Email'] = 'Adresse mail invalide';
+                }
+            }
         }
-        if (empty($errors)) {
+    // TRAITEMENT DE L'IMAGE
 
-            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
-            $pdo = Database::getInstance();
-            $target_file = $news->id_news . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
-            $target_path = $target_dir . $target_file;
-
-            
-        }
+    if (!isset($_FILES['profile'])) {
+        throw new Exception('Erreur !');
     }
 
+    if ($_FILES['profile']['error'] != 0) {
+        throw new Exception('Erreur :'.$_FILES['profile']['error']);
+    }
+
+    if (!in_array($_FILES['profile']['type'], SUPPORTED_FORMATS)) {
+        throw new Exception('Format non autorisé');
+    }
+
+    if ($_FILES['profile']['size'] > MAX_SIZE) {
+        throw new Exception('Poids supérieur à la limite (5Mo)');
+    }
+
+    $from = $_FILES['profile']['tmp_name'];
+    $filename = $id; //$user->id.'.jpg';
+    $extension = $extension = pathinfo($_FILES["profile"]["name"], PATHINFO_EXTENSION);
+    $to = UPLOAD_USER_PROFILE . $filename . '.' . $extension;
+
+    if (!move_uploaded_file($from, $to)) {
+        throw new Exception('problème lors du transfert');
+    }
+
+    $dst_x = 0;
+    $dst_y = 0;
+    $src_x = 0;
+    $src_y = 0;
+    $dst_width = 500;
+    $src_width = getimagesize($to)[0];
+    $src_height = getimagesize($to)[1];
+    $dst_height = round(($dst_width * $src_height) / $src_width);
+    $dst_image = imagecreatetruecolor($dst_width, $dst_height);
+    $src_image = imagecreatefromjpeg($to);
+
+    // Redimensionne
+    imagecopyresampled(
+        $dst_image,
+        $src_image,
+        $dst_x,
+        $dst_y,
+        $src_x,
+        $src_y,
+        $dst_width,
+        $dst_height,
+        $src_width,
+        $src_height
+    );
+
+    // redimensionne l'image
+    $resampledDestination = UPLOAD_USER_PROFILE .$filename. '.' . 'jpg';
+    imagejpeg($dst_image, $resampledDestination, 75);
+
+
+    // Recadre
+    $cropped_width = 200;
+    $ressourceResampled = imagecreatefromjpeg($resampledDestination);
+    if (!$ressourceResampled) {
+        throw new Exception('Problème lors du recadrage');
+    }
+    $ressourceCropped = imagecrop($ressourceResampled, ['x' => ($dst_width - $cropped_width) / 2, 'y' => 0, 'width' => $cropped_width, 'height' => 200]);
+
+    // Sauvegarde l'image recadrée
+    $croppedDestination = UPLOAD_USER_PROFILE .$filename . '.' . 'jpg';
+    imagejpeg($ressourceCropped, $croppedDestination, 75);
+            
+        }
+
+    // TRAITEMENT DU SELECT
+        $family = filter_input(INPUT_POST, 'family', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (empty($role)) {
+            $errors['family'] = 'Ce champ est obligatoire';
+        } else {
+            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+            if ($isOk == false) {
+                $errors['family'] = 'La donnée n\'est pas conforme';
+            }
+        }
 
 } catch (Exception $e) {
     echo $e->getMessage();

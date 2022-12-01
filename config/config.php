@@ -11,3 +11,6 @@ define('REGEX_FOR_PASSWORD', "(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");
 
 // Définition des constantes
 define('LIMIT', 20);
+define('SUPPORTED_FORMATS', array('image/jpeg'));
+define('MAX_SIZE', 5*1024*1024);
+define('UPLOAD_USER_PROFILE', __DIR__ . '/../public/uploads/users/');

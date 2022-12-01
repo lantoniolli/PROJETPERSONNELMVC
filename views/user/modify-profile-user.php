@@ -14,7 +14,7 @@
                                 <h5 class="my-3 username__profile"><?= $user->user_name ?></h5>
                                 <p class="mb-1 label__profile">Administratrice</p>
                                 <div class="col-12 d-flex justify-content-center align-items-center mb-2 mt-2">
-                                    <select class="form-select text-center" aria-label="Choisir son emblème">
+                                    <select class="form-select text-center" aria-label="Choisir son emblème" name="family">
                                         <option value="1">Arryn</option>
                                         <option value="2">Baratheon</option>
                                         <option value="3">Greyjoy</option>
@@ -47,7 +47,7 @@
                                             <p class="mb-0 label__profile">Email</p>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="username" value="<?= $user->user_mail ?>">
+                                            <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="email" value="<?= $user->user_mail ?>">
                                         </div>
                                     </div>
                                     <hr>
@@ -84,7 +84,7 @@
                                             <p class="mb-0 label__profile">Avatar</p>
                                         </div>
                                         <div class="col-sm-8">
-                                            <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="profile">
                                         </div>
                                     </div>
                                     <hr>
@@ -102,7 +102,7 @@
                                             <p class="mb-0 label__profile">Gestion</p>
                                         </div>
                                         <div class="col-sm-8">
-                                            <button type="button" class="btn btn__color" data-bs-toggle="modal" data-bs-target="#modaldelete">Supprimer son
+                                            <button type="button" class="btn btn__color__alt" data-bs-toggle="modal" data-bs-target="#modaldelete">Supprimer son
                                                 compte</button>
                                             <!-- MODAL -->
                                             <div class="modal fade" id="modaldelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -138,7 +138,6 @@
         <div class="card mb-4">
             <div class="card-body text-center">
                 <div class="row">
-
                     <div class="row">
                         <div class="col-sm-4">
                             <p class="mb-0 label__profile">Réservations</p>
