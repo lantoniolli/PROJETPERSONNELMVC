@@ -58,10 +58,13 @@ try {
 
         if (empty($errors)) {
 
+            $result = rand(1,9);
             $user = new User();
             $user->setPseudo($pseudo);
             $user->setUserMail($email);
             $user->setUserPassword($passwordh);
+            $user->setId_house($result);
+            $user->setUseravatar($result);
 
             $isUserAdded = $user->add();
 

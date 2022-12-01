@@ -13,8 +13,18 @@
                                 <img src="/public/assets/img/iconscomment.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3 username__profile"><?= $user->user_name ?></h5>
                                 <p class="mb-1 label__profile">Administratrice</p>
-                                <img src="/public/assets/img/Sigils/Targaryen.png" alt="avatar" class="rounded-circle img-fluid" style="width: 70px;">
-                                <div class="d-flex justify-content-center mb-2 mt-2">
+                                <div class="col-12 d-flex justify-content-center align-items-center mb-2 mt-2">
+                                    <select class="form-select text-center" aria-label="Choisir son emblème">
+                                        <option value="1">Arryn</option>
+                                        <option value="2">Baratheon</option>
+                                        <option value="3">Greyjoy</option>
+                                        <option value="4">Lannister</option>
+                                        <option value="5">Martell</option>
+                                        <option value="6">Stark</option>
+                                        <option value="7">Targaryen</option>
+                                        <option value="8">Tully</option>
+                                        <option value="9">Tyrell</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +65,7 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body label__profile text-center">
-                                                            Pour modifier votre mot de passe, cliquez sur le bouton <span class="bbbb">"Modifier mon mot de passe"</span>. <br>Un e-mail contenant toute la procédure de réivous sera envoyé.
+                                                            Pour modifier votre mot de passe, cliquez sur le bouton <span class="bbbb">"Modifier mon mot de passe"</span>. <br>Un e-mail contenant toute la procédure vous sera envoyé.
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -103,11 +113,11 @@
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div class="modal-body label__profile">
-                                                            <p class="text-center">Êtes-vous sûr de vouloir supprimer votre compte ?</p>                                                         
+                                                            <p class="text-center">Êtes-vous sûr de vouloir supprimer votre compte ?</p>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn__color__alt" data-bs-dismiss="modal">Annuler</button>
-                                                            <button type="submit" class="btn  btn__color">Confirmer la suppression</button>
+                                                            <a href="/controllers/delete-userCtrl.php?id=<?= $user->id_users ?>"><button type="button" class="btn  btn__color">Confirmer la suppression</button></a>
                         </form>
                     </div>
                 </div>

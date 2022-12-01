@@ -8,9 +8,9 @@ class User {
     private ?string $_userpassword;
     private datetime $_created_at;
     private datetime $_validated_at;
-    private int $_useravatar;
-    private string $_userrole;
-    private string $_id_house;
+    private int $_user_avatar;
+    private string $_user_role;
+    private int $_user_house;
 
 // Getters
     public function getId(): int {
@@ -32,13 +32,13 @@ class User {
         return $this->_validated_at;
     }
     public function getUseravatar(): int {
-        return $this->_useravatar;
+        return $this->_user_avatar;
     }
     public function getUserrole(): string {
-        return $this->_userrole;
+        return $this->_user_role;
     }
-    public function getId_house(): string {
-        return $this->_id_house;
+    public function getId_house(): int {
+        return $this->_user_house;
     }
 // Setters
     // id
@@ -67,38 +67,41 @@ class User {
         }
     // useravatar
         public function setUseravatar(int $useravatar): void {
-            $this->_useavatar = $useravatar;
+            $this->_user_avatar = $useravatar;
         }
     // userrole
         public function setUserrole(string $userrole): void {
-            $this->_userrole = $userrole;
+            $this->_user_role = $userrole;
         }
     // id_house
-        public function setId_house(string $id_house): void {
-            $this->_id_house = $id_house;
+        public function setId_house(int $id_house): void {
+            $this->_user_house = $id_house;
         }
 
 // Fonction permettant d'ajouter un utilisateur à la base de donnée.
     public function add()
     {
-        $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`) VALUES (:pseudo, :usermail, :userpassword)';
+        $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`, `user_house`, `user_avatar`) VALUES (:pseudo, :usermail, :userpassword, :user_house, :user_avatar)';
             
         $sth = Database::getInstance()->prepare($adduser);
 
         $sth->bindValue(':pseudo', $this->getpseudo(), PDO::PARAM_STR);
         $sth->bindValue(':usermail', $this->getUsermail(), PDO::PARAM_STR);
         $sth->bindValue(':userpassword', $this->getUserpassword(), PDO::PARAM_STR);
+        $sth->bindValue(':user_house', $this->getId_house(), PDO::PARAM_INT);
+        $sth->bindValue(':user_avatar', $this->getUseravatar(), PDO::PARAM_INT);
 
         return $sth->execute();
     }
 // Fonction permettant de supprimer un utilisateur de la base de donnée.
-    public function delete(){
+    public static function delete($id){
 
         $pdo = Database::getInstance();
         $deleteUser = 'DELETE FROM users WHERE id_users = :id';
         $sth = $pdo->prepare($deleteUser);
-        $sth->bindValue(':id', $this->getId(), PDO::PARAM_INT);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
         return $sth->execute();
+        
     }
 // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
 public static function exist_Email(string $usermail): bool
@@ -162,7 +165,7 @@ public static function exist_Pseudo(string $pseudo): bool
             WHERE `user_name` LIKE :search 
             OR `user_mail` LIKE :search 
             OR `created_at` = :search
-            OR `user_roles` = :search';
+            OR `user_role` = :search';
             $sth = Database::getInstance()->prepare($sql);
             $sth->bindValue(':search', '%'.$search.'%');
             if ($sth->execute()) {

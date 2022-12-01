@@ -15,6 +15,7 @@
                                     <p class="text-muted small mb-0 detail__comments">
                                         Posté le <?= date("d/m/Y H:i", strtotime($post->posted_at)) ?></p>
                                 </div>
+                                <div class="ms-5"><img src="/public/assets/img/sigils/<?= $post->user_house ?>.png" height="30px"></div>
                             </div>
                             <div class="moderation d-flex">
                                 <!-- Affiche le bouton seulement pour l'auteur du commentaire -->

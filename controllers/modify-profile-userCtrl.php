@@ -11,7 +11,7 @@ if (isset($_SESSION['user'])) {
 try {
     $id_user = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $user = User::getOne($id_user);
-    $comments = Comment::getAllComments();
+    $comments = Comment::getAllCommentsByUser($id_user);
     $nbComments = count($comments);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
