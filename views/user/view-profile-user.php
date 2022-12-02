@@ -8,7 +8,15 @@
                     <div class="col-lg-3">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="/public/assets/img/useravatar/<?= $users->user_house ?>.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+
+                            <?php 
+                                $filename = '/public/uploads/users/'.$id_user .'jpeg';
+                                if(file_exists($filename)){ ?>
+                                <img src="/public/uploads/users/<?= $id_user ?>.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> <?php
+                                } else { ?>
+                                    <img src="/public/uploads/users/<?= $users->user_house ?>.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;"> <?php } ?>
+                                
+
                                 <h5 class="my-3 username__profile"><?= $users->user_name ?></h5>
                                 <p class="mb-1 label__profile">Administratrice</p>
                                 <img src="/public/assets/img/sigils/<?= $users->user_house ?>.png" alt="emblème_maison" class="rounded-circle img-fluid" style="width: 70px;">

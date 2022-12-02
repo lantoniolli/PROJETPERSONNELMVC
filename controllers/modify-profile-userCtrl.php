@@ -4,6 +4,7 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
 
+session_start();
 
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
@@ -15,6 +16,7 @@ try {
     $user = User::getOne($id_user);
     $comments = Comment::getAllCommentsByUser($id_user);
     $nbComments = count($comments);
+
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
@@ -49,7 +51,22 @@ try {
                 }
             }
         }
+
+    // TRAITEMENT DU SELECT
+    $houses = filter_input(INPUT_POST, 'houses', FILTER_SANITIZE_NUMBER_INT);
+    // if (empty($houses)) {
+    //     $errors['houses'] = 'Ce champ est obligatoire';
+    // } else {
+    //     $isOk = filter_var($houses, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
+    //     if ($isOk == false) {
+    //         $errors['houses'] = 'La donnée n\'est pas conforme';
+    //     }
+    // }
+        // var_dump($_FILES);
+        // die;
     // TRAITEMENT DE L'IMAGE
+
+    if($_FILES['profile']['name']!=''){
 
     if (!isset($_FILES['profile'])) {
         throw new Exception('Erreur !');
@@ -68,7 +85,7 @@ try {
     }
 
     $from = $_FILES['profile']['tmp_name'];
-    $filename = $id; //$user->id.'.jpg';
+    $filename = $id_user; //$user->id.'.jpg';
     $extension = $extension = pathinfo($_FILES["profile"]["name"], PATHINFO_EXTENSION);
     $to = UPLOAD_USER_PROFILE . $filename . '.' . $extension;
 
@@ -117,19 +134,13 @@ try {
     // Sauvegarde l'image recadrée
     $croppedDestination = UPLOAD_USER_PROFILE .$filename . '.' . 'jpg';
     imagejpeg($ressourceCropped, $croppedDestination, 75);
-            
-        }
+    }
 
-    // TRAITEMENT DU SELECT
-        $family = filter_input(INPUT_POST, 'family', FILTER_SANITIZE_SPECIAL_CHARS);
-        if (empty($role)) {
-            $errors['family'] = 'Ce champ est obligatoire';
-        } else {
-            $isOk = filter_var($role, FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => '/' . REGEX_NO_NUMBER . '/')));
-            if ($isOk == false) {
-                $errors['family'] = 'La donnée n\'est pas conforme';
-            }
+        if(empty($errors)){
+            $isUpdatedUser = User::modify($id_user, $username, $email, $houses);
+            $user = User::getOne($id_user);
         }
+    }
 
 } catch (Exception $e) {
     echo $e->getMessage();

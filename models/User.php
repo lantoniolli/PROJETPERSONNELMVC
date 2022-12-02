@@ -103,6 +103,21 @@ class User {
         return $sth->execute();
         
     }
+// Fonction permettant de modifier un utilisateur
+public static function modify($id, $username, $email, $houses){
+    $pdo = Database::getInstance();
+    $modifyUser = 'UPDATE users SET `user_name` = :pseudo, `user_mail` = :usermail, `user_house` = :user_house WHERE id_users = :id';
+    $sth = $pdo->prepare($modifyUser);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    $sth->bindValue(':pseudo', $username, PDO::PARAM_STR);
+    $sth->bindValue(':usermail', $email, PDO::PARAM_STR);
+    $sth->bindValue(':user_house', $houses, PDO::PARAM_INT);
+    // $sth->bindValue(':user_avatar', $user_avatar, PDO::PARAM_INT);
+    return $sth->execute();
+
+}
+
+    
 // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
 public static function exist_Email(string $usermail): bool
     {
@@ -137,7 +152,7 @@ public static function exist_Pseudo(string $pseudo): bool
     public static function getByEmail(string $email):object|bool
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT * FROM `users` WHERE `user_mail`= :email;';
+        $sql = 'SELECT * FROM `users` WHERE `user_mail`= :email and `validated_at` IS NOT NULL';
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':email',$email);
         if($sth->execute()){
@@ -199,4 +214,13 @@ public static function count(){
     $count = $sth->fetch();
     return $count->nbUsers;
 }
+
+// public static function validateAccount(int $id) {
+//     $sql = "UPDATE users SET `validated_at` = NOW() WHERE `id` = :id;
+//     $sth = Database::getInstance()->prepare($sql);
+//     $sth->bindValue(':id', $id, PDO::PARAM_INT);
+//     return $sth->execute();
+
+
+// }
 }

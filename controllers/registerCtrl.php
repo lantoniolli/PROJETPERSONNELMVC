@@ -67,10 +67,15 @@ try {
             $user->setUseravatar($result);
 
             $isUserAdded = $user->add();
-
+            $id_user = $user->getId();
+            $token = JWT::set($id_user);
             // On redirige l'utilisateur vers la page de connexion via une session flash si tout c'est bien passé.
             if ($isUserAdded) {
                 SessionFlash::set('Success', 'Votre compte a bien été créé, vous pouvez vous connecter.');
+                $to = $email;
+                $subject = 'Inscription sur le site';
+                $message = 'ouais ouais. Veuillez cliquer : <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateUserCtrl.php?=' .$id_user. '">Cliquez-ici</a>';
+                mail($to, $subject,$message);
                 header('Location: /controllers/loginCtrl.php');
                 exit();
             } else {
