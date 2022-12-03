@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/controllers/dashboard/user-listCtrl.php" class="nav-link text-light bg-dark">
+                <a href="/controllers/dashboard/dash-all-meetingsCtrl.php" class="nav-link text-light bg-dark">
                     <i class="uil uil-megaphone button__icon"></i>
                     Liste des Conventions
                 </a>

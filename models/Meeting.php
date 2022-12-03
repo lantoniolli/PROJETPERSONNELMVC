@@ -49,7 +49,7 @@ class Meeting {
 // Ajouter un meeting
     public function add(): void {
         $sth = Database::getInstance();
-        $query = $sth->prepare('INSERT INTO meeting (event_date, event_location, event_name, event_description) VALUES (:event_date, :event_location, :event_name, :event_description)');
+        $query = $sth->prepare('INSERT INTO meetings (event_date, event_location, event_name, event_description) VALUES (:event_date, :event_location, :event_name, :event_description)');
         $query->execute([
             'event_date' => $this->getEvent_date(),
             'event_location' => $this->getEvent_location(),
@@ -60,9 +60,9 @@ class Meeting {
 // Récupérer tous les meetings
     public static function getAllMeetings(): array {
         $sth = Database::getInstance();
-        $query = $sth->prepare('SELECT * FROM meeting');
+        $query = $sth->prepare('SELECT * FROM `meetings`');
         $query->execute();
-        $meetings = $query->fetchAll(PDO::FETCH_ASSOC);
+        $meetings = $query->fetchAll();
         return $meetings;
     }
 // Récupérer un meeting
