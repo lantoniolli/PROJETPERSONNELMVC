@@ -10,8 +10,8 @@
                     <div class="col-lg-3">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="/public/uploads/users/<?= $id_user ?>.jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                <h5 class="my-3 username__profile"><?= $user->user_name ?></h5>
+                                <img src="<?= $filename ?>".jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <h5 class="my-3 username__profile"><?= $users->user_name ?></h5>
                                 <p class="mb-1 label__profile">Administratrice</p>
                                 <form method="POST" enctype="multipart/form-data">
                                     <div class="col-12 d-flex justify-content-center align-items-center mb-2 mt-2">

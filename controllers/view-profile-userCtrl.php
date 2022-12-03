@@ -10,9 +10,14 @@ if (isset($_SESSION['user'])) {
     $id = $user->id_users;}
 
 try {
-
     $id_user = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     $users = User::getOne($id_user);
+    $filename = __DIR__ . '/../public/uploads/users/' . $id_user . '.jpg';
+    if (file_exists($filename)) {
+        $filename = '/public/uploads/users/' . $id . '.jpg';
+    } else {
+        $filename = '/public/assets/img/useravatar/' . $users->user_house . '.jpg';
+    }
     $comments = Comment::getAllCommentsByUser($id_user);
     $nbComments = count($comments);
     

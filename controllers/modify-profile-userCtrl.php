@@ -13,7 +13,7 @@ if (isset($_SESSION['user'])) {
 
 try {
     $id_user = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
-    $user = User::getOne($id_user);
+    $users = User::getOne($id_user);
     $comments = Comment::getAllCommentsByUser($id_user);
     $nbComments = count($comments);
 
@@ -140,6 +140,13 @@ try {
             $isUpdatedUser = User::modify($id_user, $username, $email, $houses);
             $user = User::getOne($id_user);
         }
+    }
+
+    $filename = __DIR__ . '/../public/uploads/users/' . $id_user . '.jpg';
+    if (file_exists($filename)) {
+        $filename = '/public/uploads/users/' . $id . '.jpg';
+    } else {
+        $filename = '/public/assets/img/useravatar/' . $users->user_house . '.jpg';
     }
 
 } catch (Exception $e) {
