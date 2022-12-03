@@ -2,6 +2,7 @@
 
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../helpers/JWT.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
 
 try {
@@ -67,19 +68,19 @@ try {
             $user->setUseravatar($result);
 
             $isUserAdded = $user->add();
+            
             $id_user = $user->getId();
-            $token = JWT::set($id_user);
-            // On redirige l'utilisateur vers la page de connexion via une session flash si tout c'est bien passé.
-            if ($isUserAdded) {
-                SessionFlash::set('Success', 'Votre compte a bien été créé, vous pouvez vous connecter.');
+            $element = ['id'=> $id_user, 'email'=> $email];
+            $element['valid'] = time() + 60*15;
+            $token = JWT::set($element);
+            if($user){
                 $to = $email;
-                $subject = 'Inscription sur le site';
-                $message = 'ouais ouais. Veuillez cliquer : <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateUserCtrl.php?=' .$id_user. '">Cliquez-ici</a>';
-                mail($to, $subject,$message);
-                header('Location: /controllers/loginCtrl.php');
-                exit();
-            } else {
-                SessionFlash::set('Error', 'Une erreur est survenue, veuillez réessayer.');
+                $subject = 'Inscription à notre super site!';
+                $message = 'Veuillez cliquer : <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateAccountCtrl.php?token='.$token.'">Cliquez-ici</a>';
+                mail($to,$subject,$message);
+                die;
+                header('Location: /controllers/signInCtrl.php');
+                exit;
             }
         }
     }

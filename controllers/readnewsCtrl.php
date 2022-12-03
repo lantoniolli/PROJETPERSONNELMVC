@@ -34,6 +34,7 @@ try {
         // exit();
     }
     $posts = Comment::getAllComments($id_news);
+
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }

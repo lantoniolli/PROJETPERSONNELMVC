@@ -1,6 +1,8 @@
-    <?php
-    if (SessionFlash::exist()){ ?>
-        <?= SessionFlash::get('Success'); ?>
+<?php
+    if (SessionFlash::exist()) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
+        </div>
     <?php } ?>
     <div>
     <div class="page-content p-5" id="content">

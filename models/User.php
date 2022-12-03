@@ -1,7 +1,8 @@
 <?php
 require_once(__DIR__ . '/../helpers/database.php');
 
-class User {
+class User
+{
     private int $_id;
     private string $_pseudo;
     private string $_usermail;
@@ -12,77 +13,104 @@ class User {
     private string $_user_role;
     private int $_user_house;
 
-// Getters
-    public function getId(): int {
+    private PDO $pdo;
+
+    public function __construct(){
+        $this->pdo = Database::getInstance();
+    }
+
+    // Getters
+    public function getId(): int
+    {
         return $this->_id;
     }
-    public function getPseudo(): string {
+    public function getPseudo(): string
+    {
         return $this->_pseudo;
     }
-    public function getUsermail(): string {
+    public function getUsermail(): string
+    {
         return $this->_usermail;
     }
-    public function getUserpassword(): string {
+    public function getUserpassword(): string
+    {
         return $this->_userpassword;
     }
-    public function getCreated_at(): datetime {
+    public function getCreated_at(): datetime
+    {
         return $this->_created_at;
     }
-    public function getValidated_at(): datetime {
+    public function getValidated_at(): datetime
+    {
         return $this->_validated_at;
     }
-    public function getUseravatar(): int {
+    public function getUseravatar(): int
+    {
         return $this->_user_avatar;
     }
-    public function getUserrole(): string {
+    public function getUserrole(): string
+    {
         return $this->_user_role;
     }
-    public function getId_house(): int {
+    public function getId_house(): int
+    {
         return $this->_user_house;
     }
-// Setters
+    // Setters
     // id
-        public function setId(int $id): void {
-            $this->_id = $id;
-        }
-    // pseudo
-        public function setPseudo(string $pseudo): void {
-            $this->_pseudo = $pseudo;
-        }
-
-        public function setUsermail(string $usermail): void {
-            $this->_usermail = $usermail;
-        }
-    // userpassword
-        public function setUserpassword(string $userpassword): void {
-            $this->_userpassword = $userpassword;
-        }
-    // created_at
-        public function setCreated_at(datetime $created_at): void {
-            $this->_created_at = $created_at;
-        }
-    // validated_at
-        public function setValidated_at(datetime $validated_at): void {
-            $this->_validated_at = $validated_at;
-        }
-    // useravatar
-        public function setUseravatar(int $useravatar): void {
-            $this->_user_avatar = $useravatar;
-        }
-    // userrole
-        public function setUserrole(string $userrole): void {
-            $this->_user_role = $userrole;
-        }
-    // id_house
-        public function setId_house(int $id_house): void {
-            $this->_user_house = $id_house;
-        }
-
-// Fonction permettant d'ajouter un utilisateur à la base de donnée.
-    public function add()
+    public function setId(int $id): void
     {
-        $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`, `user_house`, `user_avatar`) VALUES (:pseudo, :usermail, :userpassword, :user_house, :user_avatar)';
-            
+        $this->_id = $id;
+    }
+    // pseudo
+    public function setPseudo(string $pseudo): void
+    {
+        $this->_pseudo = $pseudo;
+    }
+
+    public function setUsermail(string $usermail): void
+    {
+        $this->_usermail = $usermail;
+    }
+    // userpassword
+    public function setUserpassword(string $userpassword): void
+    {
+        $this->_userpassword = $userpassword;
+    }
+    // created_at
+    public function setCreated_at(datetime $created_at): void
+    {
+        $this->_created_at = $created_at;
+    }
+    // validated_at
+    public function setValidated_at(datetime $validated_at): void
+    {
+        $this->_validated_at = $validated_at;
+    }
+    // useravatar
+    public function setUseravatar(int $useravatar): void
+    {
+        $this->_user_avatar = $useravatar;
+    }
+    // userrole
+    public function setUserrole(string $userrole): void
+    {
+        $this->_user_role = $userrole;
+    }
+    // id_house
+    public function setId_house(int $id_house): void
+    {
+        $this->_user_house = $id_house;
+    }
+
+    // Fonction permettant d'ajouter un utilisateur à la base de donnée.
+    public function add(int $id = null): User|bool
+    {
+        if (is_null($id)) {
+            $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`, `user_house`, `user_avatar`) VALUES (:pseudo, :usermail, :userpassword, :user_house, :user_avatar)';
+        } else {
+            $sql = 'UPDATE';
+        }
         $sth = Database::getInstance()->prepare($adduser);
 
         $sth->bindValue(':pseudo', $this->getpseudo(), PDO::PARAM_STR);
@@ -91,35 +119,43 @@ class User {
         $sth->bindValue(':user_house', $this->getId_house(), PDO::PARAM_INT);
         $sth->bindValue(':user_avatar', $this->getUseravatar(), PDO::PARAM_INT);
 
-        return $sth->execute();
+        if ($sth->execute()) {
+            if (is_null($id)) {
+                $this->setId($this->pdo->lastInsertId());
+            }
+            if ($sth->rowCount() == 1 || !is_null($id)) {
+                return $this;
+            }
     }
-// Fonction permettant de supprimer un utilisateur de la base de donnée.
-    public static function delete($id){
+    }
+
+    // Fonction permettant de supprimer un utilisateur de la base de donnée.
+    public static function delete($id)
+    {
 
         $pdo = Database::getInstance();
         $deleteUser = 'DELETE FROM users WHERE id_users = :id';
         $sth = $pdo->prepare($deleteUser);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         return $sth->execute();
-        
     }
-// Fonction permettant de modifier un utilisateur
-public static function modify($id, $username, $email, $houses){
-    $pdo = Database::getInstance();
-    $modifyUser = 'UPDATE users SET `user_name` = :pseudo, `user_mail` = :usermail, `user_house` = :user_house WHERE id_users = :id';
-    $sth = $pdo->prepare($modifyUser);
-    $sth->bindValue(':id', $id, PDO::PARAM_INT);
-    $sth->bindValue(':pseudo', $username, PDO::PARAM_STR);
-    $sth->bindValue(':usermail', $email, PDO::PARAM_STR);
-    $sth->bindValue(':user_house', $houses, PDO::PARAM_INT);
-    // $sth->bindValue(':user_avatar', $user_avatar, PDO::PARAM_INT);
-    return $sth->execute();
+    // Fonction permettant de modifier un utilisateur
+    public static function modify($id, $username, $email, $houses)
+    {
+        $pdo = Database::getInstance();
+        $modifyUser = 'UPDATE users SET `user_name` = :pseudo, `user_mail` = :usermail, `user_house` = :user_house WHERE id_users = :id';
+        $sth = $pdo->prepare($modifyUser);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->bindValue(':pseudo', $username, PDO::PARAM_STR);
+        $sth->bindValue(':usermail', $email, PDO::PARAM_STR);
+        $sth->bindValue(':user_house', $houses, PDO::PARAM_INT);
+        // $sth->bindValue(':user_avatar', $user_avatar, PDO::PARAM_INT);
+        return $sth->execute();
+    }
 
-}
 
-    
-// Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
-public static function exist_Email(string $usermail): bool
+    // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
+    public static function exist_Email(string $usermail): bool
     {
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT *FROM `users` WHERE `user_mail`= :mail;");
@@ -133,8 +169,8 @@ public static function exist_Email(string $usermail): bool
             }
         };
     }
-// Fonction permettant de vérifier que le pseudo est déjà existant dans la base de donnée.
-public static function exist_Pseudo(string $pseudo): bool
+    // Fonction permettant de vérifier que le pseudo est déjà existant dans la base de donnée.
+    public static function exist_Pseudo(string $pseudo): bool
     {
         $pdo = Database::getInstance();
         $stmt = $pdo->prepare("SELECT *FROM `users` WHERE `user_name`= :pseudo;");
@@ -149,21 +185,21 @@ public static function exist_Pseudo(string $pseudo): bool
         };
     }
 
-    public static function getByEmail(string $email):object|bool
+    public static function getByEmail(string $email): object|bool
     {
         $pdo = Database::getInstance();
         $sql = 'SELECT * FROM `users` WHERE `user_mail`= :email and `validated_at` IS NOT NULL';
         $sth = $pdo->prepare($sql);
-        $sth->bindValue(':email',$email);
-        if($sth->execute()){
+        $sth->bindValue(':email', $email);
+        if ($sth->execute()) {
             $result = $sth->fetch();
-            if($result){
+            if ($result) {
                 return $result;
             }
         }
         return false;
     }
-// Fonction permettant de récupérer tous les utilisateurs de la base de donnée.
+    // Fonction permettant de récupérer tous les utilisateurs de la base de donnée.
     public static function getAll($limit, $offset, $search = ''): array
     {
         if (empty($search)) {
@@ -182,16 +218,15 @@ public static function exist_Pseudo(string $pseudo): bool
             OR `created_at` = :search
             OR `user_role` = :search';
             $sth = Database::getInstance()->prepare($sql);
-            $sth->bindValue(':search', '%'.$search.'%');
+            $sth->bindValue(':search', '%' . $search . '%');
             if ($sth->execute()) {
                 $users = $sth->fetchAll(PDO::FETCH_OBJ);
                 return $users;
-
-            }    
+            }
         }
     }
 
-// Fonction permettant de récupérer un seul utilisateur
+    // Fonction permettant de récupérer un seul utilisateur
     public static function getOne(int $id): object|bool
     {
         $pdo = Database::getInstance();
@@ -206,21 +241,30 @@ public static function exist_Pseudo(string $pseudo): bool
         }
         return false;
     }
-// Méthode pour calculer le nombre total d'utilisateurs.
-public static function count(){
-    $sql = 'SELECT COUNT(`id_users`) AS `nbUsers` FROM `users`;';
-    $sth = Database::getInstance()->prepare($sql);
-    $sth->execute();
-    $count = $sth->fetch();
-    return $count->nbUsers;
-}
+    // Méthode pour calculer le nombre total d'utilisateurs.
+    public static function count()
+    {
+        $sql = 'SELECT COUNT(`id_users`) AS `nbUsers` FROM `users`;';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->execute();
+        $count = $sth->fetch();
+        return $count->nbUsers;
+    }
 
-// public static function validateAccount(int $id) {
-//     $sql = "UPDATE users SET `validated_at` = NOW() WHERE `id` = :id;
-//     $sth = Database::getInstance()->prepare($sql);
-//     $sth->bindValue(':id', $id, PDO::PARAM_INT);
-//     return $sth->execute();
+    public static function validateAccount(int $id): bool
+    {
 
+        $pdo = Database::getInstance();
+        $sql = "UPDATE users SET `validated_at` = NOW() WHERE `id_users` = :id;";
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        if ($sth->execute()) {
+            if ($sth->rowCount() == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-// }
+    // }
 }

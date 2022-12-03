@@ -18,7 +18,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
     $comments = new Comment();
-
+    
     
     header('Location : /controllers/readnewsCtrl.php?id=' . $id_news);
     }

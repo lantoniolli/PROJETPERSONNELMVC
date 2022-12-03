@@ -328,7 +328,10 @@ label {
   text-align: center;
 }
 
-
+#timer {
+  font-weight: bold;
+  font-size: 4em;
+}
 /* .test__container{
   height: 90vh;
 }

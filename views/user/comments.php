@@ -5,13 +5,19 @@
             <div class="card">
                 <?php
                 foreach ($posts as $post) {
+                    $filename = __DIR__ . '/../public/uploads/users/' . $post->id_users . '.jpg';
+                    if (file_exists($filename)) {
+                        $filename = '/public/uploads/users/' . $post->id_users . '.jpg';
+                    } else {
+                        $filename = '/public/assets/img/useravatar/' . $post->user_house . '.jpg';
+                    }
                 ?>
                     <div class="card-body">
                         <div class="d-flex flex-start align-items-center justify-content-between">
                             <div class="avatar_pseudo_user d-flex">
-                                <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/cerseiicons.jpg" alt="avatar" width="60" height="60" />
+                                <img class="rounded-circle shadow-1-strong me-3" src="<?= $filename ?>" alt="avatar" width="60" height="60" />
                                 <div>
-                                    <h6 class="fw-bold mb-1 username__comments"><?= $post->user_name ?></h6>
+                                    <a href="/controllers/view-profile-userCtrl.php?id=<?= $post->id_users ?>"<h6 class="fw-bold mb-1 username__comments"><?= $post->user_name ?></h6>
                                     <p class="text-muted small mb-0 detail__comments">
                                         Posté le <?= date("d/m/Y H:i", strtotime($post->posted_at)) ?></p>
                                 </div>
@@ -46,12 +52,12 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-md-12 col-lg-10 col-xl-8">
                                 <h2 class="display-3 news__title text-center">Commentaires</h2>
-                                <div class="card">
-                                    <div class="card-body">
+                    <div class="card">
+                        <div class="card-body">
                                         <div class="text-center mb-3">Pour poster un commentaire vous devez être inscrit ou connecté</div>
-                                        <div class="d-flex flex-start justify-content-around">
+                            <div class="d-flex flex-start justify-content-around">
                                             <button type="button" class="btn btn__color btn-lg">S'inscrire</button>
-                                            <div>
+                                <div>
                                                 <button type="button" class="btn btn__color__alt btn-lg">Se connecter</button>
                                             </div>
                                         </div>
