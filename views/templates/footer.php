@@ -10,6 +10,7 @@
     CKEDITOR.replace('editor1');
 </script>
 <script src="/public/assets/js/home.js"></script>
+<script src="/public/assets/js/bootstrap-input-spinner.js"></script>
 </body>
 
 </html>

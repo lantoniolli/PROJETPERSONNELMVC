@@ -11,4 +11,3 @@ myText.addEventListener("keyup", function () {
 });
 
 
-$("input[type='number']").inputSpinner()

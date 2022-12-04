@@ -83,24 +83,24 @@
                                             Sed voluptas labore est obcaecati vitae ut quasi voluptas ea recusandae dolores! Et corporis velit aut deserunt rerum et consequatur vero et tempore assumenda.
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10" name="reservation"><span class="input-number-increment">+</span>
-                                                    </div>
+                                                    <input type="number" min="1" max="10" placeholder="0" />
+
+
+                                                    <!-- <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10" name="reservation"><span class="input-number-increment">+</span> -->
                                                 </div>
-                                                <div class="text-center"><button type="button" class="btn btn__color mt-3">S'inscrire à cette convention</button></div>
                                             </div>
+                                            <div class="text-center"><button type="button" class="btn btn__color mt-3">S'inscrire à cette convention</button></div>
+                                        </div>
                                     </div>
                                 </div>
                     </div>
                 </div>
                 </form>
             <?php
-                        }
+            }
             ?>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
     </div>
 </section>
