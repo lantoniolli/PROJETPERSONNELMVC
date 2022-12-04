@@ -3,7 +3,7 @@ require_once(__DIR__ . '/../helpers/database.php');
 
 class Meeting {
     private int $_id;
-    private datetime $_event_date;
+    private string $_event_date;
     private string $_event_location;
     private string $_event_name;
     private string $_event_description;
@@ -12,7 +12,7 @@ class Meeting {
     public function getId(): int {
         return $this->_id;
     }
-    public function getEvent_date(): datetime {
+    public function getEvent_date(): string {
         return $this->_event_date;
     }
     public function getEvent_location(): string {
@@ -30,7 +30,7 @@ class Meeting {
             $this->_id = $id;
         }
     // event_date
-        public function setEvent_date(datetime $event_date): void {
+        public function setEvent_date(string $event_date): void {
             $this->_event_date = $event_date;
         }
     // event_location
@@ -47,15 +47,16 @@ class Meeting {
         }
 // Methods
 // Ajouter un meeting
-    public function add(): void {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('INSERT INTO meetings (event_date, event_location, event_name, event_description) VALUES (:event_date, :event_location, :event_name, :event_description)');
-        $query->execute([
-            'event_date' => $this->getEvent_date(),
-            'event_location' => $this->getEvent_location(),
-            'event_name' => $this->getEvent_name(),
-            'event_description' => $this->getEvent_description()
-        ]);
+    public function add() {
+        $sql = 'INSERT INTO `meetings` (`event_date`, `event_location`, `event_name`, `event_description`) VALUES (:event_date, :event_location, :event_name, :event_description)';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':event_date', $this->getEvent_date(), PDO::PARAM_STR);
+        $sth->bindValue(':event_location', $this->getEvent_location(), PDO::PARAM_STR);
+        $sth->bindValue(':event_name', $this->getEvent_name(), PDO::PARAM_STR);
+        $sth->bindValue(':event_description', $this->getEvent_description(), PDO::PARAM_STR);
+        if ($sth->execute()) {
+            return ($sth->rowCount() >= 1) ? true : false;
+        }
     }
 // Récupérer tous les meetings
     public static function getAllMeetings(): array {
@@ -65,10 +66,20 @@ class Meeting {
         $meetings = $query->fetchAll();
         return $meetings;
     }
-// Récupérer un meeting
-    public static function getMeeting(int $id): array {
+
+// Récupérer un certain nombre de meetings
+    public static function getLastMeetings(): array{
         $sth = Database::getInstance();
-        $query = $sth->prepare('SELECT * FROM `meetings` WHERE `id` = :id');
+        $query = $sth->prepare('SELECT * FROM `meetings` ORDER BY `event_date` DESC LIMIT 3');
+        $query->execute();
+        $meetings = $query->fetchAll();
+        return $meetings;
+    }
+
+// Récupérer un meeting
+    public static function getMeeting(int $id){
+        $sth = Database::getInstance();
+        $query = $sth->prepare('SELECT * FROM `meetings` WHERE `id_meetings` = :id');
         $query->execute([
             'id' => $id
         ]);
@@ -83,23 +94,29 @@ class Meeting {
         return $nbMeetings;
     }
 // Modifier un meeting
-    public function update(): void {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('UPDATE `meetings` SET `event_date` = :event_date, `event_location` = :event_location, `event_name` = :event_name, `event_description` = :event_description WHERE `id` = :id');
-        $query->execute([
-            'id' => $this->getId(),
-            'event_date' => $this->getEvent_date(),
-            'event_location' => $this->getEvent_location(),
-            'event_name' => $this->getEvent_name(),
-            'event_description' => $this->getEvent_description()
-        ]);
+    public function updateMeetings($id) {
+        $sql = 'UPDATE `meetings` SET `event_date` = :event_date, `event_location` = :event_location, `event_name` = :event_name, `event_description` = :event_description WHERE `id_meetings` = :id';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':event_date', $this->getEvent_date(), PDO::PARAM_STR);
+        $sth->bindValue(':event_location', $this->getEvent_location(), PDO::PARAM_STR);
+        $sth->bindValue(':event_name', $this->getEvent_name(), PDO::PARAM_STR);
+        $sth->bindValue(':event_description', $this->getEvent_description(), PDO::PARAM_STR);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        if ($sth->execute()) {
+            return ($sth->rowCount() >= 1) ? true : false;
+        }
     }
 // Supprimer un meeting
-    public function delete(): void {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('DELETE FROM `meetings` WHERE `id` = :id');
-        $query->execute([
-            'id' => $this->getId()
-        ]);
+    public static function delete($id) {
+    $sql = 'DELETE FROM `meetings` WHERE `id_meetings` = :id';
+    $sth = Database::getInstance()->prepare($sql);
+    $sth->bindValue(':id', $id, PDO::PARAM_INT);
+    if ($sth->execute()) {
+        if ($sth->rowCount() >= 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
+}
 }

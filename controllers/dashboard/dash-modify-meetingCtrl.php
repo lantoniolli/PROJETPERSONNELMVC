@@ -1,23 +1,15 @@
 <?php
-//-------------------------------- APPEL DES PAGES NÉCESSAIRES ----------------------------------------//
 require_once(__DIR__ . '/../../config/config.php');
 require_once(__DIR__ . '/../../models/Meeting.php');
-require_once(__DIR__ . '/./sidebar-Ctrl.php');
 require_once(__DIR__ . '/../../helpers/SessionFlash.php');
+require_once(__DIR__ . '/./sidebar-Ctrl.php');
 
-//--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
-if (!isset($_SESSION['user'])) {
-    header('Location: /controllers/homeController.php');
-    exit;
-}
-if (isset($_SESSION['user'])) {
-    $user = $_SESSION['user'];
-    $id = $user->id_users;
-}
 try {
+    $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
+    $meeting = Meeting::getMeeting($id);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+         //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
 
         //nettoyage des données
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -56,30 +48,31 @@ try {
         }
         if (empty($errors)) {
 
+            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
+            $pdo = Database::getInstance();
+            $target_file = $meeting->id_meetings . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
+            $target_path = $target_dir . $target_file;
+
             $meeting = new Meeting();
             $meeting->setEvent_name($title);
             $meeting->setEvent_date($date);
             $meeting->setEvent_location($location);
             $meeting->setEvent_description($content);
-
-            if($isMeetingAdded = $meeting->add()){
-            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/meetings/";
-            $pdo = Database::getInstance();
-            $lastInsertId = $pdo->lastInsertId();
-            $target_file = $lastInsertId . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
-            $target_path = $target_dir . $target_file;
             
-            if (move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path)) {
-                echo 'Le fichier ' . basename($_FILES["news_img"]["name"]) . ' a été téléchargé.';
-                SessionFlash::set('La convention a bien été créée');
+            if ($meeting->updateMeetings($id)) {
+                move_uploaded_file($_FILES["news_img"]["tmp_name"], $target_path);
+                SessionFlash::set('La convention a bien été modifiée');
                 header('Location: /controllers/dashboard/dash-all-meetingsCtrl.php');
-                exit();}
+                exit();
             } else {
-                $errors['news_img'] = 'Erreur lors de l\'upload de l\'image';
-                SessionFlash::set('Erreur lors de l\'upload de l\'image');
-                header ('Location: /controllers/dashboard/dash-add-meetingCtrl.php');
+                SessionFlash::set('Une erreur est survenue lors de l\'upload de l\'image');
+                header('Location: /controllers/dashboard/dash-add-meetingCtrl.php');
                 exit();
             }
+        } else {
+            SessionFlash::set('Une erreur est survenue lors de la modification de la convention');
+            header('Location: /controllers/dashboard/dash-add-meetingCtrl.php');
+            exit();
         }
     }
 } catch (PDOException $e) {
@@ -90,5 +83,5 @@ try {
 //-------------------------------- APPEL DES VUES ----------------------------------------//
 include(__DIR__ . '/../../views/admin/dash-templates/dash-header.php');
 include(__DIR__ . '/../../views/admin/dash-templates/dash-navbar.php');
-include(__DIR__ . '/../../views/admin/dash-add-meeting.php');
+include(__DIR__ . '/../../views/admin/dash-modify-meeting.php');
 include(__DIR__ . '/../../views/admin/dash-templates/dash-footer.php');

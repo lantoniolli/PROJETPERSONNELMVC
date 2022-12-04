@@ -45,7 +45,7 @@
                         <!-- Bouton pour modifier la convention -->
                         <a href="/controllers/dashboard/dash-modify-meetingCtrl.php?id=<?= $meeting->id_meetings ?>"><i class="uil uil-comment-alt-edit button__icon"></i></a>
                         <!-- Bouton pour supprimer la convention -->
-                        <a href="/controllers/dashboard/dash-delete-newsCtrl.php?id=<?= $meeting->id_meetings ?>"><i class="uil uil-trash button__icon"></i></a>
+                        <a href="/controllers/dashboard/dash-delete-meetingCtrl.php?id=<?= $meeting->id_meetings ?>"><i class="uil uil-trash button__icon"></i></a>
                     </td>
                 </tr>
             <?php

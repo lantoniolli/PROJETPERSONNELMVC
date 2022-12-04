@@ -27,7 +27,7 @@
                         <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
                         <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
                         <p class="news__text">
-                            <?= html_entity_decode(substr($lastNews->news_content,0,240)) ?>
+                            <?= html_entity_decode(substr($lastNews->news_content, 0, 240)) ?>
                         </p>
                         <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
                     </div>
@@ -48,36 +48,20 @@
                 <div class="row d-flex justify-content-around">
                     <table class="table">
                         <tbody>
-                            <tr>
-                                <th scope="row">19 Nov 22</th>
-                                <td>Convention N°1</td>
-                                <td>Paris</td>
-                                <td>Button</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">19 Nov 22</th>
-                                <td>Convention N°1</td>
-                                <td>Paris</td>
-                                <td>Button</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">19 Nov 22</th>
-                                <td>Convention N°1</td>
-                                <td>Paris</td>
-                                <td>Button</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">19 Nov 22</th>
-                                <td>Convention N°1</td>
-                                <td>Paris</td>
-                                <td>Button</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">19 Nov 22</th>
-                                <td>Convention N°1</td>
-                                <td>Paris</td>
-                                <td>Button</td>
-                            </tr>
+                            <?php
+                            foreach ($lastMeetings as $lastMeeting) {
+                            ?>
+                                <tr>
+                                <td class="text-center"><?= date("d/m/Y", strtotime($lastMeeting->event_date)) ?></td>
+                                <td class="text-center"><?= $lastMeeting->event_name ?></td>
+                                <td class="text-center"><?= $lastMeeting->event_location ?></td>
+                                <td class="text-center">
+                        <!-- Bouton pour voir la fiche de convention -->
+                        <a href="/controllers/view-meetingCtrl.php?id=<?= $lastMeeting->id_meetings ?>"><i class="uil uil-plus-circle button__icon__alt"></i></a>
+                                </tr>
+                            <?php
+                            };
+                            ?>
                         </tbody>
                     </table>
                     <a class="btn mt-2 col-sm-6" href="#">S'y inscrire ?</a>
@@ -85,4 +69,3 @@
             </div>
         </div>
     </section>
-
