@@ -42,46 +42,40 @@
                                         </div>
                                         <table class="table text-center">
                                             <thead>
-                                                <tr>
-                                                    <th scope="col" class="label__profile">Date</th>
-                                                    <th scope="col" class="label__profile">Lieu</th>
-                                                    <th scope="col" class="label__profile">Gestion</th>
-                                                </tr>
+                                                    <tr>
+                                                        <th scope="col" class="label__profile">Date</th>
+                                                        <th scope="col" class="label__profile">Lieu</th>
+                                                    </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                foreach ($allBookings as $booking) {
+                                                ?>
                                                 <tr>
-                                                    <td>18/02/2022</td>
-                                                    <td>Paris</td>
-                                                    <td>Icone</td>
+                                                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->event_date)) ?></td>
+                                                    <td><?= $booking->event_location ?></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>20/07/2022</td>
-                                                    <td>Marseille</td>
-                                                    <td>Icone</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>02/12/2022</td>
-                                                    <td>Lyon</td>
-                                                    <td>Icone</td>
-                                                </tr>
+                                            <?php
+                                                };
+                                            ?>
                                             </tbody>
                                         </table>
                                         <div class="col-sm-12 text-center">
                                             <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
-                                <?php if (!isset($_SESSION['user'])) { ?>
-                                    <div class="flex-end"><a href="#">En savoir plus sur les Conventions ?</a></div>
-                                <?php } else if ($user->id_users != $id_user) { ?>
-                                    <div class="flex-end"><a href="#">En savoir plus sur les Conventions</a></div>
-                                <?php } else if ($user->id_users == $id_user) { ?>
-                                    <div class="flex-end"><a href="/controllers/modify-profile-userCtrl.php?id=<?= $id_user ?>">Modifier mon profil</a></div>
+                                            <?php if (!isset($_SESSION['user'])) { ?>
+                                                <div class="flex-end"><a href="#">En savoir plus sur les Conventions ?</a></div>
+                                            <?php } else if ($user->id_users != $id_user) { ?>
+                                                <div class="flex-end"><a href="#">En savoir plus sur les Conventions</a></div>
+                                            <?php } else if ($user->id_users == $id_user) { ?>
+                                                <div class="flex-end"><a href="/controllers/modify-profile-userCtrl.php?id=<?= $id_user ?>">Modifier mon profil</a></div>
 
-                                <?php } ?>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </section>

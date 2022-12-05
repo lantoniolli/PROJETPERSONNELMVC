@@ -78,18 +78,24 @@
                                     <div class="row d-flex justify-content-center">
                                         <div class="col-md-12 col-lg-10 col-xl-8">
                                             <h2 class="display-3 news__title text-center">Inscription</h2>
+                                            <?php
+                                            if (SessionFlash::exist()) { ?>
+                                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                    <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
+                                                </div>
+                                            <?php } ?>
                                             Ea esse veniam qui voluptatum sequi nam cupiditate quia? Id sapiente voluptas a quos tempora hic pariatur velit.
 
                                             Sed voluptas labore est obcaecati vitae ut quasi voluptas ea recusandae dolores! Et corporis velit aut deserunt rerum et consequatur vero et tempore assumenda.
                                             <div class="card">
                                                 <div class="card-body text-center">
-                                                    <input type="number" min="1" max="10" placeholder="0" />
+                                                    <input type="number" min="1" max="10" placeholder="0" name="places" />
 
 
                                                     <!-- <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10" name="reservation"><span class="input-number-increment">+</span> -->
                                                 </div>
                                             </div>
-                                            <div class="text-center"><button type="button" class="btn btn__color mt-3">S'inscrire à cette convention</button></div>
+                                            <div class="text-center"><button type="submit" class="btn btn__color mt-3">S'inscrire à cette convention</button></div>
                                         </div>
                                     </div>
                                 </div>
@@ -97,7 +103,7 @@
                 </div>
                 </form>
             <?php
-            }
+                        }
             ?>
             </div>
         </div>

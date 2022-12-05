@@ -3,6 +3,7 @@
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
+require_once(__DIR__ . '/../models/Bookings.php');
 
 session_start();
 if (isset($_SESSION['user'])) {
@@ -20,6 +21,8 @@ try {
     }
     $comments = Comment::getAllCommentsByUser($id_user);
     $nbComments = count($comments);
+    
+
     
 
 } catch (Exception $e) {

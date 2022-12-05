@@ -400,6 +400,11 @@ label {
   font-weight: bold;
 }
 
+.subtitle__text{
+  font-family: "unifrak", Georgia, serif;
+  color:#8f031d;
+  font-weight: bold;
+}
 
 @media (min-width: 768px) {
   .masthead {

@@ -107,7 +107,7 @@ class User
     public function add(int $id = null): User|bool
     {
         if (is_null($id)) {
-            $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`, `user_house`, `user_avatar`) VALUES (:pseudo, :usermail, :userpassword, :user_house, :user_avatar)';
+            $adduser = 'INSERT INTO users (`user_name`, `user_mail`, `user_password`, `user_house`, `user_avatar`, `user_role`) VALUES (:pseudo, :usermail, :userpassword, :user_house, :user_avatar, :user_role)';
         } else {
             $sql = 'UPDATE';
         }
@@ -118,6 +118,7 @@ class User
         $sth->bindValue(':userpassword', $this->getUserpassword(), PDO::PARAM_STR);
         $sth->bindValue(':user_house', $this->getId_house(), PDO::PARAM_INT);
         $sth->bindValue(':user_avatar', $this->getUseravatar(), PDO::PARAM_INT);
+        $sth->bindValue(':user_role', $this->getUserrole(), PDO::PARAM_STR);
 
         if ($sth->execute()) {
             if (is_null($id)) {

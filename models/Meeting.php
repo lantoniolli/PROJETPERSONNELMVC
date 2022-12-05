@@ -119,4 +119,14 @@ class Meeting {
         }
     }
 }
+// Fonction permettant de récupérer les conventions reservées par l'utilisateur
+    public static function getMeetingsByUser($id) {
+        $sth = Database::getInstance();
+        $query = $sth->prepare('SELECT * FROM `meetings` INNER JOIN `bookings`');
+        $query->execute([
+            'id' => $id
+        ]);
+        $meetings = $query->fetchAll();
+        return $meetings;
+    }
 }

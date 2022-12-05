@@ -66,6 +66,7 @@ try {
             $user->setUserPassword($passwordh);
             $user->setId_house($result);
             $user->setUseravatar($result);
+            $user->setUserrole(2);
 
             $isUserAdded = $user->add();
             
@@ -78,8 +79,7 @@ try {
                 $subject = 'Inscription à notre super site!';
                 $message = 'Veuillez cliquer : <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateAccountCtrl.php?token='.$token.'">Cliquez-ici</a>';
                 mail($to,$subject,$message);
-                die;
-                header('Location: /controllers/signInCtrl.php');
+                header('Location: /controllers/mail-sendedCtrl.php');
                 exit;
             }
         }
