@@ -66,7 +66,7 @@ try {
             $user->setUserPassword($passwordh);
             $user->setId_house($result);
             $user->setUseravatar($result);
-            $user->setUserrole(2);
+            $user->setUserrole(3);
 
             $isUserAdded = $user->add();
             

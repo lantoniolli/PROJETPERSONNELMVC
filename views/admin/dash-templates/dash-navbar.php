@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link text-light bg-dark">
+                <a href="/controllers/dashboard/dash-add-rolesCtrl.php" class="nav-link text-light bg-dark">
                     <i class="uil uil-key-skeleton-alt button__icon"></i>
                     Gérer les privilèges
                 </a>

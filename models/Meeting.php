@@ -112,8 +112,8 @@ class Meeting {
     $sth = Database::getInstance()->prepare($sql);
     $sth->bindValue(':id', $id, PDO::PARAM_INT);
     if ($sth->execute()) {
+        return true;
         if ($sth->rowCount() >= 1) {
-            return true;
         } else {
             return false;
         }

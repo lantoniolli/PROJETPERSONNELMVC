@@ -10,7 +10,7 @@ class User
     private datetime $_created_at;
     private datetime $_validated_at;
     private int $_user_avatar;
-    private string $_user_role;
+    private int $_user_role;
     private int $_user_house;
 
     private PDO $pdo;
@@ -48,7 +48,7 @@ class User
     {
         return $this->_user_avatar;
     }
-    public function getUserrole(): string
+    public function getUserrole(): int
     {
         return $this->_user_role;
     }
@@ -93,7 +93,7 @@ class User
         $this->_user_avatar = $useravatar;
     }
     // userrole
-    public function setUserrole(string $userrole): void
+    public function setUserrole(int $userrole): void
     {
         $this->_user_role = $userrole;
     }
@@ -140,21 +140,8 @@ class User
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         return $sth->execute();
     }
-    // Fonction permettant de modifier un utilisateur
-    public static function modify($id, $username, $email, $houses)
-    {
-        $pdo = Database::getInstance();
-        $modifyUser = 'UPDATE users SET `user_name` = :pseudo, `user_mail` = :usermail, `user_house` = :user_house WHERE id_users = :id';
-        $sth = $pdo->prepare($modifyUser);
-        $sth->bindValue(':id', $id, PDO::PARAM_INT);
-        $sth->bindValue(':pseudo', $username, PDO::PARAM_STR);
-        $sth->bindValue(':usermail', $email, PDO::PARAM_STR);
-        $sth->bindValue(':user_house', $houses, PDO::PARAM_INT);
-        // $sth->bindValue(':user_avatar', $user_avatar, PDO::PARAM_INT);
-        return $sth->execute();
-    }
-
-
+    
+    
     // Fonction permettant de vérifier que l'adresse mail est déjà existante dans la base de donnée.
     public static function exist_Email(string $usermail): bool
     {
@@ -227,6 +214,18 @@ class User
         }
     }
 
+    // Fonction permettant de récupérer tous les utilisateurs
+    public static function getAllUsers(): array
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users`';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $users = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $users;
+    }
+
+    
     // Fonction permettant de récupérer un seul utilisateur
     public static function getOne(int $id): object|bool
     {
@@ -251,10 +250,10 @@ class User
         $count = $sth->fetch();
         return $count->nbUsers;
     }
-
+    
     public static function validateAccount(int $id): bool
     {
-
+        
         $pdo = Database::getInstance();
         $sql = "UPDATE users SET `validated_at` = NOW() WHERE `id_users` = :id;";
         $sth = $pdo->prepare($sql);
@@ -266,6 +265,55 @@ class User
         }
         return false;
     }
+    
+    // Fonction permettant de changer le rôle d'un utilisateur
+    public static function changeRole(int $id, string $role)
+    {
+        $pdo = Database::getInstance();
+        $sql = "UPDATE users SET `user_roles` = :role WHERE `id_users` = :id;";
+        $sth = $pdo->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->bindValue(':role', $role, PDO::PARAM_INT);
+        if ($sth->execute()) {
+            if ($sth->rowCount() == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // Fonction permettant de modifier un utilisateur
+    public static function modify($id, $username, $email, $houses)
+    {
+        $pdo = Database::getInstance();
+        $modifyUser = 'UPDATE users SET `user_name` = :pseudo, `user_mail` = :usermail, `user_house` = :user_house WHERE id_users = :id';
+        $sth = $pdo->prepare($modifyUser);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->bindValue(':pseudo', $username, PDO::PARAM_STR);
+        $sth->bindValue(':usermail', $email, PDO::PARAM_STR);
+        $sth->bindValue(':user_house', $houses, PDO::PARAM_INT);
+        // $sth->bindValue(':user_avatar', $user_avatar, PDO::PARAM_INT);
+        return $sth->execute();
+    }
 
-    // }
+    // Récupérer tous les administrateurs
+    public static function getAllAdmins(): array
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users` WHERE `user_roles` = 1';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $users = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $users;
+    }
+
+    // Récupérer tous les rédacteurs
+    public static function getAllWriters(): array
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM `users` WHERE `user_roles` = 2';
+        $sth = $pdo->prepare($sql);
+        $sth->execute();
+        $users = $sth->fetchAll(PDO::FETCH_OBJ);
+        return $users;
+    }
 }
