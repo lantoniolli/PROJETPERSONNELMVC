@@ -1,9 +1,14 @@
-<!-- MODIFY PROFILE FORM USER -->
-<?php if (!isset($_SESSION['user'])) { ?>
-                                    <div class="flex-end"><a href="#">Dehors sans connexion</a></div>
-                                <?php } else if ($user->id_users != $id_user) { ?>
-                                    <div class="flex-end"><a href="#">Dehors va sur ton profil</a></div>
-                                <?php } else if ($user->id_users == $id_user) { ?>
+<!-- VERIFICATION DES DROITS D'AFFICHAGE -->
+<?php if (!isset($_SESSION['user'])) {
+    // Personne non connectée cherchant à accéder à la modification d'un profil
+    header('Location: /controllers/loginCtrl.php');
+} else if ($user->id_users != $id_user) {
+    // Personne connectée cherchant à accéder à la modification d'un profil qui ne lui appartient pas
+    header('Location: /controllers/view-profile-userCtrl.php?id=' . $id_user);}
+    // Personne autorisée à accéder à la modification de son profil
+    else if ($user->id_users == $id_user) 
+    { ?>
+    
 <section class="about__section" id="about">
     <div class="page-content test__container p-2" id="content">
         <div class="container d-flex justify-content-center align-items-center mt-5 test2__container">

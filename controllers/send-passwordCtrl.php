@@ -1,24 +1,15 @@
 <?php
 
 require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../helpers/JWT.php');
+require_once(__DIR__ . '/../helpers/sessionflash.php');
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-
-        // Nettoyage et validation de l'e-mail.
-        // Nettoyage 
+        
         $email = trim(filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_EMAIL));
-
-        // Validation
-        if (empty($email)) {
-            $error['Email'] = '<script>alert("Le mail est obligatoire.")</script>';
-        } else {
-            $isOkEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
-            if ($isOkEmail == false) {
-                $error['Email'] = 'Le mail n\'est pas conforme.';
-            }
-        }
     }
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());

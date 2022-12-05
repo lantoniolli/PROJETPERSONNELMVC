@@ -35,6 +35,55 @@
   --input-color: hsl(var(--hue-color), 70%, 90%);
   --body-color: hsl(var(--hue-color), 60%, 99%);
   --container-color: #fff;
+
+
+
+
+  /* CSS HEX */
+--dark-liver-horses: #4B3026ff;
+--davys-grey: #605D53ff;
+--middle-grey: #877E6Fff;
+--redwood: #AA5F54ff;
+--spanish-gray: #A49A94ff;
+
+/* CSS HSL */
+--dark-liver-horses: hsla(16, 33%, 22%, 1);
+--davys-grey: hsla(46, 7%, 35%, 1);
+--middle-grey: hsla(38, 10%, 48%, 1);
+--redwood: hsla(8, 34%, 50%, 1);
+--spanish-gray: hsla(22, 8%, 61%, 1);
+
+/* SCSS HEX */
+$dark-liver-horses: #4B3026ff;
+$davys-grey: #605D53ff;
+$middle-grey: #877E6Fff;
+$redwood: #AA5F54ff;
+$spanish-gray: #A49A94ff;
+
+/* SCSS HSL */
+$dark-liver-horses: hsla(16, 33%, 22%, 1);
+$davys-grey: hsla(46, 7%, 35%, 1);
+$middle-grey: hsla(38, 10%, 48%, 1);
+$redwood: hsla(8, 34%, 50%, 1);
+$spanish-gray: hsla(22, 8%, 61%, 1);
+
+/* SCSS RGB */
+$dark-liver-horses: rgba(75, 48, 38, 1);
+$davys-grey: rgba(96, 93, 83, 1);
+$middle-grey: rgba(135, 126, 111, 1);
+$redwood: rgba(170, 95, 84, 1);
+$spanish-gray: rgba(164, 154, 148, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(0deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-right: linear-gradient(90deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-bottom: linear-gradient(180deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-left: linear-gradient(270deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-top-right: linear-gradient(45deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-bottom-right: linear-gradient(135deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-top-left: linear-gradient(225deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-bottom-left: linear-gradient(315deg, #4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
+$gradient-radial: radial-gradient(#4B3026ff, #605D53ff, #877E6Fff, #AA5F54ff, #A49A94ff);
 }
 
 input:focus,
@@ -408,11 +457,12 @@ label {
 
 @media (min-width: 768px) {
   .masthead {
-    background: url(/public/assets/img/fond.png);
+    background: url(/public/assets/img/masterhead.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-size: cover;
+
   }
 
   .masthead h1,

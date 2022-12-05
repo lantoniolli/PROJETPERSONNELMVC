@@ -1,3 +1,4 @@
+
 <div class="page-content p-5" id="content">
     <!-- Toggle button -->
     <button id="sidebarCollapse" type="button" class="btn bg-dark rounded-pill shadow-sm px-2 mb-4"><i class="uil uil-maximize-left button__icon"></i></button>
