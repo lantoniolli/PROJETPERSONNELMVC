@@ -1,7 +1,6 @@
-<section class="about__section" id="about">
-    <div class="page-content test__container p-2" id="content">
-        <h2 class="display-3 news__title text-center">Lecture Article</h2>
-        <div class="separator"></div>
+<div class="py-5">
+    <div class="container py-5">
+        <h2 class="display-3 divider">Article</h2>
         <!-- sessionflash -->
         <?php
         if (SessionFlash::exist()) { ?>
@@ -24,4 +23,7 @@
                     <p class="news__text">
                         <?= html_entity_decode($news->news_content) ?>
                 </div>
-</section>
+            </div>
+        </div>
+    </div>
+</div>

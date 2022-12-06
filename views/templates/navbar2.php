@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light shadow-sm background__nav fixed-top">
-    <div class="container"> <a class="navbar-brand d-flex align-items-center" href="#">
+    <div class="container"> <a class="navbar-brand d-flex align-items-center" href="/controllers/homeController.php">
             <img src="/public/assets/img/iconsnav.png" alt="logo" width="40" height="40" class="d-inline-block align-text-top">
             <span class="ml-3 title_nav"></apan>
         </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
@@ -7,11 +7,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar4">
             <ul class="navbar-nav mr-auto pl-lg-4">
-                <li class="nav-item px-lg-2 active"> <a class="nav-link item_link" href="#">Accueil</a> </li>
-                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="fas fa-spa"></i></span>Actualités</a> </li>
-                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-user"></i></i></span>Conventions</a> </li>
-                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-user"></i></i></span>A propos</a> </li>
-                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-user"></i></i></span>Contact</a> </li>
+                <li class="nav-item px-lg-2 active"> <a class="nav-link item_link" href="/controllers/homeController.php">Accueil</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="/controllers/all-newsCtrl.php"><span class="d-inline-block d-lg-none icon-width"></span>Actualités</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="/controllers/meetingController.php"><span class="d-inline-block d-lg-none icon-width"></span>Conventions</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="/controllers/aboutCtrl.php"><span class="d-inline-block d-lg-none icon-width"></span>A propos</a> </li>
+                <li class="nav-item px-lg-2"> <a class="nav-link item_link" href="/controllers/contactCtrl.php"><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
             </ul>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDarkDropdown">
                 <ul class="navbar-nav">

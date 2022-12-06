@@ -1,7 +1,6 @@
-<section class="about__section" id="about">
-    <div class="page-content p-5" id="content">
-        <h2 class="display-3 news__title">A propos</h2>
-        <div class="separator"></div>
+<div class="py-5">
+    <div class="container py-5">
+        <h2 class="display-3 divider">En savoir plus</h2>
 
         <div class="container d-flex flex-column align-items-center">
             <div class="row gx-5 justify-content-center align-items-center">
@@ -42,5 +41,4 @@
 
         </div>
     </div>
-    </div>
-</section>
+</div>

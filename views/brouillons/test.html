@@ -1,44 +1,32 @@
-<!DOCTYPE html>
-<html lang="fr">
+<div class="py-5">
+    <div class="container py-5">
+        <h2 class="display-3 divider">Actualités</h2>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="../../public/assets/css/register.css"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="/public/assets/css/navbar.css">
-    <link rel="stylesheet" href="/public/assets/css/home.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="/public/assets/css/footer.css">
-    <script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
-    <title>//</title>
-</head>
-
-<body>
-
-    <div class="container my-5 py-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-12 col-lg-10 col-xl-8">
-                <h2 class="display-3 news__title text-center">Commentaires</h2>
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text-center mb-3">Pour poster un commentaire vous devez être inscrit ou connecté</div>
-                        <div class="d-flex flex-start justify-content-around">
-                            <button type="button" class="btn btn__color btn-lg">S'inscrire</button>
-                            <div>
-                                <button type="button" class="btn btn__color__alt btn-lg">Se connecter</button>
-                            </div>
+        <?php
+        foreach ($allNews as $new) {
+        ?>
+            <div class="container d-flex flex-column mt-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-md-5 mb-4">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                            <img src="/public/uploads/<?= $new->id_news ?>.jpg" class="img-fluid" />
+                            <a href="#">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
                         </div>
+                    </div>
+                    <div class="col-md-5 mb-4">
+                        <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $new->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($new->news_posted_at)) ?></span>
+                        <h4 class="news__title"><strong><?= $new->news_title ?></strong></h4>
+                        <div class="news__text">
+                            <?= html_entity_decode($new->news_content) ?>
+                        </div>
+                        <button type="button" class="btn btn__color">Lire l'article</button>
                     </div>
                 </div>
             </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
-
-
-    
-</body>
-
-</html>
+</div>

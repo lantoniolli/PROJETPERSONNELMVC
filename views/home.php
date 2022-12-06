@@ -11,8 +11,8 @@
 
     <section class="about__section" id="about">
         <div class="page-content p-5" id="content">
-            <h2 class="display-3 news__title">Actualités</h2>
-            <div class="separator"></div>
+            <h2 class="display-3 divider">Actualités</h2>
+            <!-- <div class="separator"></div> -->
             <div class="container d-flex flex-column mt-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-md-4 mb-4">
@@ -41,8 +41,8 @@
 
     <section class="meetings__section" id="meetings">
         <div class="page-content p-5" id="content">
-            <h2 class="display-3 news__title">Prochaines Conventions</h2>
-            <div class="separator"></div>
+            <h2 class="display-3 divider">Prochaines Conventions</h2>
+            <!-- <div class="separator"></div> -->
 
             <div class="container d-flex flex-column align-items-center">
                 <div class="row d-flex justify-content-around">

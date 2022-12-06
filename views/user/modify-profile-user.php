@@ -1,11 +1,9 @@
 
-    
-<section class="about__section" id="about">
-    <div class="page-content test__container p-2" id="content">
+<div class="py-5 justify-content-center align-items-center">
+    <div class="container py-5">
+        <h2 class="display-3 divider">Modifier son profil</h2>
         <div class="container d-flex justify-content-center align-items-center mt-5 test2__container">
             <div class="col-12">
-                <h2 class="display-3 news__title text-center">Modifier mon Profil</h2>
-                <div class="separator"></div>
                 <div class="row ">
                     <div class="col-lg-3">
                         <div class="card mb-4">
@@ -200,4 +198,3 @@
                     </div>
                 </div>
             </div>
-</section>

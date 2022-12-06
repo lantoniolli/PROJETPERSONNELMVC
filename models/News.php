@@ -72,7 +72,7 @@ class News
     public static function getAllNews(): array
     {
         $sth = Database::getInstance();
-        $query = $sth->query('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users`LIMIT 2');
+        $query = $sth->query('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users`');
         $news = $query->fetchAll();
         return $news;
     }
