@@ -38,7 +38,7 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <p class="mb-0">
-                                            <p class="mb-0 text-center"><?= $comments ?></p>
+                                            <!-- <p class="mb-0 text-center"><?= $comments ?></p> -->
                                         </div>
                                         <table class="table text-center">
                                             <thead>
@@ -52,8 +52,9 @@
                                                 foreach ($allBookings as $booking) {
                                                 ?>
                                                 <tr>
-                                                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->event_date)) ?></td>
-                                                    <td><?= $booking->event_location ?></td>
+                                                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->dateEvent)) ?></td>
+                                                    <td><?= $booking->nameEvent ?></td>
+                                                    <td><?= $booking->locationEvent ?></td>
                                                 </tr>
                                             <?php
                                                 };

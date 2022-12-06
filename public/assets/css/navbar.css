@@ -1,5 +1,25 @@
+@font-face {
+  font-family: "Trajan";
+  src: url(/public/assets/fonts/Trajan/Trajan\ Pro.ttf);
+}
+@font-face {
+  font-family: "Games of Thrones";
+  src: url(/public/assets/fonts/GameOfThrones/Game\ of\ Thrones.ttf);
+}
+
+@font-face {
+  font-family: "Minion";
+  src: url(/public/assets/fonts/Minion/Minion\ Pro\ Regular.ttf);
+}
+
+@font-face {
+  font-family: "unifrak";
+  src: url(/public/assets/fonts/unifrak/UnifrakturMaguntia-Book.ttf);
+}
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 .background__nav{
-  background-color: #35343A;
+  background-color: #CDAC99ff;
 }
 .dropdown-toggle::after {
   display: none;
@@ -9,3 +29,12 @@ text-decoration: none!important;
 }
 /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
 .icon-width { width: 2rem;}
+
+.item_link{
+  color:#9A4A4Dff;
+  font-weight: bold;
+  font-family: 'Trajan';
+}
+.title_nav{
+  font-family: 'unifrak';
+}

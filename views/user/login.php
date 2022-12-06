@@ -12,7 +12,7 @@
                 <!-- INPUT PASSWORD -->
                 <div>
                     <label for="password">Mot de Passe</label>
-                    <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control mb-3 rounded-0 form-input shadow-none" required>
+                    <input type="password" name="password" id="password" placeholder="8 caractères" class="form-control mb-3 rounded-0 form-input shadow-none" required>
                     <p class="error_form" id="passwordTextError"><?= $errors['password'] ?? '' ?></p>
                     <p class="forgot_password text-center"><a href="/controllers/forgetPasswordCtrl.php">Mot de passe oublié ?</a></p>
                 </div>

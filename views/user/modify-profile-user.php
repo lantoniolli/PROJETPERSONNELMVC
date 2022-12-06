@@ -1,13 +1,4 @@
-<!-- VERIFICATION DES DROITS D'AFFICHAGE -->
-<?php if (!isset($_SESSION['user'])) {
-    // Personne non connectée cherchant à accéder à la modification d'un profil
-    header('Location: /controllers/loginCtrl.php');
-} else if ($user->id_users != $id_user) {
-    // Personne connectée cherchant à accéder à la modification d'un profil qui ne lui appartient pas
-    header('Location: /controllers/view-profile-userCtrl.php?id=' . $id_user);}
-    // Personne autorisée à accéder à la modification de son profil
-    else if ($user->id_users == $id_user) 
-    { ?>
+
     
 <section class="about__section" id="about">
     <div class="page-content test__container p-2" id="content">
@@ -173,34 +164,29 @@
                                         <div class="col-sm-4">
                                             <p class="mb-0 label__profile">Réservations</p>
                                         </div>
-                                        <div class="col-sm-8">
-                                            <?= $nbComments ?>
-                                        </div>
                                         <hr>
                                         <table class="table">
                                             <thead>
                                                 <tr>
                                                     <th scope="col" class="label__profile">Date</th>
+                                                    <th scope="col" class="label__profile">Nom</th>
                                                     <th scope="col" class="label__profile">Lieu</th>
                                                     <th scope="col" class="label__profile">Gestion</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                            <?php
+                                                foreach ($allBookings as $booking) {
+                                                ?>
                                                 <tr>
-                                                    <td>18/02/2022</td>
-                                                    <td>Paris</td>
-                                                    <td>Icone</td>
+                                                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->dateEvent)) ?></td>
+                                                    <td><?= $booking->nameEvent ?></td>
+                                                    <td><?= $booking->locationEvent ?></td>
+                                                    <td><a href="/controllers/delete-bookingCtrl.php?id_meeting=<?= $booking->idEvent ?>"><i class="uil uil-trash button__icon"></i></a></td>
                                                 </tr>
-                                                <tr>
-                                                    <td>20/07/2022</td>
-                                                    <td>Marseille</td>
-                                                    <td>Icone</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>02/12/2022</td>
-                                                    <td>Lyon</td>
-                                                    <td>Icone</td>
-                                                </tr>
+                                            <?php
+                                                };
+                                            ?>
                                             </tbody>
                                         </table>
                                         <div class="col-sm-12">
@@ -215,4 +201,3 @@
                 </div>
             </div>
 </section>
-<?php } ?>

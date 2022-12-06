@@ -18,6 +18,10 @@ try {
     $id_meeting = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
     // Récupérer la convention
     $meeting = Meeting::getMeeting($id_meeting);
+    $reservations = Booking::getBookingsByMeetings($id_meeting);
+    // var_dump($id_meeting);
+    // var_dump($reservations);
+    // die;
 
     // Récupérer les données du formulaire de réservation.
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {

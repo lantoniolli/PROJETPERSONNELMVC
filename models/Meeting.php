@@ -120,13 +120,35 @@ class Meeting {
     }
 }
 // Fonction permettant de récupérer les conventions reservées par l'utilisateur
-    public static function getMeetingsByUser($id) {
-        $sth = Database::getInstance();
-        $query = $sth->prepare('SELECT * FROM `meetings` INNER JOIN `bookings`');
-        $query->execute([
-            'id' => $id
-        ]);
-        $meetings = $query->fetchAll();
-        return $meetings;
+    public static function getMeetingsByUser($id): array {
+        $pdo = Database::getInstance();
+        $sth = $pdo->prepare('SELECT 
+        DISTINCT(`bookings`.`id_users`),
+        `meetings`.`id_meetings` AS idEvent,
+        `meetings`.`event_date` AS dateEvent,
+        `meetings`.`event_name` AS nameEvent,
+        `meetings`.`event_description`AS descriptionEvent,
+        `meetings`.`event_location` AS locationEvent
+        FROM `meetings`
+        JOIN `bookings` ON `bookings`.`id_meetings` = `meetings`.`id_meetings`
+        WHERE `bookings`.`id_users` = :id;');
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->execute();
+        return $sth->fetchAll();
     }
+
+    // fonction permettant à l'utilisateur de supprimer une réservation
+    public static function deleteBooking($id) {
+        $sql = 'DELETE FROM `bookings` WHERE `id_bookings` = :id';
+        $sth = Database::getInstance()->prepare($sql);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        if ($sth->execute()) {
+            return true;
+            if ($sth->rowCount() >= 1) {
+            } else {
+                return false;
+            }
+        }
+    }
+
 }

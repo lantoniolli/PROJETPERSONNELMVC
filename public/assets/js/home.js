@@ -10,4 +10,3 @@ myText.addEventListener("keyup", function () {
   }
 });
 
-

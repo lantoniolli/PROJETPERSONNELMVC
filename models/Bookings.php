@@ -63,4 +63,33 @@ class Booking
         }
     }
 
+    // Fonction permettant de récupérer le nombre de réservation par meetings
+    public static function getBookingsByMeetings($id)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT 
+        SUM(`bookings`.`booking_places`) AS `places`
+        FROM `bookings`
+        WHERE `bookings`.`id_meetings` = :id;';
+        $stmt = $pdo->prepare($sql);
+        $stmt -> bindValue(':id', $id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return $stmt->fetch();
+        }
+    }
+
+    // Fonction permettant à un utilisateur de supprimer une réservation
+    public static function delete($id, $id_meeting)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'DELETE FROM `bookings`
+        WHERE `id_meetings` = :id_meetings AND `id_users` = :id ;';
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id_meetings', $id_meeting, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return ($stmt->rowCount() >= 1) ? true : false;
+        }
+    }
+
 }
