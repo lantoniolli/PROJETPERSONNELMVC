@@ -12,6 +12,8 @@ if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id = $user->id_users;
 }
+
+
 //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
 try {
     // Récupérer la dernière news publiée

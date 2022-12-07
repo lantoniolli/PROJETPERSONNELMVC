@@ -4,11 +4,11 @@ if (SessionFlash::exist()) { ?>
     <?= SessionFlash::get('Error'); ?>
 <?php } ?>
 
-<div>
-    <div class="page-content p-5" id="content">
+<div class="py-5">
+    <div class="container py-5">
+        <h5 class="divider mb-5">Formulaire d'inscription</h5>
         <div class="contact-form-wrapper d-flex justify-content-center">
             <form action="" method="POST" class="contact-form">
-                <h5 class="title mb-5">Formulaire d'inscription</h5>
                 <!-- INPUT PSEUDO -->
                 <div>
                     <label for="pseudo">Pseudo</label>
@@ -33,14 +33,16 @@ if (SessionFlash::exist()) { ?>
                     <p class="error_form" id="errorConfirmPassword"><?= $error['ConfirmPassword'] ?? '' ?></p>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">1</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" name="conditions" required>
+                    <label class="form-check-label" for="inlineCheckbox1">Conditions Générales</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">2</label>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" name="cgu" required>
+                    <label class="form-check-label" for="inlineCheckbox2">CGU</label>
                 </div>
                 <p class="forgot_password text-center">Déjà inscrit ? <a href="/controllers/loginController.php">Se Connecter</a></p>
+                <p class="error_form" id="errorPassword"><?= $errors['conditions'] ?? '' ?></p>
+                <p class="error_form" id="errorPassword"><?= $errors['cgu'] ?? '' ?></p>
                 <div class="submit-button-wrapper">
                     <input type="submit" value="S'inscrire">
                 </div>

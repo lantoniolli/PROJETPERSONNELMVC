@@ -5,7 +5,7 @@
             <div class="card">
                 <?php
                 foreach ($posts as $post) {
-                    $filename = __DIR__ . '/../public/uploads/users/' . $post->id_users . '.jpg';
+                    $filename = __DIR__ . '/../../public/uploads/users/' . $post->id_users . '.jpg';
                     if (file_exists($filename)) {
                         $filename = '/public/uploads/users/' . $post->id_users . '.jpg';
                     } else {

@@ -1,5 +1,5 @@
 /* Coolors Exported Palette - https://coolors.co/383341-694d36-877e6f-d7ac8f-221510-a64249 */
-
+:root{
 /* CSS HEX */
 --black-coffee: #383341ff;
 --coffee: #694D36ff;
@@ -49,4 +49,4 @@ $gradient-top-right: linear-gradient(45deg, #383341ff, #694D36ff, #877E6Fff, #D7
 $gradient-bottom-right: linear-gradient(135deg, #383341ff, #694D36ff, #877E6Fff, #D7AC8Fff, #221510ff, #A64249ff);
 $gradient-top-left: linear-gradient(225deg, #383341ff, #694D36ff, #877E6Fff, #D7AC8Fff, #221510ff, #A64249ff);
 $gradient-bottom-left: linear-gradient(315deg, #383341ff, #694D36ff, #877E6Fff, #D7AC8Fff, #221510ff, #A64249ff);
-$gradient-radial: radial-gradient(#383341ff, #694D36ff, #877E6Fff, #D7AC8Fff, #221510ff, #A64249ff);
+$gradient-radial: radial-gradient(#383341ff, #694D36ff, #877E6Fff, #D7AC8Fff, #221510ff, #A64249ff);}

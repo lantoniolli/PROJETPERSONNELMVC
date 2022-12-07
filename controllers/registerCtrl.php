@@ -1,6 +1,10 @@
 <?php
 
 require_once(__DIR__ . '/../config/config.php');
+require_once(__DIR__ . '/../helpers/sessionflash.php');
+require_once(__DIR__ . '/../models/User.php');
+require_once(__DIR__ . '/../helpers/JWT.php');
+
 
 
 try {
@@ -54,6 +58,15 @@ try {
                 }
             }
         }
+        // TRAITEMENT DU CHECKBOX
+        $conditions = filter_input(INPUT_POST, 'conditions');
+        if (empty($conditions)) {
+            $errors['Conditions'] = 'Vous devez accepter les conditions d\'utilisation.';
+        }
+        $cgu = filter_input(INPUT_POST, 'cgu');
+        if (empty($cgu)) {
+            $errors['Cgu'] = 'Vous devez accepter les conditions d\'utilisation.';
+        }
 
         if (empty($errors)) {
 
@@ -88,6 +101,6 @@ try {
 
 
 include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/templates/navbar.php');
+include(__DIR__ . '/../views/templates/navbar2.php');
 include(__DIR__ . '/../views/user/register.php');
 include(__DIR__ . '/../views/templates/footer.php');

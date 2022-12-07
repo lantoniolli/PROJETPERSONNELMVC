@@ -2,8 +2,8 @@
         <div class="container px-4 px-lg-5 d-flex h-100 align-items-end justify-content-center ">
             <div class="d-flex justify-content-center title__position">
                 <div class="text-center">
-                    <h1 class="mx-auto my-0 text-uppercase mb-5">Fire Will Reign</h1>
-                    <a class="btn mb-2 col-sm-4 header__subtitle" href="#about">Trouvez votre prochaine convention</a>
+                    <h1 class="mx-auto my-0 text-uppercase mb-2">Fire Will Reign</h1>
+                    <a class="btn mb-2 col-sm-8 header__subtitle" href="#about">Trouvez votre prochaine convention</a>
                 </div>
             </div>
         </div>
@@ -37,6 +37,36 @@
                     </div>
                 </div>
             </div>
+            <div class="container d-flex flex-column mt-5">
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                            <img src="/public/uploads/<?= $lastNews->id_news ?>.jpg" class="img-fluid" />
+                            <a href="#">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <span class="badge px-2 py-1 mb-3 hot__button">rédigé par <?= $lastNews->user_name ?></span><span class="badge px-2 py-1 mb-3 hot__button"><?= date("d/m/Y", strtotime($lastNews->news_posted_at)) ?></span>
+                        <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
+                        <p class="news__text">
+                            <?= html_entity_decode(substr($lastNews->news_content, 0, 240)) ?>
+                        </p>
+                        <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/26ydPfDpkjllVC0QqCWg82?utm_source=generator" width="80%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
     </section>
 
     <section class="meetings__section" id="meetings">

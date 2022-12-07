@@ -35,6 +35,11 @@ text-decoration: none!important;
   font-weight: bold;
   font-family: 'Trajan';
 }
+.dropdown-item{
+  color:#9A4A4Dff;
+  font-weight: bold;
+  font-family: 'Trajan';
+}
 .title_nav{
   font-family: 'unifrak';
 }

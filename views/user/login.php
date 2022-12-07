@@ -1,8 +1,14 @@
-<div>
-    <div class="page-content p-5" id="content">
+<div class="py-5">
+    <div class="container py-5">
+    <?php
+    if (SessionFlash::exist()) { ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
+        </div>
+    <?php } ?>
+    <h5 class="divider mb-5">Se Connecter</h5>
         <div class="contact-form-wrapper d-flex justify-content-center">
             <form action="" method="POST" class="contact-form">
-                <h5 class="title mb-5">Se Connecter</h5>
                 <div>
                     <div><?= $errors['validate'] ?? '' ?></div>
                     <label for="email">Adresse Mail</label>
