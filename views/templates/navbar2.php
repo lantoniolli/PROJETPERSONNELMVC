@@ -35,7 +35,7 @@
                             <li><a class="dropdown-item" href="/controllers/logOutCtrl.php">Déconnexion</a></li>
                             <?php }; ?>
                             <?php 
-                            if(isset($_SESSION['user']) && $user->user_role == 1){
+                            if(isset($_SESSION['user']) && ($user->user_role == 1 || $user->user_role == 2)){
                             ?>
                             <li><a class="dropdown-item" href="/controllers/dashboard/dash-homeCtrl.php">Administration</a></li>
                             <?php };
@@ -47,3 +47,4 @@
         </div>
     </div>
 </nav>
+

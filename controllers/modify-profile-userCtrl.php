@@ -5,6 +5,7 @@ require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
 require_once(__DIR__ . '/../models/Meeting.php');
 require_once(__DIR__ . '/../models/Bookings.php');
+require_once(__DIR__ . '/../helpers/sessionflash.php');
 try {
     session_start();
 

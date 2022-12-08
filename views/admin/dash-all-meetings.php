@@ -43,9 +43,15 @@
                         <!-- Bouton pour voir le post de la convention -->
                         <a href="/controllers/"><i class="uil uil-eye button__icon__alt"></i></a>
                         <!-- Bouton pour modifier la convention -->
+                        <?php 
+                        if(isset($_SESSION['user']) && $user->user_role == 1){
+                        ?>
                         <a href="/controllers/dashboard/dash-modify-meetingCtrl.php?id=<?= $meeting->id_meetings ?>"><i class="uil uil-comment-alt-edit button__icon"></i></a>
                         <!-- Bouton pour supprimer la convention -->
                         <a href="/controllers/dashboard/dash-delete-meetingCtrl.php?id=<?= $meeting->id_meetings ?>"><i class="uil uil-trash button__icon"></i></a>
+                        <?php
+                        }
+                        ?>
                     </td>
                 </tr>
             <?php

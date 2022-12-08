@@ -562,3 +562,8 @@ a:active {
   background: linear-gradient(to left, rgba(240, 240, 240, 0), #a64249ff);
   margin-left: 4vh;
 }
+
+.button__title{
+  font-family: 'unifrakCook';
+  font-size: 20px;
+}

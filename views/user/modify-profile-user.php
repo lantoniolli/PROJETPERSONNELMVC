@@ -1,14 +1,19 @@
-
 <div class="py-5 justify-content-center align-items-center">
     <div class="container py-5">
         <h2 class="display-3 divider">Modifier son profil</h2>
+        <?php
+        if (SessionFlash::exist()) { ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
+            </div>
+        <?php } ?>
         <div class="container d-flex justify-content-center align-items-center mt-5 test2__container">
             <div class="col-12">
                 <div class="row ">
                     <div class="col-lg-3">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="<?= $filename ?>".jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <img src="<?= $filename ?>" .jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3 username__profile"><?= $users->user_name ?></h5>
                                 <p class="mb-1 label__profile">Administratrice</p>
                                 <form method="POST" enctype="multipart/form-data">
@@ -86,12 +91,12 @@
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body label__profile text-center">
-                                                        Pour modifier votre mot de passe, cliquez sur le bouton <span class="bbbb">"Modifier mon mot de passe"</span>. <br>Un e-mail contenant toute la procédure vous sera envoyé.
+                                                        Pour modifier votre mot de passe, cliquez sur le bouton <span class="bbbb">"Modifier mon mot de passe"</span>.
 
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn__color__alt" data-bs-dismiss="modal">Annuler</button>
-                                                        <button type="button" class="btn  btn__color">Envoyer Mail</button>
+                                                        <a href="/controllers/modify-passwordCtrl.php?id=<?= $user->id_users ?>"><button type="button" class="btn  btn__color">Modifier son Mot de Passe</button></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -173,18 +178,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            <?php
+                                                <?php
                                                 foreach ($allBookings as $booking) {
                                                 ?>
-                                                <tr>
-                                                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->dateEvent)) ?></td>
-                                                    <td><?= $booking->nameEvent ?></td>
-                                                    <td><?= $booking->locationEvent ?></td>
-                                                    <td><a href="/controllers/delete-bookingCtrl.php?id_meeting=<?= $booking->idEvent ?>"><i class="uil uil-trash button__icon"></i></a></td>
-                                                </tr>
-                                            <?php
+                                                    <tr>
+                                                        <td class="text-center"><?= date("d/m/Y", strtotime($booking->dateEvent)) ?></td>
+                                                        <td><?= $booking->nameEvent ?></td>
+                                                        <td><?= $booking->locationEvent ?></td>
+                                                        <td><a href="/controllers/delete-bookingCtrl.php?id_meeting=<?= $booking->idEvent ?>"><i class="uil uil-trash button__icon"></i></a></td>
+                                                    </tr>
+                                                <?php
                                                 };
-                                            ?>
+                                                ?>
                                             </tbody>
                                         </table>
                                         <div class="col-sm-12">

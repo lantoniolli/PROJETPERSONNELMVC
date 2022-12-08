@@ -270,7 +270,7 @@ class User
     public static function changeRole(int $id, string $role)
     {
         $pdo = Database::getInstance();
-        $sql = "UPDATE users SET `user_roles` = :role WHERE `id_users` = :id;";
+        $sql = "UPDATE users SET `user_role` = :role WHERE `id_users` = :id;";
         $sth = $pdo->prepare($sql);
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
         $sth->bindValue(':role', $role, PDO::PARAM_INT);
@@ -299,7 +299,7 @@ class User
     public static function getAllAdmins(): array
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT * FROM `users` WHERE `user_roles` = 1';
+        $sql = 'SELECT * FROM `users` WHERE `user_role` = 1';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $users = $sth->fetchAll(PDO::FETCH_OBJ);
@@ -310,10 +310,22 @@ class User
     public static function getAllWriters(): array
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT * FROM `users` WHERE `user_roles` = 2';
+        $sql = 'SELECT * FROM `users` WHERE `user_role` = 2';
         $sth = $pdo->prepare($sql);
         $sth->execute();
         $users = $sth->fetchAll(PDO::FETCH_OBJ);
         return $users;
     }
+
+    // Fonction permettant a un utilisateur de modifier son mot de passe
+    public static function modifyPassword($id, $password)
+    {
+        $pdo = Database::getInstance();
+        $modifyPassword = 'UPDATE users SET `user_password` = :password WHERE id_users = :id';
+        $sth = $pdo->prepare($modifyPassword);
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->bindValue(':password', $password, PDO::PARAM_STR);
+        return $sth->execute();
+
+}
 }

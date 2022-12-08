@@ -8,10 +8,15 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../models/News.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
 
-session_start();
-
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
+
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $id = $user->id_users;
+}
 
 try {
     

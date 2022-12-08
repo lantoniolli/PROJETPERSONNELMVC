@@ -5,9 +5,14 @@ require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
-
-//-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
 session_start();
+
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $id = $user->id_users;
+}
+//-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+
 
 try {
     if (isset($_SESSION['user'])) {

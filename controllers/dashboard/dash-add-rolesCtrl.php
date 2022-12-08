@@ -8,16 +8,39 @@ require_once(__DIR__ . '/../../helpers/SessionFlash.php');
 
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
-
+// Si une personne non connectée cherche à accéder au dashboard.
+if (!isset($_SESSION['user'])) {
+    header('Location: /controllers/homeController.php');
+    exit();
+}
+// Récupération de l'id de l'utilisateur connecté
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $id = $user->id_users;
+}
+// Refuse les personnes ayant le rôle "Utilisateur".
+if($user->user_role == 3){
+    header('Location: /controllers/homeController.php');
+    SessionFlash::set('Vous n\'avez pas accès à cette page', 'danger');
+    exit();
+}
+if($user->user_role == 2){
+    header('Location: /controllers/dashboard/notAllowedCtrl.php');
+    SessionFlash::set('Vous n\'avez pas accès à cette page', 'danger');
+    exit();
+}
 //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+$admins = User::getAllAdmins();
+$writers = User::getAllWriters();
+$users = User::getAllUsers();
+
 try{
- 
-    $users = User::getAllUsers();
+    
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $role =  intval(filter_input(INPUT_POST, 'role', FILTER_SANITIZE_NUMBER_INT));
         $id = intval(filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT));
-
+        
         if(empty($role)){
             $errors['role'] = 'Le rôle est obligatoire';
         }
@@ -30,8 +53,6 @@ try{
         }
     }
 
-    $admins = User::getAllAdmins();
-    $writers = User::getAllWriters();
 } catch (Exception $e) {
     $errors['error'] = $e->getMessage();
 }

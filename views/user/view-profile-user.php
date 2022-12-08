@@ -67,7 +67,7 @@
                                             <?php } else if ($user->id_users != $id_user) { ?>
                                                 <div class="flex-end"><a href="#">En savoir plus sur les Conventions</a></div>
                                             <?php } else if ($user->id_users == $id_user) { ?>
-                                                <div class="flex-end"><a href="/controllers/modify-profile-userCtrl.php?id=<?= $id_user ?>">Modifier mon profil</a></div>
+                                                <div class="flex-end button__title"><a href="/controllers/modify-profile-userCtrl.php?id=<?= $id_user ?>">Modifier mon profil</a></div>
 
                                             <?php } ?>
                                         </div>

@@ -1,11 +1,22 @@
 <?php
 
+//-------------------------------- APPEL DES PAGES NÉCESSAIRES ----------------------------------------//
+
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
 require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../helpers/JWT.php');
 
+//--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
 
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $user = $_SESSION['user'];
+    $id = $user->id_users;
+}
+
+//-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -68,6 +79,8 @@ try {
             $errors['Cgu'] = 'Vous devez accepter les conditions d\'utilisation.';
         }
 
+//-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
+
         if (empty($errors)) {
 
             $result = rand(1,9);
@@ -99,6 +112,7 @@ try {
     die('Erreur : ' . $e->getMessage());
 }
 
+//-------------------------------- APPEL DES VUES ----------------------------------------//
 
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/templates/navbar2.php');

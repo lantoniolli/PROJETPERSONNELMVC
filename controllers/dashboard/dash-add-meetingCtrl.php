@@ -6,18 +6,32 @@ require_once(__DIR__ . '/./sidebar-Ctrl.php');
 require_once(__DIR__ . '/../../helpers/SessionFlash.php');
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
+// Si une personne non connectée cherche à accéder au dashboard.
 if (!isset($_SESSION['user'])) {
     header('Location: /controllers/homeController.php');
-    exit;
+    exit();
 }
+// Récupération de l'id de l'utilisateur connecté
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id = $user->id_users;
 }
+// Refuse les personnes ayant le rôle "Utilisateur".
+if($user->user_role == 3){
+    header('Location: /controllers/homeController.php');
+    SessionFlash::set('Vous n\'avez pas accès à cette page', 'danger');
+    exit();
+}
+if($user->user_role == 2){
+    header('Location: /controllers/dashboard/notAllowedCtrl.php');
+    SessionFlash::set('Vous n\'avez pas accès à cette page', 'danger');
+    exit();
+}
+
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+//-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
 
         //nettoyage des données
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
@@ -40,7 +54,7 @@ try {
         if (empty($location)) {
             $errors['location'] = 'La localisation est obligatoire';
         }
-        //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
+//-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
 
         // validation des données news_img
         if (empty($_FILES["news_img"]["name"])) {
@@ -55,6 +69,8 @@ try {
             $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
         }
         if (empty($errors)) {
+
+//-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
 
             $meeting = new Meeting();
             $meeting->setEvent_name($title);
