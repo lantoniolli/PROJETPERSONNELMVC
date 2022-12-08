@@ -24,7 +24,7 @@ if (SessionFlash::exist()) { ?>
                 <!-- INPUT PASSWORD -->
                 <div>
                     <label for="email">Mot de Passe</label>
-                    <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control rounded-0 form-input shadow-none" required>
+                    <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control rounded-0 form-input shadow-none" required><span class="input-group-btn">
                     <p class="error_form" id="errorPassword"><?= $errors['Password'] ?? '' ?></p>
                 </div>
                 <div>

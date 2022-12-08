@@ -38,7 +38,7 @@
                     <td class="text-center"><?= $news->user_name ?></td>
                     <td class="text-center">
                         <!-- Bouton pour voir l'article -->
-                        <a href="/controllers/profileUserController.php?id"><i class="uil uil-eye button__icon__alt"></i></a>
+                        <a href="/controllers/readnewsCtrl.php?id=<?= $news->id_news ?>"><i class="uil uil-eye button__icon__alt"></i></a>
                         <!-- Bouton pour modifier l'article -->
                         <a href="/controllers/dashboard/dash-modify-newsCtrl.php?id=<?= $news->id_news; ?>"><i class="uil uil-comment-alt-edit button__icon"></i></a>
                         <!-- Bouton pour supprimer l'article -->

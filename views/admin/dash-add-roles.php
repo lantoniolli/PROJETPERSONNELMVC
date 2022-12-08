@@ -78,8 +78,4 @@
             </table>
         </div>
     </div>
-    <div class="row p-4 justify-content-center"
-    <div class="card mb-3 p-4 col-lg-5 m-3">
-    <?php
-                        foreach ($admins as $admin) { ?>
 </div>
