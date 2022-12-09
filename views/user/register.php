@@ -11,24 +11,24 @@ if (SessionFlash::exist()) { ?>
             <form action="" method="POST" class="contact-form">
                 <!-- INPUT PSEUDO -->
                 <div>
-                    <label for="pseudo">Pseudo</label>
+                    <label for="pseudo">Pseudo *</label>
                     <input value="<?= $pseudo ?? '' ?>" placeholder="" name="pseudo" type="text" pattern="<?= REGEX_FOR_PSEUDO ?>" id="pseudo" class="form-control rounded-0 form-input shadow-none" required>
                     <p class="error_form" id="pseudoTextError"><?= $errors['Pseudo'] ?? '' ?></p>
                 </div>
                 <!-- INPUT ADRESSE EMAIL -->
                 <div>
-                    <label for="email">Adresse Mail</label>
+                    <label for="email">Adresse Mail *</label>
                     <input value="<?= $email ?? '' ?>" placeholder="xxx@exemple.fr" name="email" type="email" id="email" class="form-control rounded-0 form-input shadow-none" required>
                     <p class="error_form" id="emailTextError"><?= $errors['Email'] ?? '' ?></p>
                 </div>
                 <!-- INPUT PASSWORD -->
                 <div>
-                    <label for="email">Mot de Passe</label>
+                    <label for="email">Mot de Passe *</label>
                     <input type="password" name="password" id="password" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control rounded-0 form-input shadow-none" required><span class="input-group-btn">
                     <p class="error_form" id="errorPassword"><?= $errors['Password'] ?? '' ?></p>
                 </div>
                 <div>
-                    <label for="email">Confirmation du Mot de Passe</label>
+                    <label for="email">Confirmation du Mot de Passe *</label>
                     <input type="password" name="confirmPassword" id="confirmPassword" placeholder="8 caractères" pattern="<?= REGEX_FOR_PASSWORD ?>" class="form-control rounded-0 form-input shadow-none" required>
                     <p class="error_form" id="errorConfirmPassword"><?= $error['ConfirmPassword'] ?? '' ?></p>
                 </div>

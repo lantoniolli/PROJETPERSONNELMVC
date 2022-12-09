@@ -11,10 +11,10 @@
         <div class="container d-flex justify-content-center align-items-center mt-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-8">
-                    <span class="badge px-2 py-1 mb-3 hot__button">rédigé par
-                        <?= $news->user_name ?>
-                    </span><span class="badge px-2 py-1 mb-3 hot__button">
-                        <?= date("d/m/Y", strtotime($news->news_posted_at)) ?>
+                    Rédigé par <span class="badge px-2 button__title">
+                        <a href="/controllers/view-profile-userCtrl.php?id=<?= $news->id_users ?>"><?= $news->user_name ?></a>
+                    </span><span class="badge px-2 py-1 mb-3 hot__button text-end">
+                        <i><?= date("d/m/Y", strtotime($news->news_posted_at)) ?></i>
                     </span>
                     <img src="/public/uploads/<?= $news->id_news ?>.jpg" class="card-img-top" id="preview" alt="..." class="img-fluid">
                     <h4 class="news__title mt-2"><strong>
@@ -96,7 +96,7 @@
                     <form action="" method="POST">
                         <div class="card-footer py-3 border-0">
                             <div class="d-flex flex-start w-100">
-                                <img class="rounded-circle shadow-1-strong me-3" src="/public/uploads/users/<?= $post->id_users ?>" alt="avatar" width="40" height="40" />
+                                <img class="rounded-circle shadow-1-strong me-3" src="/public/uploads/users/<?= $user->id_users ?>.jpg" alt="avatar" width="40" height="40" />
                                 <div class="form-outline w-100">
                                     <span class="form_infos">Connecté en tant que <span class="form_name"><?php echo $user->user_name; ?></span>. Ce n'est pas vous ? <a href="/controllers/logoutCtrl.php">Déconnexion</a></span>
                                     <textarea class="form-control resize_textarea" id="myText" rows="4" style="background: #fff;" name="content"></textarea>

@@ -13,7 +13,9 @@ session_start();
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id_user = $user->id_users;
+    $id = $user->id_users;
 }
+
 
 try {
 //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
