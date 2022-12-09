@@ -1,6 +1,6 @@
 <div class="py-5">
     <div class="container py-5">
-        <h2 class="display-3 divider">En savoir plus</h2>
+        <h2 class="display-3 divider mb-5">En savoir plus</h2>
 
         <div class="container d-flex flex-column align-items-center">
             <div class="row gx-5 justify-content-center align-items-center">
@@ -12,33 +12,13 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4 text-justify">
-                    <h4 class="news__title"><strong><?= $lastNews->news_title ?></strong></h4>
+                <div class="col-md-6 mb-4 text-justify">
+                    <h4 class="news__title"><strong>Titre mb-3</strong></h4>
                     <p class="news__text">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia id sit asperiores omnis repellendus laboriosam dignissimos tenetur quos, repellat aliquam atque alias eius minus laborum totam quidem quasi ipsum fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, quae asperiores eum debitis dolores laborum, illo quos optio deleniti porro nostrum! Reiciendis et rem eaque perspiciatis pariatur laudantium ipsa ea! Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, optio atque! Autem eos excepturi amet cumque aspernatur itaque ea quos sequi pariatur, rem nemo necessitatibus, laboriosam officiis quae id laudantium? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos veritatis distinctio labore? Excepturi sunt ducimus voluptate incidunt expedita hic totam, similique dicta eligendi sit cupiditate repellat laudantium ad, repellendus ipsam. Lorem ipsum dolor sit amet consectetur adipisicing elit. At similique saepe odit unde, laborum, est iure consequatur numquam facere nulla sequi hic labore architecto sunt laboriosam. Ullam beatae aperiam autem.</p>
                     </p>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <form action="#" class="contact-form">
-                        <h5 class="title">Contactez nous</h5>
-                        <p class="description">Vous avez une question ? N'hésitez pas à nous contacter !</p>
-                        </p>
-                        <div>
-                            <input type="text" class="form-control mb-3 rounded-0 form-input shadow-none" id="name" placeholder="Nom" required>
-                        </div>
-                        <div>
-                            <input type="email" class="form-control mb-3 rounded-0 form-input shadow-none" placeholder="Email" required>
-                        </div>
-                        <div>
-                            <textarea id="message" class="form-control mb-3 rounded-0 form-input shadow-none area" placeholder="Message" required></textarea>
-                        </div>
-                        <div class="submit-button-wrapper">
-                            <input type="submit" value="Envoyer">
-                        </div>
-                    </form>
-                </div>
             </div>
-
         </div>
     </div>
 </div>

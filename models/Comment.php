@@ -138,6 +138,5 @@ class Comment {
             $stmt->bindValue(':id', $this->_id, PDO::PARAM_INT);
             return $stmt->execute();
         }
-
     }
 

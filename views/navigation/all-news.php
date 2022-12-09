@@ -22,7 +22,7 @@
                             <div class="news__text">
                                 <?= html_entity_decode($new->news_content) ?>
                             </div>
-                            <button type="button" class="btn btn__color">Lire l'article</button>
+                            <a href="/controllers/readnewsCtrl.php?id=<?= $new->id_news ?>"<button type="button" class="btn btn__color">Lire l'article</button></a>
                         </div>
                     </div>
                 </div>

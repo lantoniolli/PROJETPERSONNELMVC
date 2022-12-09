@@ -26,7 +26,7 @@ $search = trim((string) filter_input(INPUT_GET, 'search', FILTER_SANITIZE_SPECIA
 
 //Récupérer toutes les news
 $offset = 0;
-$allNews = News::getAll(LIMIT, $offset,$search);
+$allNews = News::getAllNews();
 
 
 //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//

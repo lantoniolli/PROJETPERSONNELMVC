@@ -34,8 +34,10 @@ try {
         $comment->addCommentNews();
 
     }
-    $posts = Comment::getAllComments($id_news);
+    $posts = Comment::getCommentsbyNews($id_news);
 
+
+    
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }
@@ -45,5 +47,4 @@ try {
 include(__DIR__ . '/../views/templates/header.php');
 include(__DIR__ . '/../views/templates/navbar2.php');
 include(__DIR__ . '/../views/navigation/readnews.php');
-include(__DIR__ . '/../views/user/comments.php');
 include(__DIR__ . '/../views/templates/footer.php');
