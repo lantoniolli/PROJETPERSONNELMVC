@@ -1,3 +1,4 @@
+<div class="container">
 <div class="py-5 justify-content-center align-items-center">
     <div class="container py-5">
         <h2 class="display-3 divider">Modifier son profil</h2>
@@ -203,3 +204,7 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+</div>

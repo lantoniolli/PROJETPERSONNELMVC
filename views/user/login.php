@@ -1,4 +1,5 @@
-<div class="py-5">
+<div class="containerPage">
+    <div class="py-5">
     <div class="container py-5">
     <?php
     if (SessionFlash::exist()) { ?>
@@ -28,4 +29,5 @@
             </form>
         </div>
     </div>
+</div>
 </div>
