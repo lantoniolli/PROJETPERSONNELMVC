@@ -4,7 +4,13 @@
         <div class="contact-form-wrapper d-flex justify-content-center">
             <div class="col-md-6">
                 <h2 class="text-center">Formulaire</h2>
-                <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quae.</p>
+                <p class="text-center"> <?php
+        if (SessionFlash::exist()) { ?>
+            <div class="alert alert-light alert-dismissible fade show" role="alert">
+                <i class="uil uil-check-circle"></i><?= SessionFlash::get(); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php } ?></p>
             <form action="" method="POST" class="contact-form">
                 <!-- INPUT PSEUDO -->
                 <div>

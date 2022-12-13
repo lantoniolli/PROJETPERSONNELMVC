@@ -3,6 +3,7 @@
 
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
+require_once(__DIR__ . '/../helpers/JWT.php');
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
 session_start();
@@ -37,7 +38,7 @@ try {
         }
     }
     // Traitement du message
-    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_SPECIAL_CHARS);
+    $message = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
     if (empty($message)) {
         $errors['message'] = 'Ce champ est obligatoire';
     } else {
@@ -46,7 +47,20 @@ try {
             $errors['message'] = 'La donnée n\'est pas conforme';
         }
     }
-    
+
+    // Envoyer les données par mail
+    if (empty($errors)) {
+        $to = 'laura.antoniolli@gmail.com';
+        $subject = 'Formulaire de contact';
+        $message = 'Bonjour, vous avez reçu un message de la part de ' . $name . ' (' . $email . ') : ' . $message;
+        $headers = 'From: ' . $email . "\r\n" .
+            'Reply-To: ' . $email . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($to, $subject, $message, $headers);
+        SessionFlash::set('Le mail a bien été envoyé !');
+        header('Location: /controllers/contactCtrl.php');
+        exit();
+    }
     //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
     }
 } catch (PDOException $e) {
