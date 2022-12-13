@@ -9,7 +9,7 @@
                 <!-- INPUT PSEUDO -->
                 <div>
                     <label for="pseudo">Nom</label>
-                    <input  placeholder="" name="pseudo" type="text" pattern="<?= REGEX_FOR_PSEUDO ?>" id="pseudo" class="form-control rounded-0 form-input shadow-none" required>
+                    <input  placeholder="" name="name" type="text" pattern="<?= REGEX_FOR_PSEUDO ?>" id="pseudo" class="form-control rounded-0 form-input shadow-none" required>
                     <p class="error_form" id="pseudoTextError"><?= $errors['Pseudo'] ?? '' ?></p>
                 </div>
                 <!-- INPUT ADRESSE EMAIL -->
@@ -24,7 +24,7 @@
                     <textarea class="form-control rounded-0 form-input shadow-none" name="content" value="<?= $content ?? '' ?>"></textarea>
                 </div>
                 <div class="submit-button-wrapper mt-5">
-                    <input type="submit" value="S'inscrire">
+                    <input type="submit" value="Nous contacter">
                 </div>
             </form>
             </div>

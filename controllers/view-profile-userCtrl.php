@@ -7,10 +7,12 @@ require_once(__DIR__ . '/../models/User.php');
 require_once(__DIR__ . '/../models/Comment.php');
 require_once(__DIR__ . '/../models/Meeting.php');
 require_once(__DIR__ . '/../models/Bookings.php');
+require_once(__DIR__ . '/../helpers/sessionflash.php');
 
 //--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
 
 session_start();
+
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id = $user->id_users;}

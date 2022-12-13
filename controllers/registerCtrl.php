@@ -1,5 +1,4 @@
 <?php
-
 //-------------------------------- APPEL DES PAGES NÉCESSAIRES ----------------------------------------//
 
 require_once(__DIR__ . '/../config/config.php');

@@ -82,7 +82,7 @@
                                         <p class="mb-0 label__profile">Mot de Passe</p>
                                     </div>
                                     <div class="col-sm-8">
-                                        <button type="button" class="btn btn__color" data-bs-toggle="modal" data-bs-target="#modalmodify">Modifier</button>
+                                        <a href="/controllers/modify-passwordCtrl.php?id=<?= $user->id_users ?>"<button type="button" class="btn btn__color" data-bs-toggle="modal" data-bs-target="#modalmodify">Modifier</button>
                                         <!-- MODAL -->
                                         <div class="modal fade" id="modalmodify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">
