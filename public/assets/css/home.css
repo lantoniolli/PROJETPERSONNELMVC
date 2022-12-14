@@ -578,10 +578,20 @@ a:active {
 }
 
 /* CSS CGU */
+
+.cgu__back{
+  width: 100%;
+  background-image: url(/public/assets/img/masterhead.jpg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), url(/public/assets/img/masterhead.jpg);
+}
 .cgu__name{
-  color:#570615;
+  color:#877E6Fff;
   font-weight: bold;
   font-size: 18px;
+  backdrop-filter: blur(3px);
   text-transform: uppercase;
 }
 
