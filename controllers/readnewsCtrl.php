@@ -37,9 +37,8 @@ try {
 
     }
     $posts = Comment::getCommentsbyNews($id_news);
-
-
-    
+// var_dump($filename);
+// die;
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }
