@@ -576,3 +576,34 @@ a:active {
 .containerHeader{
   height: 5vh;
 }
+
+/* CSS CGU */
+.cgu__name{
+  color:#570615;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.cgu__sitename{
+  font-style: italic;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.cgu__type{
+  text-transform: lowercase;
+  font-style: italic;
+  
+}
+
+.cgu__title{
+  font-family: "unifrakCook";
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color: #570615;
+  padding: 3px;
+  font-weight: bold;
+}
+
