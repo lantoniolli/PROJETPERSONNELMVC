@@ -580,12 +580,19 @@ a:active {
 /* CSS CGU */
 
 .cgu__back{
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   background-image: url(/public/assets/img/masterhead.jpg);
   background-repeat: no-repeat;
   background-size:cover;
   background-position: center;
+  overflow: hidden;
   background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5)), url(/public/assets/img/masterhead.jpg);
+}
+
+.cgu__content{
+  height: 75vh;
+  overflow:scroll;
 }
 .cgu__name{
   color:#877E6Fff;
@@ -617,3 +624,13 @@ a:active {
   font-weight: bold;
 }
 
+.cgu__subtitle{
+  font-family: "unifrakCook";
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color:#3b3b3b;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
+}
