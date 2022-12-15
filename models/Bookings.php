@@ -91,5 +91,15 @@ class Booking
             return ($stmt->rowCount() >= 1) ? true : false;
         }
     }
+// Fonction permettant de récupérer toutes les réservations
+    public static function getAll()
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT * FROM bookings';
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute()) {
+            return $stmt->fetchAll();
+        }
+    }
 
 }
