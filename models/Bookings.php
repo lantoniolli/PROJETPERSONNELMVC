@@ -91,14 +91,18 @@ class Booking
             return ($stmt->rowCount() >= 1) ? true : false;
         }
     }
-// Fonction permettant de récupérer toutes les réservations
-    public static function getAll()
+// Fonction permettant de récupérer le nombre de réservation par user
+    public static function getBookingsByUser($id)
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT * FROM bookings';
+        $sql = 'SELECT 
+        SUM(`bookings`.`booking_places`) AS `places`
+        FROM `bookings`
+        WHERE `bookings`.`id_users` = :id;';
         $stmt = $pdo->prepare($sql);
+        $stmt -> bindValue(':id', $id, PDO::PARAM_INT);
         if ($stmt->execute()) {
-            return $stmt->fetchAll();
+            return $stmt->fetch();
         }
     }
 

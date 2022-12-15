@@ -1,5 +1,5 @@
 <div class="py-5">
-    <div class="container py-5">
+    <div class="container-fluid py-5">
         <h2 class="display-3 divider">Article</h2>
         <!-- sessionflash -->
         <?php
