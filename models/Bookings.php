@@ -72,7 +72,7 @@ class Booking
         FROM `bookings`
         WHERE `bookings`.`id_meetings` = :id;';
         $stmt = $pdo->prepare($sql);
-        $stmt -> bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
         if ($stmt->execute()) {
             return $stmt->fetch();
         }
@@ -91,19 +91,22 @@ class Booking
             return ($stmt->rowCount() >= 1) ? true : false;
         }
     }
-// Fonction permettant de récupérer le nombre de réservation par user
-    public static function getBookingsByUser($id)
+    // Fonction permettant de récupérer les informations des réservations et du meeting concerné
+    public static function getAll(): array
     {
         $pdo = Database::getInstance();
-        $sql = 'SELECT 
-        SUM(`bookings`.`booking_places`) AS `places`
-        FROM `bookings`
-        WHERE `bookings`.`id_users` = :id;';
+        // Requête SQL avec DISTINCT et JOIN Meetings
+        $sql = 'SELECT DISTINCT (`bookings`.`id_bookings`),`meetings`.`id_meetings` AS idEvent,`meetings`.`event_date` AS dateEvent,
+    `meetings`.`event_name` AS nameEvent,
+    `meetings`.`event_description`AS descriptionEvent,
+    `meetings`.`event_location` AS locationEvent
+    FROM `meetings`
+    JOIN `bookings` ON `bookings`.`id_meetings` = `meetings`.`id_meetings`
+    WHERE `meetings`.`id_meetings` = `bookings`.`id_meetings`';
+
         $stmt = $pdo->prepare($sql);
-        $stmt -> bindValue(':id', $id, PDO::PARAM_INT);
         if ($stmt->execute()) {
-            return $stmt->fetch();
+            return $stmt->fetchAll();
         }
     }
-
 }

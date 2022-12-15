@@ -63,7 +63,7 @@
                 ?>
                 <li class="nav-item">
                     <li class="nav-item">
-                        <a href="#" class="nav-link text-light bg-dark">
+                        <a href="/controllers/dashboard/dash-all-bookingsCtrl.php" class="nav-link text-light bg-dark">
                             <i class="uil uil-bookmark-full button__icon"></i>
                             Réservations
                         </a>
