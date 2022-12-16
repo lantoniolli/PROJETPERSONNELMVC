@@ -17,9 +17,9 @@ if (isset($_SESSION['user'])) {
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+        //--------------- NETTOYAGE ET VALIDATION DES DONNÉES-----------------//
 
-        //nettoyage des données
+        //nettoyage des données du titre
         $title = trim(filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS));
         // validation des données title
         if (empty($title)) {
@@ -30,9 +30,8 @@ try {
         if (empty($content)) {
             $errors['content'] = 'Le contenu est obligatoire';
         }
-        //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
-
-        // validation des données news_img
+        
+        // validation des données de l'image 
         if (empty($_FILES["news_img"]["name"])) {
             $errors['news_img'] = 'L\'image est obligatoire';
         }
@@ -44,6 +43,7 @@ try {
         if ($fileSize > 5000000) {
             $errors['news_img'] = 'Désolé, votre fichier est trop volumineux.';
         }
+        //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
         if (empty($errors)) {
 
             $news = new News();
