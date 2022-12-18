@@ -6,14 +6,13 @@ require_once(__DIR__ . '/../models/News.php');
 require_once(__DIR__ . '/../models/Comment.php');
 require_once(__DIR__ . '/../helpers/sessionflash.php');
 
-//--------------------------------- VÉRIFICATION DE LA SESSION ----------------------------------------//
+//------------ VÉRIFICATION DE LA SESSION ----------------//
 
 session_start();
 
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     $id_user = $user->id_users;
-    $id = $user->id_users;
 }
 
 
@@ -27,8 +26,7 @@ try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $content = trim((string)filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS));
 
-        //-------------------------------- APPLICATION DES DIFFÉRENTES MÉTHODES ----------------------------------------//
-
+        //------------ APPLICATION DES DIFFÉRENTES MÉTHODES ----------//
         $comment = new Comment();
         $comment->setComment_description($content);
         $comment->setId_users($id_user);
@@ -37,8 +35,6 @@ try {
 
     }
     $posts = Comment::getCommentsbyNews($id_news);
-// var_dump($filename);
-// die;
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());
 }

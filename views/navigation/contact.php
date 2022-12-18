@@ -4,7 +4,7 @@
             <h5 class="divider mb-5">Contactez-nous</h5>
             <div class="contact-form-wrapper d-flex justify-content-center">
                 <div class="col-md-6">
-                    <h2 class="text-center">Formulaire</h2>
+        
                     <p class="text-center"> <?php
                                             if (SessionFlash::exist()) { ?>
                     <div class="alert alert-light alert-dismissible fade show" role="alert">

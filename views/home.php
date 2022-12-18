@@ -56,7 +56,7 @@
                         <a href="/controllers/readnewsCtrl.php?id=<?= $lastNews->id_news ?>"><button type="button" class="btn btn__color">Lire l'article</button></a>
                     </div>
                     <div class="col-md-4 mb-4">
-                    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/26ydPfDpkjllVC0QqCWg82?utm_source=generator" width="80%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/26ydPfDpkjllVC0QqCWg82?utm_source=generator" width="80%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
@@ -74,28 +74,31 @@
             <h2 class="display-3 divider">Prochaines Conventions</h2>
             <!-- <div class="separator"></div> -->
 
-            <div class="container d-flex flex-column align-items-center">
-                <div class="row d-flex justify-content-around">
-                    <table class="table">
-                        <tbody>
-                            <?php
-                            foreach ($lastMeetings as $lastMeeting) {
-                            ?>
-                                <tr>
-                                    <td class="text-center"><?= date("d/m/Y", strtotime($lastMeeting->event_date)) ?></td>
-                                    <td class="text-center"><?= $lastMeeting->event_name ?></td>
-                                    <td class="text-center"><?= $lastMeeting->event_location ?></td>
-                                    <td class="text-center">
-                                        <!-- Bouton pour voir la fiche de convention -->
-                                        <a href="/controllers/view-meetingCtrl.php?id=<?= $lastMeeting->id_meetings ?>"><i class="uil uil-plus-circle button__icon__alt"></i></a>
-                                </tr>
-                            <?php
-                            };
-                            ?>
-                        </tbody>
-                    </table>
-                    <a class="btn mt-2 col-sm-6" href="#">S'y inscrire ?</a>
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-3 col-sm-6 item">
+                        <div class="card item-card card-block">
+                            <img src="/public/assets/img/poster1.jpg" alt="Photo of sunset">
+                            <h5 class="item-card-title mt-3 mb-3">Sierra Web Development • Owner</h5>
+                            <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 item">
+                        <div class="card item-card card-block">
+                            <img src="/public/assets/img/poster2.jfif" alt="Photo of sunset">
+                            <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
+                            <p class="card-text">This is a company that builds websites, web .</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 item">
+                        <div class="card item-card card-block">
+                            <img src="/public/assets/img/poster3.jfif" alt="Photo of sunset">
+                            <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
+                            <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>

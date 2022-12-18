@@ -15,10 +15,11 @@ if (isset($_SESSION['user'])) {
     $id = $user->id_users;
 }
 
-//-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
+//-------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------//
 
 try {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        // TRAITEMENT DU PSEUDO
         $pseudo = trim(filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_SPECIAL_CHARS));
         if (User::exist_Pseudo($pseudo)) {
             $errors['Pseudo'] = 'Ce pseudo est déjà utilisé.';

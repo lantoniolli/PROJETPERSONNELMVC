@@ -50,14 +50,15 @@
                                 <div class="ms-5"><img src="/public/assets/img/sigils/<?= $post->user_house ?>.png" height="30px"></div>
                             </div>
                             <div class="moderation d-flex">
-                                <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
+                                <!-- Affiche le bouton pour un visiteur non connecté -->
                                 <?php if (!isset($_SESSION['user'])) { ?>
                                     <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></i></a></div>
-                                <?php } else if ($post->id_users != $id_user) { ?>
+                                <!-- Affiche le bouton pour un utilisateur connecté -->
+                                    <?php } else if ($post->id_users != $id_user) { ?>
                                     <div class="flex-end"><a href="#"><i class="uil uil-exclamation-triangle button__icon" title="Signaler" data-toggle="tooltip" data-placement="right"></i></a></div>
-                                <?php } else if ($post->id_users == $id_user) { ?>
+                                <!-- Affiche le bouton seulement pour l'auteur du commentaire -->
+                                    <?php } else if ($post->id_users == $id_user) { ?>
                                     <div class="flex-end"><a href="/controllers/modify-commentsCtrl.php?id=<?= $post->id_comments; ?>"><i class="uil uil-comment-edit button__icon" title="Editer" data-toggle="tooltip"></i></a></div>
-
                                 <?php } ?>
                             </div>
                         </div>
