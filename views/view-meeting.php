@@ -7,7 +7,6 @@
         <div class="container d-flex align-items-center gx-4 justify-content-evenly">
             <div><i class="uil uil-map-marker-shield button__icon"></i><?= $meeting->event_location ?></div>
             <div><i class="uil uil-bookmark button__icon"></i> <?= ($reservations->places != null && $reservations->places > 1 ) ? $reservations->places.' réservations' : (($reservations->places == null) ? 'Aucune réservation' : $reservations->places.' réservation') ?></div>
-            <div>Etoiles</div>
         </div>
         <div class="container d-flex flex-column mt-5">
             <div class="row gx-4 justify-content-center align-items-center">

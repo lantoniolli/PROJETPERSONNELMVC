@@ -33,7 +33,7 @@ if($user->user_role == 2){
 
 try {
 
-$allBookings = Booking::getAll();
+$allBookings = Booking::getAllBookings();
 
 
 } catch (PDOException $e) {

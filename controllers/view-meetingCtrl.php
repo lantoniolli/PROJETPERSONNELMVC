@@ -56,6 +56,6 @@ try {
 
 //-------------------------------- APPEL DES VUES ----------------------------------------//
 include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/templates/navbar.php');
+include(__DIR__ . '/../views/templates/navbar2.php');
 include(__DIR__ . '/../views/view-meeting.php');
 include(__DIR__ . '/../views/templates/footer.php');

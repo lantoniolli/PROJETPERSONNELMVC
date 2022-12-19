@@ -48,7 +48,7 @@ try {
         }
         if (empty($errors)) {
 
-            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/";
+            $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/public/uploads/meetings/";
             $pdo = Database::getInstance();
             $target_file = $meeting->id_meetings . '.' . pathinfo($_FILES["news_img"]["name"], PATHINFO_EXTENSION);
             $target_path = $target_dir . $target_file;

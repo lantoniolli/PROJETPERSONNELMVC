@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="row d-flex justify-content-center">
-        <div class="col-md-12 col-lg-10 col-xl-8">
+        <div class="col-md-10 col-lg-8 col-xl-5">
             <h2 class="display-3 divider mb-4">Commentaires</h2>
             <div class="card">
                 <?php
@@ -76,7 +76,7 @@
                 ?>
                     <div class="container my-5 py-5">
                         <div class="row d-flex justify-content-center">
-                            <div class="col-md-12 col-lg-10 col-xl-8">
+                            <div class="col-md-12 col-lg-10 col-xl-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center mb-3">Pour poster un commentaire vous devez être inscrit ou connecté</div>

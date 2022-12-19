@@ -109,4 +109,44 @@ class Booking
             return $stmt->fetchAll();
         }
     }
+// Fonction permettant de récupérer toutes les réservations jointure avec les meetings
+    public static function getAllBookings(): array
+    {
+        $pdo = Database::getInstance();
+        // Requête SQL avec DISTINCT et JOIN Meetings
+        $sql = 'SELECT DISTINCT (`bookings`.`id_bookings`),`meetings`.`id_meetings` AS idEvent,`meetings`.`event_date` AS dateEvent,
+    `meetings`.`event_name` AS nameEvent,
+    `meetings`.`event_description`AS descriptionEvent,
+    `meetings`.`event_location` AS locationEvent,
+    `bookings`.`booking_places` AS places,
+    `bookings`.`id_users` AS idUser
+    FROM `meetings`
+    JOIN `bookings` ON `bookings`.`id_meetings` = `meetings`.`id_meetings`
+    WHERE `meetings`.`id_meetings` = `bookings`.`id_meetings`';
+
+        $stmt = $pdo->prepare($sql);
+        if ($stmt->execute()) {
+            return $stmt->fetchAll();
+        }
+    }
+    // Fonction permettant de récupérer les réservations d'un utilisateur
+    public static function getBookingsByUser($id)
+    {
+        $pdo = Database::getInstance();
+        $sql = 'SELECT DISTINCT (`bookings`.`id_bookings`),`meetings`.`id_meetings` AS idEvent,`meetings`.`event_date` AS dateEvent,
+    `meetings`.`event_name` AS nameEvent,
+    `meetings`.`event_description`AS descriptionEvent,
+    `meetings`.`event_location` AS locationEvent,
+    `bookings`.`booking_places` AS places,
+    `bookings`.`id_users` AS idUser
+    FROM `meetings`
+    JOIN `bookings` ON `bookings`.`id_meetings` = `meetings`.`id_meetings`
+    WHERE `meetings`.`id_meetings` = `bookings`.`id_meetings` AND `bookings`.`id_users` = :id';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        if ($stmt->execute()) {
+            return $stmt->fetchAll();
+        }
+    }
 }

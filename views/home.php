@@ -76,27 +76,20 @@
 
             <div class="container mt-5">
                 <div class="row justify-content-center">
-                    <div class="col-md-3 col-sm-6 item">
-                        <div class="card item-card card-block">
-                            <img src="/public/assets/img/poster1.jpg" alt="Photo of sunset">
-                            <h5 class="item-card-title mt-3 mb-3">Sierra Web Development • Owner</h5>
-                            <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
+                    <?php
+                    foreach ($lastMeetings as $lastMeeting) {
+                    ?>
+                        <div class="col-md-3 col-sm-6 item">
+                            <div class="card item-card card-block">
+                            <img src="/public/uploads/meetings/<?= $lastMeeting->id_meetings ?>.jpg" alt="MeetingCouv">
+                            <a href="/controllers/view-meetingCtrl.php?id=<?= $lastMeeting->id_meetings ?>"><h5 class="item-card-title mt-3 mb-3 subtitle__text text-center"><?= date("d/m/Y", strtotime($lastMeeting->event_date)) ?></h5>
+                                <p class="card-text text-center cgu__subtitle"><?= $lastMeeting->event_location ?></td></a>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 item">
-                        <div class="card item-card card-block">
-                            <img src="/public/assets/img/poster2.jfif" alt="Photo of sunset">
-                            <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
-                            <p class="card-text">This is a company that builds websites, web .</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 item">
-                        <div class="card item-card card-block">
-                            <img src="/public/assets/img/poster3.jfif" alt="Photo of sunset">
-                            <h5 class="card-title  mt-3 mb-3">ProVyuh</h5>
-                            <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p>
-                        </div>
-                    </div>
+                    <?php
+                    };
+                    ?>
                 </div>
 
             </div>

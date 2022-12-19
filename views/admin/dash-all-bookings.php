@@ -20,7 +20,7 @@
                 </form>
             </div>
         </div>
-        <div class="container text-white d-flex justify-content-center"><?= $nbComments ?> Commentaires</div>
+        <div class="container text-white d-flex justify-content-center">Réservations</div>
         <thead>
             <tr>
                 <th class="text-center title__dashboard" scope="col">Date</th>
@@ -35,14 +35,14 @@
             foreach ($allBookings as $booking) {
             ?>
                 <tr>
-                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->event_date)) ?></td>
-                    <td class="text-center"><?= $booking->event_name ?></td>
-                    <td class="text-center"><?= $booking->event_place ?></td>
-                    <td class="text-center"><?= $booking->booking_places ?></td>
+                    <td class="text-center"><?= date("d/m/Y", strtotime($booking->dateEvent)) ?></td>
+                    <td class="text-center"><?= $booking->nameEvent ?></td>
+                    <td class="text-center"><?= $booking->locationEvent ?></td>
+                    <td class="text-center"><?= $booking->places ?></td>
                     <td class="text-center">
                         <!-- Bouton pour supprimer le commentaire -->
-                        <a href="/controllers/dashboard/dash-delete-commentsCtrl.php?id=<?= $comment->id_comments; ?>"><i class="uil uil-trash button__icon"></i></a>
-                        <a href="/controllers/dashboard/dash-delete-commentsCtrl.php?id=<?= $comment->id_comments; ?>"><i class="uil uil-trash button__icon"></i></a>
+                        <a href="/controllers/dashboard/dash-delete"><i class="uil uil-trash button__icon"></i></a>
+                        <a href="/controllers/dashboard/dash-delete"><i class="uil uil-trash button__icon"></i></a>
                     </td>
                 </tr>
             <?php

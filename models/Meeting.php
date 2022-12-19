@@ -86,6 +86,8 @@ class Meeting {
         $meeting = $query->fetch();
         return $meeting;
     }
+
+
 // Récupérer le nombre de meetings
     public static function getNbMeetings(): int {
         $sth = Database::getInstance();

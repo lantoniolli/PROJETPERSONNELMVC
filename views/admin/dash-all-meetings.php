@@ -41,7 +41,7 @@
                     <td class="text-truncate"><?= $meeting->event_description ?></td>
                     <td class="text-center">
                         <!-- Bouton pour voir le post de la convention -->
-                        <a href="/controllers/"><i class="uil uil-eye button__icon__alt"></i></a>
+                        <a href="/controllers/view-meetingCtrl.php?id="<?= $meeting->id_meetings ?>><i class="uil uil-eye button__icon__alt"></i></a>
                         <!-- Bouton pour modifier la convention -->
                         <?php 
                         if(isset($_SESSION['user']) && $user->user_role == 1){
