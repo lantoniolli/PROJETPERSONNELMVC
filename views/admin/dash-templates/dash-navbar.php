@@ -1,12 +1,24 @@
- <!-- Vertical navbar -->
- <div class="vertical-nav bg-dark" id="sidebar">
+<!-- Vertical navbar -->
+<div class="vertical-nav bg-dark" id="sidebar">
         <div class="py-4 px-3 mb-0 bg-dark">
             <div class="media d-flex align-items-center">
+            <?php
+                    $filename = __DIR__ . '/../../public/uploads/users/' . $user->id_users . '.jpg';
+                    if (file_exists($filename)) {
+                        $filename = '/public/uploads/users/' . $user->id_users . '.jpg';
+                    } else {
+                        $filename = '/public/assets/img/useravatar/' . $user->user_house . '.jpg';
+                    }
+                ?>
                 <img loading="lazy" src="<?= $filename ?>" alt="..." width="80" height="80"
                     class="mr-3 rounded-circle shadow-sm">
                 <div class="media-body">
                     <h4 class="m-0 user__name"><?= $user->user_name ;?></h4>
-                    <p class="font-weight-normal text-muted mb-0">Admin</p>
+                    <?php if ($user->user_role == 1) : ?>
+                    <p class="font-weight-normal text-muted mb-0">Administrateur</p>
+                    <?php else : ?>
+                    <p class="font-weight-normal text-muted mb-0">Rédacteur</p>
+                    <?php endif; ?>
                 </div>
                 <div><a href="/controllers/homeController.php">
                     <i class="uil uil-sign-out-alt button__icon"></i></div>

@@ -117,7 +117,7 @@ class News
     public static function getLastNews(): object
     {
         $sth = Database::getInstance();
-        $query = $sth->query('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users` ORDER BY `news_posted_at` DESC LIMIT 1');
+        $query = $sth->query('SELECT * FROM `news` INNER JOIN `users` ON `news`.`news_author` = `users`.`id_users` ORDER BY `news_posted_at` DESC LIMIT 2');
         $news = $query->fetch();
         return $news;
     }

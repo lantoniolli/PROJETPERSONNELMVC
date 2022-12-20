@@ -16,7 +16,15 @@
                             <div class="card-body text-center">
                                 <img src="<?= $filename ?>" .jpg" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3 username__profile"><?= $users->user_name ?></h5>
-                                <p class="mb-1 label__profile">Administratrice</p>
+                                <?php
+                                            if ($user->user_role == 1) {
+                                                $role = 'Administrateur';
+                                            } else if ($user->user_role == 2) {
+                                                $role = 'Modérateur';
+                                            } else if ($user->user_role == 3) {
+                                                $role = 'Membre';
+                                            } ?>
+                                <p class="mb-1 label__profile"><?= $role ?></p>
                                 <form method="POST" enctype="multipart/form-data">
                                     <div class="col-12 d-flex justify-content-center align-items-center mb-2 mt-2">
                                         <select class="form-select text-center" aria-label="Choisir son emblème" name="houses" id="houses">
@@ -83,7 +91,7 @@
                                         <p class="mb-0 label__profile">Mot de Passe</p>
                                     </div>
                                     <div class="col-sm-8">
-                                        <a href="/controllers/modify-passwordCtrl.php?id=<?= $user->id_users ?>"<button type="button" class="btn btn__color" data-bs-toggle="modal" data-bs-target="#modalmodify">Modifier</button>
+                                        <button type="button" class="btn  btn__color" data-bs-toggle="modal" data-bs-target="#modalmodify">Modifier</button>
                                         <!-- MODAL -->
                                         <div class="modal fade" id="modalmodify" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered">

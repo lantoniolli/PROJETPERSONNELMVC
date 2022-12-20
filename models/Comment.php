@@ -62,7 +62,7 @@ class Comment {
                 $this->_id_news = $id_news;
             }
 // Methods
-// Ajouter un commentaire
+// Ajouter un commentaire sur une news
         public function addCommentNews():bool {
             $sql = 'INSERT INTO `comments` (`comment_description`, `id_users`, `id_news`) VALUES (:comment_description, :id_users, :id_news)';
             $pdo = Database::getInstance();
@@ -72,7 +72,16 @@ class Comment {
             $stmt->bindValue(':id_news', $this->_id_news, PDO::PARAM_INT);
             return $stmt->execute();
         }
-        
+// Ajouter un commentaire sur un meeting
+        public function addCommentMeeting():bool {
+            $sql = 'INSERT INTO `comments` (`comment_description`, `id_users`, `id_meetings`) VALUES (:comment_description, :id_users, :id_meeting)';
+            $pdo = Database::getInstance();
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':comment_description', $this->_comment_description, PDO::PARAM_STR);
+            $stmt->bindValue(':id_users', $this->_id_users, PDO::PARAM_INT);
+            $stmt->bindValue(':id_meeting', $this->_id_meeting, PDO::PARAM_INT);
+            return $stmt->execute();
+        }
 
 // Afficher les commentaires d'un article
         public static function getCommentsbyNews(int $id_news): array {
@@ -80,6 +89,16 @@ class Comment {
             $query = "SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`id_users` = `users`.`id_users` WHERE `id_news` = :id_news";
             $stmt = $pdo->prepare($query);
             $stmt->bindValue(':id_news', $id_news, PDO::PARAM_INT);
+            $stmt->execute();
+            $comments = $stmt->fetchAll();
+            return $comments;
+        }
+// Afficher les commentaires d'un meeting
+        public static function getCommentsbyMeeting(int $id_meeting): array {
+            $pdo = Database::getInstance();
+            $query = "SELECT * FROM `comments` INNER JOIN `users` ON `comments`.`id_users` = `users`.`id_users` WHERE `id_meetings` = :id_meetings";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindValue(':id_meetings', $id_meeting, PDO::PARAM_INT);
             $stmt->execute();
             $comments = $stmt->fetchAll();
             return $comments;

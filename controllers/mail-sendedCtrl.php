@@ -28,6 +28,6 @@ try {
 
 
 include(__DIR__ . '/../views/templates/header.php');
-include(__DIR__ . '/../views/templates/navbar.php');
+include(__DIR__ . '/../views/templates/navbar2.php');
 include(__DIR__ . '/../views/user/confirm-register.php');
 include(__DIR__ . '/../views/templates/footer.php');

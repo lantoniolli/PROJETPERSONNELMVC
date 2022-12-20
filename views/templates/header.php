@@ -17,7 +17,7 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- SCRIPTS -->
     <script src="//cdn.ckeditor.com/4.20.0/full/ckeditor.js"></script>
-    <title>//</title>
+    <title>Fire Will Reign</title>
 </head>
 <body>
 

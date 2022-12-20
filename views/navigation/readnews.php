@@ -95,9 +95,17 @@
                 <?php
                 } else { ?>
                     <form action="" method="POST">
+                        <?php
+                           $fileUser = __DIR__ . '/../public/uploads/users/' . $id_user . '.jpg';
+                           if (file_exists($fileUser)) {
+                               $fileUser = '/public/uploads/users/' . $id_user . '.jpg';
+                           } else {
+                               $fileUser = '/public/assets/img/useravatar/' . $user->user_house . '.jpg';
+                           }
+                        ?>
                         <div class="card-footer py-3 border-0">
                             <div class="d-flex flex-start w-100">
-                                <img class="rounded-circle shadow-1-strong me-3" src="/public/uploads/users/<?= $user->id_users ?>.jpg" alt="avatar" width="40" height="40" />
+                                <img class="rounded-circle shadow-1-strong me-3" src="<?= $fileUser ?>" alt="avatar" width="40" height="40" />
                                 <div class="form-outline w-100">
                                     <span class="form_infos">Connecté en tant que <span class="form_name"><?php echo $user->user_name; ?></span>. Ce n'est pas vous ? <a href="/controllers/logoutCtrl.php">Déconnexion</a></span>
                                     <textarea class="form-control resize_textarea" id="myText" rows="4" style="background: #fff;" name="content"></textarea>

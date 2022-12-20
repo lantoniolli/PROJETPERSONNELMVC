@@ -12,7 +12,15 @@
                                     <img src="<?= $filename ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
 
                                     <h5 class="my-3 username__profile"><?= $users->user_name ?></h5>
-                                    <p class="mb-1 label__profile">Administratrice</p>
+                                    <?php
+                                            if ($user->user_role == 1) {
+                                                $role = 'Administrateur';
+                                            } else if ($user->user_role == 2) {
+                                                $role = 'Modérateur';
+                                            } else if ($user->user_role == 3) {
+                                                $role = 'Membre';
+                                            } ?>
+                                    <p class="mb-1 label__profile"><?= $role ?></p>
                                     <img src="/public/assets/img/sigils/<?= $users->user_house ?>.png" alt="emblème_maison" class="rounded-circle img-fluid" style="width: 70px;">
 
 

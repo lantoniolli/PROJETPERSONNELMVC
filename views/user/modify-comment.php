@@ -7,7 +7,16 @@
                     <div class="card-body">
                         <div class="d-flex flex-start align-items-center justify-content-between">
                             <div class="avatar_pseudo_user d-flex">
-                                <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/cerseiicons.jpg" alt="avatar" width="60" height="60" />
+                            <?php
+                    $filename = __DIR__ . '/../../public/uploads/users/' . $comment->id_users . '.jpg';
+                    if (file_exists($filename)) {
+                        $filename = '/public/uploads/users/' . $comment->id_users . '.jpg';
+                    } else {
+                        $filename = '/public/assets/img/useravatar/' . $comment->user_house . '.jpg';
+                    }
+                ?>
+
+                                <img class="rounded-circle shadow-1-strong me-3" src="<?= $filename ?>" alt="avatar" width="60" height="60" />
                                 <div>
                                     <h6 class="fw-bold mb-1"><?= $comment->user_name ?></h6>
                                     <p class="text-muted small mb-0">
@@ -23,7 +32,7 @@
                     <form action="" method="POST">
                         <div class="card-footer py-3 border-0">
                             <div class="d-flex flex-start w-100">
-                                <img class="rounded-circle shadow-1-strong me-3" src="/public/assets/img/iconscomment.jpg" alt="avatar" width="40" height="40" />
+                                <img class="rounded-circle shadow-1-strong me-3" src="<?= $filename ?>" alt="avatar" width="40" height="40" />
                                 <div class="form-outline w-100">
                                     <textarea class="form-control resize_textarea" id="myText" rows="4" style="background: #fff;" name="content"></textarea>
 

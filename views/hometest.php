@@ -32,9 +32,9 @@
                                             <div class="card-body">
                                                 <div class="text-center mb-3">Pour s'inscrire à une convention vous devez être inscrit sur le site ou connecté</div>
                                                 <div class="d-flex flex-start justify-content-around">
-                                                    <a href="/controllers/registerCtrl.php"><button type="button" class="btn btn__color btn-lg">S'inscrire</button></a>
+                                                    <button type="button" class="btn btn__color btn-lg">S'inscrire</button>
                                                     <div>
-                                                        <a href="/controllers/loginCtrl.php"><button type="button" class="btn btn__color__alt btn-lg">Se connecter</button></a>
+                                                        <button type="button" class="btn btn__color__alt btn-lg">Se connecter</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -45,7 +45,6 @@
 
                         <?php
                         } else { ?>
-                        <!-- FORMULAIRE DE RESERVATION -->
                             <form action="" method="POST">
                                 <div class="container my-5 py-5">
                                     <div class="row d-flex justify-content-center">
@@ -63,6 +62,9 @@
                                             <div class="card">
                                                 <div class="card-body text-center">
                                                     <input type="number" min="1" max="10" placeholder="0" name="places" />
+
+
+                                                    <!-- <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="0" max="10" name="reservation"><span class="input-number-increment">+</span> -->
                                                 </div>
                                             </div>
                                             <input type="hidden" name="form" value="1">
@@ -80,7 +82,8 @@
 
         </div>
     </div>
-    <!-- ENCART DES COMMENTAIRES / AFFICHAGE DES COMMENTAIRES POSTES -->
+    <div class="separator"></div>
+    <!-- avis -->
     <div class="row d-flex justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-5">
             <h2 class="display-3 divider mb-4">Avis</h2>
@@ -134,7 +137,7 @@
                 ?>
                     <div class="container my-5 py-5">
                         <div class="row d-flex justify-content-center">
-                            <div class="col-md-12 col-lg-10 col-xl-8">
+                            <div class="col-md-12 col-lg-10 col-xl-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="text-center mb-3">Pour poster un commentaire vous devez être inscrit ou connecté</div>
@@ -153,14 +156,6 @@
                 <?php
                 } else { ?>
                     <form action="" method="POST">
-                    <?php
-                           $fileUser = __DIR__ . '/../public/uploads/users/' . $id_user . '.jpg';
-                           if (file_exists($fileUser)) {
-                               $fileUser = '/public/uploads/users/' . $id_user . '.jpg';
-                           } else {
-                               $fileUser = '/public/assets/img/useravatar/' . $user->user_house . '.jpg';
-                           }
-                        ?>
                         <div class="card-footer py-3 border-0">
                             <div class="d-flex flex-start w-100">
                                 <img class="rounded-circle shadow-1-strong me-3" src="<?= $fileUser ?>" alt="avatar" width="40" height="40" />

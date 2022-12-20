@@ -1,3 +1,5 @@
+<!--  FICHIER NON UTILISÉ -->
+
 <div class="container my-5 py-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-12 col-lg-10 col-xl-8">
@@ -67,9 +69,8 @@
                         </div>
                     </div>
 
-                    <?php
-                } else { 
-                    ?>
+                <?php
+                } else { ?>
                     <form action="" method="POST">
                         <div class="card-footer py-3 border-0">
                             <div class="d-flex flex-start w-100">

@@ -21,15 +21,8 @@ if (isset($_SESSION['user'])) {
 
 //-------------------------------- NETTOYAGE ET VALIDATION DES DONNÉES----------------------------------------//
 
-
-$filename = __DIR__ . '/../../public/uploads/users/' . $id . '.jpg';
-if (file_exists($filename)) {
-    $filename = '/public/uploads/users/' . $id . '.jpg';
-} else {
-    $filename = '/public/assets/img/useravatar/' . $id . '.jpg';
-}
-
 try {
+
 
 } catch (PDOException $e) {
     die('ERREUR :' . $e->getMessage());

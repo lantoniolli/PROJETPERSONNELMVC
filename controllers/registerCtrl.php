@@ -96,10 +96,10 @@ try {
             
             $id_user = $user->getId();
             $element = ['id'=> $id_user, 'email'=> $email];
-            $element['valid'] = time() + 60*15;
+            // $element['valid'] = time() + 60*15;
             $token = JWT::set($element);
             if($user){
-                $to = $email;
+                $to = 'laura.antoniolli@gmail.com';
                 $subject = 'Inscription à notre super site!';
                 $message = 'Veuillez cliquer : <a href="'.$_SERVER['HTTP_ORIGIN'].'/controllers/validateAccountCtrl.php?token='.$token.'">Cliquez-ici</a>';
                 mail($to,$subject,$message);
