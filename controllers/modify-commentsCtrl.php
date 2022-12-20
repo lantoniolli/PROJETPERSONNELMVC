@@ -34,6 +34,7 @@ try {
             if ($commentUpdated->updateComment($id_comment)) {
                 SessionFlash::set('Le commentaire a bien été modifié');
                 header('Location: /controllers/readnewsCtrl.php?id=' . $comment->id_news);
+                // header("location:".  $_SERVER['HTTP_REFERER']); 
                 exit();
             } else {
                 SessionFlash::set('Une erreur est survenue lors de la modification du commentaire');

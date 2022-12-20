@@ -157,5 +157,7 @@ class Comment {
             $stmt->bindValue(':id', $this->_id, PDO::PARAM_INT);
             return $stmt->execute();
         }
+// Modifier un commentaire d'un meeting
+
     }
 

@@ -21,7 +21,6 @@
                             ?>
                         </tbody>
                     </table>
-                    <a class="btn mt-2 col-sm-6" href="#">S'y inscrire ?</a>
                 </div>
             </div>
     </div>

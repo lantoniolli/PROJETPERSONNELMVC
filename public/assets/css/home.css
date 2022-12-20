@@ -569,7 +569,7 @@ a:active {
 }
 
 .containerPage{
-  height: 80vh;
+  height: 87vh;
 
 }
 
@@ -641,4 +641,22 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.footer__back{
+  background-color: #252525;
+  height: 75px;
+  font-family: "unifrakCook";
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  text-transform: lowercase;
+  color:#3b3b3b;
+  text-align: center;
+  padding: 3px;
+  font-weight: bold;
+}
+
+.meetings{
+  overflow-x: hidden;
+  
 }

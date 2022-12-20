@@ -139,11 +139,12 @@ try {
 
             // Recadre
             $cropped_width = 200;
+            $cropped_height = 200;
             $ressourceResampled = imagecreatefromjpeg($resampledDestination);
             if (!$ressourceResampled) {
                 throw new Exception('Problème lors du recadrage');
             }
-            $ressourceCropped = imagecrop($ressourceResampled, ['x' => ($dst_width - $cropped_width) / 2, 'y' => 0, 'width' => $cropped_width, 'height' => 200]);
+            $ressourceCropped = imagecrop($ressourceResampled, ['x' => ($dst_width - $cropped_width) / 2, 'y' => ($dst_height - $cropped_height) / 2, 'width' => $cropped_width, 'height' => 200]);
 
             // Sauvegarde l'image recadrée
             $croppedDestination = UPLOAD_USER_PROFILE . $filename . '.' . 'jpg';

@@ -1,5 +1,5 @@
 <!-- page test affichage détail convention -->
-<section>
+<section class="meetings">
     <div class="page-content p-5" id="content">
         <h2 class="display-3 news__title mt-5 text-center"><?= $meeting->event_name ?></h2>
         <!-- ici un sous-titre -->
@@ -81,7 +81,7 @@
         </div>
     </div>
     <!-- ENCART DES COMMENTAIRES / AFFICHAGE DES COMMENTAIRES POSTES -->
-    <div class="row d-flex justify-content-center">
+    <div class="row d-flex justify-content-center mb-5">
         <div class="col-md-10 col-lg-8 col-xl-5">
             <h2 class="display-3 divider mb-4">Avis</h2>
             <div class="card">
